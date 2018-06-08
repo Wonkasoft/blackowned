@@ -1,0 +1,8 @@
+package-lock.json
+.DS_Store
+.phpintel
+phpcs.phar
+phpcbf.phar
+node_modules
+node_modules/*
+*.swp
