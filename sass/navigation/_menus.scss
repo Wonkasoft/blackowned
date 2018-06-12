@@ -81,7 +81,7 @@
 		display: none;
 	}
 	.main-navigation ul {
-		display: block;
+		display: flex;
 	}
 }
 
@@ -104,4 +104,13 @@
 		text-align: right;
 		width: 50%;
 	}
+}
+
+.cart-icon {
+	position: absolute;
+  right: 10%;
+}
+
+#login-btn {
+	padding-left: 10px;
 }

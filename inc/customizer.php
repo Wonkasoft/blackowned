@@ -41,175 +41,84 @@ function blackowned_customize_register( $wp_customize ) {
 		 ) );
 
 	/**
-	 * For Main Image on home page
-	 * @since 1.0.0 [Adding in Main Image]
+	 * For Slide Image on home page
+	 * @since 1.0.0 [Adding in Slide Image]
 	 */
-	$wp_customize->add_section( 'main_section', array(
+	$wp_customize->add_section( 'slide_section', array(
 		'capability'	=> 'edit_theme_options',
 		'theme_support'	=> '',
 		'priority'		=> 11,
-		'title'			=> __( 'Main Section', 'blackowned' ),
-		'description'	=> __( 'Main Section Options', ' blackowned' ),
+		'title'			=> __( 'Slide Section', 'blackowned' ),
+		'description'	=> __( 'Slide Section Options', ' blackowned' ),
 		'panel'			=> 'ft_theme_options' 
 		) );
 
+for ($i=1; $i < 5; $i++) :
 	/**
 	 * Headaing image setting
-	 * @since 1.0.0 [Main Image setings]
+	 * @since 1.0.0 [Slide Image setings]
 	 */
-	$wp_customize->add_setting( 'main_image', array(
+	$wp_customize->add_setting( 'main_image_'.$i, array(
 		'defualt'	=> '',
 		'transport'	=> 'refresh'
 		) );
 
 	/**
 	 * Control for main iamge
-	 * @since 1.0.0 [Control for main image]
+	 * @since 1.0.0 [Control for Slide Image]
 	 */
 	$wp_customize->add_control( new WP_Customize_Image_Control(
 		$wp_customize,
-		'main_image', 
+		'main_image_'.$i, 
 		array(
-			'label' 		=> __( 'Main Image', 'blackowned' ), 
-			'section'		=> 'main_section', 
-			'setting'		=> 'main_image', 
+			'label' 		=> __( 'Slide Image', 'blackowned' ), 
+			'section'		=> 'slide_section', 
+			'setting'		=> 'main_image_'.$i, 
 			'type'			=> 'image',
-			'description'	=> __( 'Chose Main Image', 'blackowned' )
+			'description'	=> __( 'Chose Slide Image '.$i, 'blackowned' )
 		)
 	) );
+endfor;
 
 		/**
-	 * For Testimonial background Image
+	 * For Featured Image
 	 * @since 1.0.0 [Adding in Testimonials Background Image]
 	 */
-	$wp_customize->add_section( 'testimonials_section', array(
+	$wp_customize->add_section( 'featured_section', array(
 		'capability'	=> 'edit_theme_options',
 		'theme_support'	=> '',
 		'priority'		=> 12,
-		'title'			=> __( 'Testimonial Section', 'blackowned' ),
-		'description'	=> __( 'Testimonial Section Options', ' blackowned' ),
+		'title'			=> __( 'Featured Section', 'blackowned' ),
+		'description'	=> __( 'Featured Section Options', ' blackowned' ),
 		'panel'			=> 'ft_theme_options' 
 		) );
 
+for ($i=1; $i < 4 ; $i++) :
 	/**
-	 * Testimonial background image setting
-	 * @since 1.0.0 [Testimonial background Image setings]
+	 * Featured Image setting
+	 * @since 1.0.0 [Featured Image setings]
 	 */
-	$wp_customize->add_setting( 'testimonial_image', array(
+	$wp_customize->add_setting( 'featured_image_'.$i, array(
 		'defualt'	=> '',
 		'transport'	=> 'refresh'
 		) );
 
 	/**
-	 * Controller for testimonial background image
-	 * @since 1.0.0 [Control for testimonial background image]
+	 * Controller for Featured Image
+	 * @since 1.0.0 [Control for Featured Image]
 	 */
 	$wp_customize->add_control( new WP_Customize_Image_Control(
 		$wp_customize,
-		'testimonial_image', 
+		'featured_image_'.$i, 
 		array(
-			'label' 		=> __( 'Testimonial Background Image', 'blackowned' ), 
-			'section'		=> 'testimonials_section', 
-			'setting'		=> 'testimonial_image', 
+			'label' 		=> __( 'Featured Image', 'blackowned' ), 
+			'section'		=> 'featured_section', 
+			'setting'		=> 'featured_image_'.$i, 
 			'type'			=> 'image',
-			'description'	=> __( 'Chose Background Image', 'blackowned' )
+			'description'	=> __( 'Chose Featured Image '.$i, 'blackowned' )
 		)
 	) );
-
-	/**
-	 * Grid Section Images
-	 * @since 1.0.0
-	 */
-	$wp_customize->add_section( 'grid_section', array(
-		'capability'	=> 'edit_theme_options',
-		'theme_support'	=> '',
-		'priority'		=> 13,
-		'title'			=> __( 'Grid Section', 'blackowned' ),
-		'description'	=> __( 'Grid Section Options', ' blackowned' ),
-		'panel'			=> 'ft_theme_options' 
-		) );
-
-	/**
-	 * Loop for grid section images
-	 * @since 1.0.0 [loop for grid images]
-	 */
-	for ($i = 1; $i < 7; $i++) :
-
-		 /**
-		 * Grid Section Image title settings
-		 * @since 1.0.0 
-		 */
-		$wp_customize->add_setting( 'grid_image_title' . $i, array(
-			'default'	=> '',
-			'transport'	=> 'refresh'
-		) );
-
-		/**
-		 * Grid Section Image title Controller
-		 * @since 1.0.0
-		 */
-		$wp_customize->add_control( new WP_Customize_Control(
-			$wp_customize,
-			'grid_image_title' . $i, 
-			array(
-				'label' 		=> __( 'Grid Image '. $i, 'blackowned' ), 
-				'section'		=> 'grid_section', 
-				'setting'		=> 'grid_image_title' . $i, 
-				'type'			=> 'text',
-				'description'	=> __( 'Chose Grid Image Title' . $i, 'blackowned' )
-			)
-		) );
-
-		 /**
-		 * Grid Section Image settings
-		 * @since 1.0.0 
-		 */
-		$wp_customize->add_setting( 'grid_image_' . $i, array(
-			'default'	=> '',
-			'transport'	=> 'refresh'
-		) );
-
-		/**
-		 * Grid Section Image Controller
-		 * @since 1.0.0
-		 */
-		$wp_customize->add_control( new WP_Customize_Image_Control(
-			$wp_customize,
-			'grid_image_' . $i, 
-			array(
-				'label' 		=> __( 'Grid Image '. $i, 'blackowned' ), 
-				'section'		=> 'grid_section', 
-				'setting'		=> 'grid_image_' . $i, 
-				'type'			=> 'image',
-				'description'	=> __( 'Chose Grid Image ' . $i, 'blackowned' )
-			)
-		) );
-
-		 /**
-		 * Grid Section Image Description settings
-		 * @since 1.0.0 
-		 */
-		$wp_customize->add_setting( 'grid_image_description' . $i, array(
-			'default'	=> '',
-			'transport'	=> 'refresh'
-		) );
-
-		/**
-		 * Grid Section Image Description Controller
-		 * @since 1.0.0
-		 */
-		$wp_customize->add_control( new WP_Customize_Control(
-			$wp_customize,
-			'grid_image_description' . $i, 
-			array(
-				'label' 		=> __( 'Grid Image '. $i, 'blackowned' ), 
-				'section'		=> 'grid_section', 
-				'setting'		=> 'grid_image_description' . $i, 
-				'type'			=> 'textarea',
-				'description'	=> __( 'Chose Grid Image Description' . $i, 'blackowned' )
-			)
-		) );
-	endfor;
+endfor;
 
 	/**
 	 * Contact Section

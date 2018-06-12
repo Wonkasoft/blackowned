@@ -76,8 +76,8 @@ if ( ! function_exists( 'blackowned_setup' ) ) :
 		 * @link https://codex.wordpress.org/Theme_Logo
 		 */
 		add_theme_support( 'custom-logo', array(
-			'height'      => 156,
-			'width'       => 500,
+			'height'      => 290,
+			'width'       => 480,
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
