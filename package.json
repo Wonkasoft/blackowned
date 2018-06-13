@@ -1,7 +1,7 @@
 {
   "name": "blackowned",
   "version": "1.0.0",
-  "description": "Black Owned is a custom theme build for blackowned.us.",
+  "description": "blackowned is a custom theme build for blackowned.us.",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

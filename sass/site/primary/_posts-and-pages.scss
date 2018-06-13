@@ -9,7 +9,7 @@
 #masthead {
 	position: relative;
 	height: 140px;
-	background: rgba(0, 0, 0, .5);
+	background: url('./assets/img/header-bg.jpg');
 	z-index: 100;
 
 	> .row {
@@ -17,7 +17,7 @@
 	}
 
 	a, i {
-		color: #fff;
+		color: #000;
 	}
 	
 	.custom-logo {
@@ -34,55 +34,12 @@
 		}
 	}
 
-	.account-row {
-		margin: 8px 0;
-
-		#sub-menu-icons {
-			display: flex;
-			align-items: center;
-			justify-content: flex-end;
-
-			form {
-				overflow: hidden;
-				position: relative;
-				display: flex;
-				align-items: center;
-				justify-content: space-around;
-				@include prefix( transition, all .3s ease-in-out, webkit moz o );
-
-				div.search-input-wrap {
-					overflow: hidden;
-					@include prefix( transition, all .3s ease-in-out, webkit moz o );
-				}
-				input.slid {
-					@include prefix( transition, all .3s ease-in-out, webkit moz o );
-					position: relative;
-					left: 105%;
-
-					&.active {
-						left: 0%;
-					}
-				}
-
-				#search-btn {
-					@include prefix( transition, all .3s ease-in-out, webkit moz o );
-					margin: 0 8px;
-				}
-			}
-		}
-	}
-
 	.nav-row {
 		min-height: 3rem;
 
 		> .col {
 			align-self: flex-end;
 		}
-	}
-
-	#site-navigation {
-		max-width: 60%;
-		float: right;
 	}
 
 	#primary-menu {
@@ -107,6 +64,7 @@
 }
 
 #primary {
+	margin-top: 100px;
 	position: relative;
 	min-height: 425px;
 }

@@ -25,61 +25,53 @@
 		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'blackowned' ); ?></a>
 
 		<header id="masthead" class="container-fluid site-header">
-			<div class="row">
-				<div class="col-3">
-					<div class="custom-logo">
-						<?php
-						$custom_logo_id = get_theme_mod( 'custom_logo' );
-						$custom_logo_id_image = wp_get_attachment_image_src( $custom_logo_id, 'full');
-
-						if ( ! empty( $custom_logo_id ) ): ?>
-							<span class="site-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo esc_url( $custom_logo_id_image[0] ); ?>" alt="<?php bloginfo( 'name' ); ?>"/></a></span> 
-						<?php
-						else :
-							?>
-							<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-						<?php
-						endif;
-
-				$blackowned_description = get_bloginfo( 'description', 'display' );
-				if ( $blackowned_description || is_customize_preview() ) :
-					?>
-					<p class="site-description"><?php echo $blackowned_description; /* WPCS: xss ok. */ ?></p>
-				<?php endif; ?>
-			</div> <!-- .custom-logo -->
-			</div> <!-- .col-5 -->
-			<div class="col-8">
-				<div class="row">
-					<div class="col text-right">
-						<nav class="account-row">
-							<ul id="sub-menu-icons" class="inline">
-								<li class="list-inline-item">
+			<div class="container menu-bar">
+				<div class="row align-items-center">
+					<div class="col-2">
+						<div class="custom-logo">
+							<?php
+							$custom_logo = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full');
+							if ( ! empty( $custom_logo ) ): ?>
+								<div class="site-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo esc_url( $custom_logo[0] ); ?>" alt="<?php bloginfo( 'name' ); ?>"/></a></div> 
 								<?php
-								get_search_form();
-								?>	
-								</li>
-								<li class="list-inline-item">
-									<a href="/my-account"><i class="fa fa-user"></i></a>
-								</li>
-							</ul> <!-- /sub-menu list -->
-						</nav> <!-- .account-row -->
-					</div> <!-- .col -->
-				</div> <!-- .row -->
-				<div class="row nav-row">
-					<div class="col text-right">
-						<nav id="site-navigation" class="main-navigation">
+							else :
+								?>
+								<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+								<?php
+							endif;
+
+							$blackowned_description = get_bloginfo( 'description', 'display' );
+							if ( $blackowned_description || is_customize_preview() ) :
+								?>
+							</div> <!-- .custom-logo -->
+							<p class="site-description"><?php echo $blackowned_description; /* WPCS: xss ok. */ ?></p>
+						<?php endif; ?>
+					</div> <!-- .col-2 -->
+					<div class="col-6">
+						<nav id="site-navigation" class="main-navigation align-items-center">
 							<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'blackowned' ); ?></button>
 							<?php
 							wp_nav_menu( array(
 								'theme_location' => 'menu-1',
 								'menu_id'        => 'primary-menu',
+								'class'        => 'align-items-center',
 							) );
 							?>
 						</nav><!-- #site-navigation -->
 					</div> <!-- .col -->
-				</div> <!-- .row -->
-			</div><!-- .col-7 -->
-		</div><!-- .row -->
-	</header><!-- #masthead -->
 
-	<div id="content" class="site-content">
+					<div class="col-4 text-center">
+						<?php
+						get_search_form();
+						?>	
+					</div><!-- .col-4 -->
+					<div class="cart-icon text-right">
+						<a href="/cart"><i class="fa fa-cart-plus"></i></a>
+						<a id="login-btn" href="/my-account">Login</a>
+					</div> <!-- /cart-icon -->
+
+				</div><!-- .row -->
+			</div> <!-- /container -->
+		</header><!-- #masthead -->
+
+		<div id="content" class="site-content">
