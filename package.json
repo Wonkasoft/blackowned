@@ -32,9 +32,11 @@
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
+    "ip": "^1.1.5",
     "jshint": "^2.9.5",
     "json-file": "^0.1.0",
     "node-fs": "^0.1.7",
+    "node-ip": "^0.1.2",
     "path": "^0.12.7",
     "update": "^0.7.4"
   },

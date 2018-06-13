@@ -15,18 +15,21 @@ json = require('json-file'),
 jsmin = require('gulp-js-minify'),
 themeName = json.read('./package.json').get('name'),
 siteName = json.read('./package.json').get('siteName'),
+ip = require('ip'),
+localip = ip.address(),
 themeDir = '../' + themeName,
 plumberErrorHandler = { errorHandler: notify.onError({
 
-	title: 'Gulp',
+		title: 'Gulp',
 
-	message: 'Error: <%= error.message %>',
+		message: 'Error: <%= error.message %>',
 
-	line: 'Line: <%= line %>'
+		line: 'Line: <%= line %>'
 
-})
+	})
 
 };
+
 
 gulp.task('default', function(){
 
@@ -47,7 +50,7 @@ gulp.task('init', function() {
 // Static server
 gulp.task('browser-sync', function() {
 	browserSync.init({
-		proxy: 'localhost/' + siteName,
+		proxy: localip + '/' + siteName,
 		port: 81
 	});
 });
