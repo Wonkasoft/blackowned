@@ -27,7 +27,7 @@
 		<header id="masthead" class="container-fluid site-header">
 			<div class="container menu-bar">
 				<div class="row align-items-center">
-					<div class="col-2">
+					<div class="col col-2">
 						<div class="custom-logo">
 							<?php
 							$custom_logo = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full');
@@ -47,7 +47,7 @@
 							<p class="site-description"><?php echo $blackowned_description; /* WPCS: xss ok. */ ?></p>
 						<?php endif; ?>
 					</div> <!-- .col-2 -->
-					<div class="col-6">
+					<div class="col col-6">
 						<nav id="site-navigation" class="main-navigation align-items-center">
 							<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'blackowned' ); ?></button>
 							<?php

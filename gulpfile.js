@@ -50,8 +50,7 @@ gulp.task('init', function() {
 // Static server
 gulp.task('browser-sync', function() {
 	browserSync.init({
-		proxy: localip + '/' + siteName,
-		port: 81
+		proxy: 'localhost/' + siteName
 	});
 });
 
