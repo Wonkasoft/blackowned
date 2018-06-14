@@ -150,11 +150,36 @@ endfor;
 		$wp_customize,
 		'ig_code',
 		array(
-		  'label' 			=> __( 'Twitter', 'blackowned' ), 
+		  'label' 			=> __( 'IG API', 'blackowned' ), 
 			'section'			=> 'followus_section', 
 			'setting'			=> 'ig_code', 
 			'type'				=> 'text',
 			'description'	=> __( 'Input Shortcode for IG', 'blackowned' )
+		)
+	) );
+
+		/**
+	 * Follow us Message for IG Setting
+	 * @since  1.0.0 [<init>]
+	 */
+	$wp_customize->add_setting( 'follow_message', array(
+		'default'	=> '',
+		'refresh'	=> 'refresh'
+	) );
+	
+	/**
+	 * follow_message for IG Control
+	 * @since  1.0.0 [<init>]
+	 */
+	$wp_customize->add_control( new WP_Customize_Control(
+		$wp_customize,
+		'follow_message',
+		array(
+		  'label' 			=> __( 'Follow us message', 'blackowned' ), 
+			'section'			=> 'followus_section', 
+			'setting'			=> 'follow_message', 
+			'type'				=> 'text',
+			'description'	=> __( 'Input follow us message for IG', 'blackowned' )
 		)
 	) );
 
