@@ -33,11 +33,11 @@ function blackowned_customize_register( $wp_customize ) {
 	 * @since 1.0.0 [Theme options for the homepage]
 	 */
 	$wp_customize->add_panel( 'ft_theme_options', array(
-		'priority'		=> 1,
-		'capability' 	=> 'edit_theme_options',
+		'priority'			=> 1,
+		'capability' 		=> 'edit_theme_options',
 		'theme_support' => '',
-		'title' 		=> __( 'Theme Options', 'blackowned' ),
-		'description'	=> __( 'Theme Settings', 'blackowned' )
+		'title' 				=> __( 'Theme Options', 'blackowned' ),
+		'description'		=> __( 'Theme Settings', 'blackowned' )
 		 ) );
 
 	/**
@@ -45,12 +45,12 @@ function blackowned_customize_register( $wp_customize ) {
 	 * @since 1.0.0 [Adding in Slide Image]
 	 */
 	$wp_customize->add_section( 'slide_section', array(
-		'capability'	=> 'edit_theme_options',
+		'capability'		=> 'edit_theme_options',
 		'theme_support'	=> '',
-		'priority'		=> 11,
-		'title'			=> __( 'Slide Section', 'blackowned' ),
-		'description'	=> __( 'Slide Section Options', ' blackowned' ),
-		'panel'			=> 'ft_theme_options' 
+		'priority'			=> 11,
+		'title'					=> __( 'Slide Section', 'blackowned' ),
+		'description'		=> __( 'Slide Section Options', ' blackowned' ),
+		'panel'					=> 'ft_theme_options' 
 		) );
 
 for ($i=1; $i < 5; $i++) :
@@ -58,8 +58,8 @@ for ($i=1; $i < 5; $i++) :
 	 * Headaing image setting
 	 * @since 1.0.0 [Slide Image setings]
 	 */
-	$wp_customize->add_setting( 'main_image_'.$i, array(
-		'defualt'	=> '',
+	$wp_customize->add_setting( 'slide_image_'.$i, array(
+		'defualt'		=> '',
 		'transport'	=> 'refresh'
 		) );
 
@@ -69,12 +69,12 @@ for ($i=1; $i < 5; $i++) :
 	 */
 	$wp_customize->add_control( new WP_Customize_Image_Control(
 		$wp_customize,
-		'main_image_'.$i, 
+		'slide_image_'.$i, 
 		array(
-			'label' 		=> __( 'Slide Image', 'blackowned' ), 
-			'section'		=> 'slide_section', 
-			'setting'		=> 'main_image_'.$i, 
-			'type'			=> 'image',
+			'label' 			=> __( 'Slide Image', 'blackowned' ), 
+			'section'			=> 'slide_section', 
+			'setting'			=> 'slide_image_'.$i, 
+			'type'				=> 'image',
 			'description'	=> __( 'Chose Slide Image '.$i, 'blackowned' )
 		)
 	) );
@@ -85,12 +85,12 @@ endfor;
 	 * @since 1.0.0 [Adding in Testimonials Background Image]
 	 */
 	$wp_customize->add_section( 'featured_section', array(
-		'capability'	=> 'edit_theme_options',
+		'capability'		=> 'edit_theme_options',
 		'theme_support'	=> '',
-		'priority'		=> 12,
-		'title'			=> __( 'Featured Section', 'blackowned' ),
-		'description'	=> __( 'Featured Section Options', ' blackowned' ),
-		'panel'			=> 'ft_theme_options' 
+		'priority'			=> 12,
+		'title'					=> __( 'Featured Section', 'blackowned' ),
+		'description'		=> __( 'Featured Section Options', ' blackowned' ),
+		'panel'					=> 'ft_theme_options' 
 		) );
 
 for ($i=1; $i < 4 ; $i++) :
@@ -99,7 +99,7 @@ for ($i=1; $i < 4 ; $i++) :
 	 * @since 1.0.0 [Featured Image setings]
 	 */
 	$wp_customize->add_setting( 'featured_image_'.$i, array(
-		'defualt'	=> '',
+		'defualt'		=> '',
 		'transport'	=> 'refresh'
 		) );
 
@@ -111,75 +111,50 @@ for ($i=1; $i < 4 ; $i++) :
 		$wp_customize,
 		'featured_image_'.$i, 
 		array(
-			'label' 		=> __( 'Featured Image', 'blackowned' ), 
-			'section'		=> 'featured_section', 
-			'setting'		=> 'featured_image_'.$i, 
-			'type'			=> 'image',
+			'label' 			=> __( 'Featured Image', 'blackowned' ), 
+			'section'			=> 'featured_section', 
+			'setting'			=> 'featured_image_'.$i, 
+			'type'				=> 'image',
 			'description'	=> __( 'Chose Featured Image '.$i, 'blackowned' )
 		)
 	) );
 endfor;
 
 	/**
-	 * Contact Section
-	 * @since 1.0.0 [Contact Section]
+	 * Follow us Section
+	 * @since 1.0.0 [adding follow us section]
 	 */
-	$wp_customize->add_section( 'contact_section', array(
-		'capability'	=> 'edit_theme_options',
+	$wp_customize->add_section( 'followus_section', array(
+		'capability' 		=> 'edit_theme_options',
 		'theme_support'	=> '',
-		'priority'		=> 14,
-		'title'			=> __( 'Contact Section', 'blackowned' ),
-		'description'	=> __( 'Contact Section Options', ' blackowned' ),
-		'panel'			=> 'ft_theme_options' 
-		) );
+		'priority'			=> 15,
+		'title' 				=> __( 'Follow Us Section' , 'blackowned'),
+		'description'		=> __( 'Follow Us Section Options', 'blackowned' ),
+		'panel'					=> 'ft_theme_options'
+	) );
 
 	/**
-	 * Contact section background settings
-	 * @since 1.0.0
+	 * Shortcode for IG Setting
+	 * @since  1.0.0 [<init>]
 	 */
-	$wp_customize->add_setting( 'contact_bg', array(
+	$wp_customize->add_setting( 'ig_code', array(
 		'default'	=> '',
-		'transport'	=> 'refresh'
+		'refresh'	=> 'refresh'
 	) );
-
+	
 	/**
-	 * Contact background image 
-	 * @since 1.0.0 [Contact Form input]
-	 */
-	$wp_customize->add_control( new WP_Customize_Image_Control(
-		$wp_customize,
-		'contact_bg',
-		array(
-		    'label' 		=> __( 'Contact Section Background Image', 'blackowned' ), 
-			'section'		=> 'contact_section', 
-			'setting'		=> 'contact_bg', 
-			'type'			=> 'image',
-			'description'	=> __( 'Select Contact Section Background', 'blackowned' )
-		)
-	) );
-
-	/**
-	 * Contact Form settings
-	 * @since 1.0.0
-	 */
-	$wp_customize->add_setting( 'contact_form', array(
-		'default'	=> '',
-		'transport'	=> 'refresh'
-	) );
-
-	/**
-	 * Contact form input 
-	 * @since 1.0.0 [Contact input]
+	 * Shortcode for IG Control
+	 * @since  1.0.0 [<init>]
 	 */
 	$wp_customize->add_control( new WP_Customize_Control(
 		$wp_customize,
-		'contact_form',
+		'ig_code',
 		array(
-		  'label' 			=> __( 'Contact Form Shortcode', 'blackowned' ), 
-			'section'			=> 'contact_section', 
-			'setting'			=> 'contact_form', 
+		  'label' 			=> __( 'Twitter', 'blackowned' ), 
+			'section'			=> 'followus_section', 
+			'setting'			=> 'ig_code', 
 			'type'				=> 'text',
-			'description'	=> __( 'Add Contact Form Shortcode', 'blackowned' )
+			'description'	=> __( 'Input Shortcode for IG', 'blackowned' )
 		)
 	) );
 
@@ -188,12 +163,12 @@ endfor;
 	 * @since 1.0.0 [adding footer section]
 	 */
 	$wp_customize->add_section( 'footer_section', array(
-		'capability' 	=> 'edit_theme_options',
+		'capability' 		=> 'edit_theme_options',
 		'theme_support'	=> '',
-		'priority'		=> 15,
-		'title' 		=> __( 'Footer Section' , 'blackowned'),
-		'description'	=> __( 'Footer Section Options', 'blackowned' ),
-		'panel'			=> 'ft_theme_options'
+		'priority'			=> 15,
+		'title' 				=> __( 'Footer Section' , 'blackowned'),
+		'description'		=> __( 'Footer Section Options', 'blackowned' ),
+		'panel'					=> 'ft_theme_options'
 	) );
 
 		/**
@@ -201,7 +176,7 @@ endfor;
 	 * @since 1.0.0
 	 */
 	$wp_customize->add_setting( 'footer_logo', array(
-		'default'	=> '',
+		'default'		=> '',
 		'transport'	=> 'refresh'
 	) );
 
@@ -213,10 +188,10 @@ endfor;
 		$wp_customize,
 		'footer_logo',
 		array(
-		  'label' 		=> __( 'Footer Logo', 'blackowned' ), 
-			'section'		=> 'footer_section', 
-			'setting'		=> 'footer_logo', 
-			'image'			=> 'image',
+		  'label' 			=> __( 'Footer Logo', 'blackowned' ), 
+			'section'			=> 'footer_section', 
+			'setting'			=> 'footer_logo', 
+			'image'				=> 'image',
 			'description'	=> __( 'Select a Logo recommended size 300px x 150px ', 'blackowned' )
 		)
 	) );
@@ -226,7 +201,7 @@ endfor;
 	 * @since 1.0.0
 	 */
 	$wp_customize->add_setting( 'copyright', array(
-		'default'	=> '',
+		'default'		=> '',
 		'transport'	=> 'refresh'
 	) );
 
@@ -239,9 +214,9 @@ endfor;
 		'copyright',
 		array(
 		    'label' 		=> __( 'Copyright Text', 'blackowned' ), 
-			'section'		=> 'footer_section', 
-			'setting'		=> 'copyright', 
-			'type'			=> 'text',
+			'section'			=> 'footer_section', 
+			'setting'			=> 'copyright', 
+			'type'				=> 'text',
 			'description'	=> __( 'Input Copyright Information', 'blackowned' )
 		)
 	) );
@@ -251,7 +226,7 @@ endfor;
 	 * @since 1.0.0
 	 */
 	$wp_customize->add_setting( 'design_credits', array(
-		'default'	=> '',
+		'default'		=> '',
 		'transport'	=> 'refresh'
 	) );
 
@@ -263,10 +238,10 @@ endfor;
 		$wp_customize,
 		'design_credits',
 		array(
-		    'label' 		=> __( 'Design credit', 'blackowned' ), 
-			'section'		=> 'footer_section', 
-			'setting'		=> 'design_credits', 
-			'type'			=> 'text',
+		  'label' 			=> __( 'Design credit', 'blackowned' ), 
+			'section'			=> 'footer_section', 
+			'setting'			=> 'design_credits', 
+			'type'				=> 'text',
 			'description'	=> __( 'Input design credits text', 'blackowned' )
 		)
 	) );
@@ -276,13 +251,88 @@ endfor;
 	 * @since  1.0.0 [adding social settings]
 	 */
 	$wp_customize->add_section( 'social_section', array(
-		'capability'     => 'edit_theme_options',
-		'theme_support'	 => '',
-		'priority' 		 => 16,
-		'title' 		 => __( 'Social Section', 'blackowned'),
-		'description' 	 => __( 'Input Social Links', 'blackowned'),
-		'panel'			 => 'ft_theme_options'
+		'capability'    => 'edit_theme_options',
+		'theme_support'	=> '',
+		'priority' 		 	=> 16,
+		'title' 		 		=> __( 'Social Section', 'blackowned'),
+		'description' 	=> __( 'Input Social Links', 'blackowned'),
+		'panel'			 		=> 'ft_theme_options'
 	) );
+
+		/**
+	 * Social SnapChat Setting
+	 * @since  1.0.0 [<init>]
+	 */
+		$wp_customize->add_setting( 'snapchat', array(
+			'default'	=> '',
+			'refresh'	=> 'refresh'
+		) );
+
+		/**
+		 * Social SnapChat Control
+		 * @since 1.0.0 [<init>]
+		 */
+		$wp_customize->add_control( new WP_Customize_Control(
+			$wp_customize,
+			'snapchat',
+			array(
+			  'label' 			=> __( 'SnapChat', 'blackowned' ), 
+				'section'			=> 'social_section', 
+				'setting'			=> 'snapchat', 
+				'type'				=> 'text',
+				'description'	=> __( 'Input Yelp Link', 'blackowned' )
+			)
+		) );
+
+		/**
+		 * Social Instagram Setting
+		 * @since  1.0.0 [<init>]
+		 */
+		$wp_customize->add_setting( 'instagram', array(
+			'default'	=> '',
+			'refresh'	=> 'refresh'
+		) );
+
+		/**
+		 * Social Instagram Control
+		 * @since 1.0.0 [<init>]
+		 */
+		$wp_customize->add_control( new WP_Customize_Control(
+			$wp_customize,
+			'instagram',
+			array(
+			  'label' 			=> __( 'Instagram', 'blackowned' ), 
+				'section'			=> 'social_section', 
+				'setting'			=> 'instagraml', 
+				'type'				=> 'text',
+				'description'	=> __( 'Input instagram Link', 'blackowned' )
+			)
+		) );
+
+			/**
+		 * Social Facebook Settings
+		 * @since 1.0.0 [social settings]
+		 */
+		$wp_customize->add_setting( 'facebook', array(
+			'default'	=> '',
+			'refresh'	=> 'refresh'
+		) );
+
+		/**
+		 * Social Facebook Control
+		 * @since  1.0.0 [control for social links]
+		 */
+		$wp_customize->add_control( new WP_Customize_Control(
+			$wp_customize,
+			'facebook',
+			array(
+			  'label' 			=> __( 'Facebook', 'blackowned' ), 
+				'section'			=> 'social_section', 
+				'setting'			=> 'facebook', 
+				'type'				=> 'text',
+				'description'	=> __( 'Input Facebook Link', 'blackowned' )
+			)
+		) );
 
 	/**
 	 * Social Twitter Setting
@@ -301,63 +351,39 @@ endfor;
 		$wp_customize,
 		'twitter',
 		array(
-		    'label' 		=> __( 'Twitter', 'blackowned' ), 
-			'section'		=> 'social_section', 
-			'setting'		=> 'twitter', 
-			'type'			=> 'text',
+		  'label' 			=> __( 'Twitter', 'blackowned' ), 
+			'section'			=> 'social_section', 
+			'setting'			=> 'twitter', 
+			'type'				=> 'text',
 			'description'	=> __( 'Input Twitter Link', 'blackowned' )
 		)
 	) );
-
-		/**
-	 * Social Facebook Settings
-	 * @since 1.0.0 [social settings]
-	 */
-	$wp_customize->add_setting( 'facebook', array(
+	
+	/**
+ * Social Yelp Setting
+ * @since  1.0.0 [<init>]
+ */
+	$wp_customize->add_setting( 'yelp', array(
 		'default'	=> '',
 		'refresh'	=> 'refresh'
 	) );
 
 	/**
-	 * Social Facebook Control
-	 * @since  1.0.0 [control for social links]
-	 */
-	$wp_customize->add_control( new WP_Customize_Control(
-		$wp_customize,
-		'facebook',
-		array(
-		    'label' 		=> __( 'Facebook', 'blackowned' ), 
-			'section'		=> 'social_section', 
-			'setting'		=> 'facebook', 
-			'type'			=> 'text',
-			'description'	=> __( 'Input Facebook Link', 'blackowned' )
-		)
-	) );
-
-	/**
-	 * Social Instagram Setting
-	 * @since  1.0.0 [<init>]
-	 */
-	$wp_customize->add_setting( 'instagram', array(
-		'default'	=> '',
-		'refresh'	=> 'refresh'
-	) );
-
-	/**
-	 * Social Instagram Control
+	 * Social Yelp Control
 	 * @since 1.0.0 [<init>]
 	 */
 	$wp_customize->add_control( new WP_Customize_Control(
 		$wp_customize,
-		'instagram',
+		'yelp',
 		array(
-		    'label' 		=> __( 'Instagram', 'blackowned' ), 
-			'section'		=> 'social_section', 
-			'setting'		=> 'instagraml', 
-			'type'			=> 'text',
-			'description'	=> __( 'Input instagram Link', 'blackowned' )
+		  'label' 			=> __( 'Yelp', 'blackowned' ), 
+			'section'			=> 'social_section', 
+			'setting'			=> 'yelp', 
+			'type'				=> 'text',
+			'description'	=> __( 'Input Yelp Link', 'blackowned' )
 		)
 	) );
+
 }
 	
 add_action( 'customize_register', 'blackowned_customize_register' );
