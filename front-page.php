@@ -90,13 +90,5 @@ endif;
 </section> <!-- .container-fluid contemt-section -->
 <?php
 endif;
-?>
-			
-
-
-
-
-
-
-<?php 
+		
 get_footer();
