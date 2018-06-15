@@ -45,9 +45,9 @@ if ( ! function_exists( 'blackowned_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'blackowned' ),
-			'footer-menu1' => esc_html__( 'Footer_Menu_1', 'blackowned' ),
-			'footer-menu2' => esc_html__( 'Foot_Menu_2', 'blackowned' ),
-			'footer-menu3' => esc_html__( 'Foot_Menu_3', 'blackowned' )
+			'footer-menu1' => esc_html__( 'Categories', 'blackowned' ),
+			'footer-menu2' => esc_html__( 'Info', 'blackowned' ),
+			'footer-menu3' => esc_html__( 'Services', 'blackowned' )
 		) );
 
 		/*

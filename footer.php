@@ -12,7 +12,7 @@
 
 </div><!-- #content -->
 <footer id="colophon" class="site-footer container-fluid">
-	<div class="row">
+	<div class="row align-items-center">
 		<div class="col col-2 footer-left footer-section">
 			<div class="row">
 				<div class="col text-center">
@@ -31,25 +31,8 @@
 					</div> <!-- /footer-logo -->
 				</div> <!-- /col -->
 			</div> <!-- /row -->
-			<?php
-			/**
-			 * Copyright Area
-			 * Check to make sure this copyright information is loaded and print to the screen if it is
-			 * @var [String]
-			 */
-			if ( $copyright == '' ) :
-				// Do not show this area
-			else : ?>
-			<div class="row">
-				<div class="col">
-					<div class="copy-wrap">
-						&copy; <?php echo date( 'Y' ).' '; echo $copyright; ?>
-					</div> <!-- /copy-wrap -->
-				</div> <!-- /col -->
-			</div> <!-- /row -->
-			<?php endif; ?>
 		</div> <!-- .col-4 -->
-		<div class="col-6 footer-left footer-section">
+		<div class="col col-6 footer-center footer-section align-self-start">
 			<div class="row">
 				<div class="col text-left">
 					<h3 class="font-upper">Categories</h3>
@@ -87,8 +70,25 @@
 					?>
 				</div> <!-- /col -->
 			</div> <!-- /row -->
+			<?php
+			/**
+			 * Copyright Area
+			 * Check to make sure this copyright information is loaded and print to the screen if it is
+			 * @var [String]
+			 */
+			if ( $copyright == '' ) :
+				// Do not show this area
+			else : ?>
+			<div class="row copy-row">
+				<div class="col">
+					<div class="copy-wrap">
+						&copy; <?php echo date( 'Y' ).' '; echo $copyright; ?>
+					</div> <!-- /copy-wrap -->
+				</div> <!-- /col -->
+			</div> <!-- /row -->
+			<?php endif; ?>
 		</div> <!-- .col-4 -->
-		<div class="col col-4 footer-right footer-section">
+		<div class="col col-4 footer-right footer-section align-self-end">
 			<div class="row">
 				<div class="col text-center">
 					<?php if ( get_theme_mod( 'snapchat' ) || get_theme_mod( 'instagram' ) || get_theme_mod( 'facebook' ) || get_theme_mod( 'twitter' ) || get_theme_mod( 'yelp' ) ) : ?>
@@ -154,18 +154,6 @@
 					<?php endif; ?>
 				</div> <!-- /col -->
 				<?php endif; ?>
-			</div> <!-- /row -->
-
-			<div class="row design-cred">
-				<div class="col text-center">
-					<?php
-					$design_credits = ( ! get_theme_mod( 'design_credits' ) )	? '' : get_theme_mod( 'design_credits' );
-					if ( $design_credits == '' ) :
-
-					else : ?>
-						<p> <?php echo $design_credits; ?> </p>
-					<?php endif; ?>
-				</div> <!-- /col -->
 			</div> <!-- /row -->
 		</div> <!-- .col -->
 	</div> <!-- .row -->

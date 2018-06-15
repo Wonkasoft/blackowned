@@ -17,7 +17,7 @@
 	}
 
 	a, i {
-		color: #000;
+		color: #fff;
 	}
 	
 	.custom-logo {
@@ -293,22 +293,23 @@
 #colophon {
 	background: #000000;
 	color: #fff;
+	height: 250px;
+	min-height: 250px;
 
 	> .row {
 		position: relative;
 		overflow: hidden;
+		height: 100%;
 
 		&:before {
 			content: "";
 			display: block;
 			position: absolute;
-			width: 805px;
 			top: 0;
 			right: 0;
 			bottom: 0;
-			border: 250px solid transparent;
-			border-bottom: 108px solid #561223;
-			border-right: 555px solid #561223;
+			border: 255px solid transparent;
+			border-right: 805px solid #561223;
 			box-sizing: border-box;
 		}
 	}
@@ -321,19 +322,29 @@
 	    padding: 8px 0;
 	}
 
-	.footer-left > .row {
-		align-items: center;
-		justify-content: center;
+	.footer-center  {
+		height: 100%;
 
-		.copy-wrap {
-			padding: 15px;
-		}
-		small {
-			padding: 15px 0;
-		    display: inline-block;
-			line-height: 1.1;
+		> .row {
+			align-items: center;
+			justify-content: center;
+			align-self: flex-end;
+
+			&:last-child {
+				height: 100%;
+			}
+
+			.copy-wrap {
+				padding: 15px;
+			}
+			small {
+				padding: 15px 0;
+			    display: inline-block;
+				line-height: 1.1;
+			}
 		}
 	}
+
 
 	.footer-right > .row {
 		align-items: center;
