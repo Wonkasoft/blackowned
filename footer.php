@@ -13,9 +13,9 @@
 </div><!-- #content -->
 <footer id="colophon" class="site-footer container-fluid">
 	<div class="row">
-		<div class="col-3 footer-left footer-section">
+		<div class="col col-2 footer-left footer-section">
 			<div class="row">
-				<div class="col col-md-10 text-center">
+				<div class="col text-center">
 					<div class="footer-logo">
 					<?php 
 					$footer_logo =  ( ! get_theme_mod( 'footer_logo' ) ) ? '' : get_theme_mod( 'footer_logo' );
@@ -41,7 +41,7 @@
 				// Do not show this area
 			else : ?>
 			<div class="row">
-				<div class="col col-md-10">
+				<div class="col">
 					<div class="copy-wrap">
 						&copy; <?php echo date( 'Y' ).' '; echo $copyright; ?>
 					</div> <!-- /copy-wrap -->
@@ -88,9 +88,10 @@
 				</div> <!-- /col -->
 			</div> <!-- /row -->
 		</div> <!-- .col-4 -->
-		<div class="col-3 footer-right footer-section">
+		<div class="col col-4 footer-right footer-section">
 			<div class="row">
 				<div class="col text-center">
+					<?php if ( get_theme_mod( 'snapchat' ) || get_theme_mod( 'instagram' ) || get_theme_mod( 'facebook' ) || get_theme_mod( 'twitter' ) || get_theme_mod( 'yelp' ) ) : ?>
 					We’ ll keep you posted:
 				</div> <!-- /col text-center -->
 				<div class="col text-center">
@@ -152,6 +153,7 @@
 						<span class="circle-icon"><a href="<?php echo $yelp; ?>"><i class="fa fa-yelp"></i></a></span>
 					<?php endif; ?>
 				</div> <!-- /col -->
+				<?php endif; ?>
 			</div> <!-- /row -->
 
 			<div class="row design-cred">
