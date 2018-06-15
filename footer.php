@@ -52,7 +52,7 @@
 		<div class="col-6 footer-left footer-section">
 			<div class="row">
 				<div class="col text-left">
-					<h3 class="font-upper">Cat</h3>
+					<h3 class="font-upper">Categories</h3>
 				</div> <!-- /col -->
 				<div class="col text-left">
 					<h3 class="font-upper">Info</h3>

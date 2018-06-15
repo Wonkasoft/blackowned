@@ -305,7 +305,7 @@ endfor;
 				'section'			=> 'social_section', 
 				'setting'			=> 'snapchat', 
 				'type'				=> 'text',
-				'description'	=> __( 'Input Yelp Link', 'blackowned' )
+				'description'	=> __( 'Input SnapChat Link', 'blackowned' )
 			)
 		) );
 
