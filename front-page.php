@@ -20,15 +20,25 @@ $slide_image = ( !get_theme_mod( 'slide_image' ) ) ? get_template_directory_uri(
 </section><!-- #primary -->
 <?php 
 
-$featured_image_1 =  ( ! get_theme_mod( 'featured_image_1' ) ) ? '' : get_theme_mod( 'featured_image_1' );
-if ( $featured_image_1 == '' ) :
+$featured_array = featured_category_function();
 
-else :
+if ( $featured_array ) :
+
 ?>
 <section id="featured-items-section" class="container content-section">
 	<div class="row">
 		<div class="col text-center">
+		<?php	
+			if ( count( $featured_array ) > 1 ) :
+		 ?>
 			<h2>Featured Categories</h2>
+			<?php
+		else :
+			?>
+			<h2>Featured Category</h2>
+			<?php
+		endif;
+		?>
 		</div> <!-- /col -->
 	</div> <!-- /row -->
 	<div class="row align-items-center justify-content-center">
@@ -37,7 +47,6 @@ else :
 				<a class="left-controller controller-btn" role=left data-slider-btn="previous"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
 				<ol class="slider-indicators">
 					<?php 
-
 						for ($i=1; $i < 4; $i++) :
 							$featured_image = ( ! get_theme_mod( 'featured_image_'.$i ) ) ? '' : get_theme_mod( 'featured_image_'.$i );
 						if ( $featured_image != '' ) :
@@ -77,7 +86,7 @@ endif;
  * This is the end of the for loop that loads all featured images
  */
 endfor; ?>
-		</ul> <!-- /ul -->
+	</ul> <!-- /ul -->
 	</div> <!-- /wonka-slider-wrap -->
 	</div> <!-- /col -->
 	</div> <!-- /row -->
@@ -92,16 +101,13 @@ endif;
 
 
 $ig_code =  ( ! get_theme_mod( 'ig_code' ) ) ? '' : get_theme_mod( 'ig_code' );
-if ( $ig_code == '' ) :
-
-else :
+if ( $ig_code != '' ) :
 ?>
 <section id="follow-me-section" class="container content-section">
 <?php 
 	$follow_message =  ( ! get_theme_mod( 'follow_message' ) ) ? '' : get_theme_mod( 'follow_message' );
-	if ( $follow_message == '' ) :
+	if ( $follow_message != '' ) :
 
-else :
 ?>
 	<div class="row">
 		<div class="col text-center">
