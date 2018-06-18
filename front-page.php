@@ -19,6 +19,7 @@ $slide_image = ( !get_theme_mod( 'slide_image' ) ) ? get_template_directory_uri(
 		</div> <!-- .row -->
 </section><!-- #primary -->
 <?php 
+
 $featured_image_1 =  ( ! get_theme_mod( 'featured_image_1' ) ) ? '' : get_theme_mod( 'featured_image_1' );
 if ( $featured_image_1 == '' ) :
 
