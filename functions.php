@@ -189,6 +189,18 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+/**
+ * featured_category_function | This function is to filter the featured category images
+ * @return array | all featured images for categories added in the customizer
+ */
+function featured_category_function() {
+	require get_template_directory() . '/inc/featured_category_array_builder.php';
+	if ( count( $array ) == 0 ) :
+		return false;
+	endif;
+	return $array;
+}
    
 /**
  * Register Testimonial Post Type

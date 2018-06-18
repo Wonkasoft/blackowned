@@ -20,9 +20,8 @@
 					<?php 
 					$footer_logo =  ( ! get_theme_mod( 'footer_logo' ) ) ? '' : get_theme_mod( 'footer_logo' );
 					$copyright = ( ! get_theme_mod( 'copyright' ) ) ? '' : get_theme_mod( 'copyright' );
-					if ( $footer_logo == '' ) :
+					if ( $footer_logo != '' ) :
 
-					else :
 					?>
 						<img src="<?php echo $footer_logo; ?>" />
 					<?php
@@ -76,9 +75,9 @@
 			 * Check to make sure this copyright information is loaded and print to the screen if it is
 			 * @var [String]
 			 */
-			if ( $copyright == '' ) :
-				// Do not show this area
-			else : ?>
+			if ( $copyright != '' ) :
+
+				?>
 			<div class="row copy-row">
 				<div class="col">
 					<div class="copy-wrap">
@@ -107,9 +106,9 @@
 					 * Check to make sure this social is loaded and print to the screen if it is
 					 * @var [String]
 					 */
-					if ( $snapchat == '' ) :
-
-					else : ?>
+					if ( $snapchat != '' ) :
+ 
+						?>
 						<span class="circle-icon"><a href="<?php echo $snapchat; ?>"><i class="fa fa-snapchat"></i></a></span>
 					<?php endif;
 					/**
@@ -117,9 +116,9 @@
 					 * Check to make sure this social is loaded and print to the screen if it is
 					 * @var [String]
 					 */
-					if ( $twitter == '' ) :
-
-					else : ?>
+					if ( $twitter != '' ) :
+ 
+						?>
 						<span class="circle-icon"><a href="<?php echo $twitter; ?>"><i class="fa fa-twitter"></i></a></span>
 					<?php endif;
 					/**
@@ -127,9 +126,9 @@
 					 * Check to make sure this social is loaded and print to the screen if it is
 					 * @var [String]
 					 */
-					if ( $facebook == '' ) :
-
-					else : ?>
+					if ( $facebook != '' ) :
+						
+						?>
 						<span class="circle-icon"><a href="<?php echo $facebook; ?>"><i class="fa fa-facebook"></i></a></span>
 					<?php endif;
 						/**
@@ -137,9 +136,9 @@
 					 * Check to make sure this social is loaded and print to the screen if it is
 					 * @var [String]
 					 */
-					if ( $instagram == '' ) :
+					if ( $instagram != '' ) :
 
-					else : ?>
+						?>
 						<span class="circle-icon"><a href="<?php echo $instagram; ?>"><i class="fa fa-instagram"></i></a></span>
 					<?php endif;
 						/**
@@ -147,9 +146,9 @@
 					 * Check to make sure this social is loaded and print to the screen if it is
 					 * @var [String]
 					 */
-					if ( $yelp == '' ) :
+					if ( $yelp != '' ) :
 
-					else : ?>
+						?>
 						<span class="circle-icon"><a href="<?php echo $yelp; ?>"><i class="fa fa-yelp"></i></a></span>
 					<?php endif; ?>
 				</div> <!-- /col -->
