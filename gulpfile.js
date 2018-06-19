@@ -15,8 +15,6 @@ json = require('json-file'),
 jsmin = require('gulp-js-minify'),
 themeName = json.read('./package.json').get('name'),
 siteName = json.read('./package.json').get('siteName'),
-ip = require('ip'),
-localip = ip.address(),
 themeDir = '../' + themeName,
 plumberErrorHandler = { errorHandler: notify.onError({
 

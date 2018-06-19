@@ -66,8 +66,8 @@
 						?>	
 					</div><!-- .col-4 -->
 					<div class="cart-icon text-right">
-						<a href="/cart"><i class="fa fa-cart-plus"></i></a>
-						<a id="login-btn" href="/my-account">Login</a>
+						<a href="/cart"><i class="fa fa-cart-plus"></i></a> |
+						<a id="login-btn" href="/my-account"><i class="fa fa-user"></i>Login</a>
 					</div> <!-- /cart-icon -->
 
 				</div><!-- .row -->

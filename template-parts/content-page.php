@@ -10,11 +10,11 @@
 	$featured_image = ( ! get_the_post_thumbnail_url() ) ? get_template_directory_uri() . '/assets/img/default-subpage-header-image.jpg' : get_the_post_thumbnail_url(); 
 ?>
 <div class="row" style="background: url('<?php echo $featured_image; ?>') no-repeat;background-position: center center;background-size: cover;">
-	<div class="col-lg-6 offset-lg-3 content-panel text-center">
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+	<div class="col-lg-12 content-panel text-center">
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+			<header class="entry-header">
+				<?php the_title( '<h1 class="entry-title" style="display:none;">', '</h1>' ); ?>
+			</header><!-- .entry-header -->
 
 
 	<div class="entry-content">
