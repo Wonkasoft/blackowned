@@ -216,8 +216,10 @@
 			padding: 0 0 15px;
 			text-align: center;
 			align-self: flex-end;
+			z-index: 25;
 
 			.indicator-dot {
+				@include prefix( transition, all .2s ease-in-out, o moz webkit );
 				display: inline-flex;
 				align-items: center;
 				justify-content: center;
@@ -260,7 +262,7 @@
 			padding: 0;
 
 			.wonka-slider-item {
-				@include prefix( transition, all .2s ease-in-out, o moz webkit );
+				@include prefix( transition, all .3s ease-in-out, o moz webkit );
 				display: none;
 
 				&.active {
