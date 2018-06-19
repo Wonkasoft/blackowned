@@ -110,6 +110,157 @@
 	margin-top: 100px;
 	position: relative;
 	min-height: 425px;
+
+	/**
+	 * Slider
+	 */
+	.wonka-slider-wrap {
+		position: relative;
+		display: flex;
+		justify-content: center;
+
+		.control-btn {
+			@include font-size(2.5);
+			opacity: .3;
+			position: absolute;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 150px;
+
+			&.left-control {
+				left: 0;
+				top: 0;
+				bottom: 0;
+				background: linear-gradient( -90deg, rgba( #000, 0) 0%, rgba( #000, .3) 100%);
+
+				i {
+					padding: 10px 12px 6px 6px;
+				}
+			}
+
+			&.right-control {
+				right: 0;
+				top: 0;
+				bottom: 0;
+				background: linear-gradient( 90deg, rgba( #000, 0) 0%, rgba( #000, .3) 100%);
+
+				i {
+					padding: 10px 6px 6px 10px;
+				}
+			}
+
+			i {
+				@include prefix( transition, all .2s ease-in-out, o moz webkit );
+				display: flex;
+				border: 0 solid #000;
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				align-items: center;
+				justify-content: center;
+				line-height: 1;
+				box-sizing: content-box;
+			}
+
+			&:hover {
+				opacity: 1;
+
+				i {
+					border-width: 5px;
+				}
+			}
+
+		}
+
+		.slider-indicators {
+			position: absolute;
+			list-style: none;
+			width: 30%;
+			margin: 0 auto;
+			padding: 0 0 15px;
+			text-align: center;
+			align-self: flex-end;
+			z-index: 25;
+
+			.indicator-dot {
+				@include prefix( transition, all .2s ease-in-out, o moz webkit );
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				margin: 8px;
+				width: 32px;
+
+				img {
+					@include prefix( transition, all .2s ease-in-out, o moz webkit );
+					width: 16px;
+					height: 16px;
+					border: 2px solid #000;
+					border-radius: 100%;
+					
+					&:hover {
+						width: 32px;
+						height: 32px;
+						border-color: #cc0000;
+					}
+				}
+
+				&.active {
+
+					img {
+						border-color: #0300cc;
+					}
+				}
+
+			}
+		}
+
+		.wonka-slider-images {
+			@include prefix( transition, all .2s ease-in-out, o moz webkit );
+ 			overflow: hidden;
+			list-style: none;
+			display: block;
+			max-height: 500px;
+			width: 800px;
+			text-align: center;
+			margin: 0 auto;
+			padding: 0;
+
+			.wonka-slider-item {
+				@include prefix( transition, all .3s ease-in-out, o moz webkit );
+				display: none;
+
+				&.active {
+					display: inline-block;
+					position: relative;
+				}
+
+				&.previous {
+					display: inline-block;
+					position: relative;
+					right: 110%;
+				}
+
+				&.next {
+					display: inline-block;
+					position: relative;
+					left: 110%;
+				}
+
+				&.slide-right {
+					left: 0;
+				}
+
+				&.slide-left {
+					right: 0;
+				}
+			}
+		}
+		
+	}
+	/**
+	 * End Slider
+	 */
 }
 
 .keep-word {
@@ -141,10 +292,8 @@
  */
 #featured-items-section {
  	overflow: hidden;
- 	margin: 0;
+ 	margin: 0 auto;
  	padding: 0;
- 	width: 100%;
- 	max-width: 100%;
 
 	/**
 	 * Slider
