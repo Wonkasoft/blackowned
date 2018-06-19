@@ -20,36 +20,39 @@ $slide_image = ( !$slider_array ) ? get_template_directory_uri() . '/assets/img/
 			if ( !$slider_array ) : ?>
 				<img src="<?php echo $slide_image; ?>">
 				<?php else : ?>
-					?>
 					<div class="wonka-slider-wrap">
-						<a class="left-control control-btn" role=left data-slider-btn="previous"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+						<!-- uncomment tag to activate the left control -->
+						<!-- <a class="left-control control-btn"  role=left data-slider-btn="previous"><i class="fa fa-chevron-left" aria-hidden="true"></i></a> -->
 						<ol class="slider-indicators">
 							<?php 
-							for ($i=1; $i <= count( $slider_array ); $i++) :
-								$slide_image = ( ! get_theme_mod( 'slide_image_'.$i ) ) ? '' : get_theme_mod( 'slide_image_'.$i );
+							$i=1;
+							while ( $i <= count( $slider_array ) ) :
+								$slide_image = ( ! get_theme_mod( array_keys( $slider_array )[$i-1] ) ) ? '' : get_theme_mod( array_keys( $slider_array )[$i-1] );
 								?>
-								<li class="indicator-dot indicator-dot-<?php echo $i; ?>"><img src="<?php echo $featured_image; ?>" /></li>
+								<li class="indicator-dot indicator-dot-<?php echo $i; ?>"><img src="<?php echo $slide_image; ?>" /></li>
 								<?php
+								$i++;
 /**
 * This is the end of the for loop that loads all featured images
 */
-endfor; ?>
+endwhile; ?>
 </ol> <!-- /slider-indicators -->
-<a class="right-control control-btn" role=right data-slider-btn="next"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+<!-- uncomment tag to activate the right control -->
+<!-- <a class="right-control control-btn" role=right data-slider-btn="next"><i class="fa fa-chevron-right" aria-hidden="true"></i></a> -->
 <ul id="wonka-slider-1" class="wonka-slider-images">
 	<?php 
-
-	for ($i=1; $i <= count( $featured_array ); $i++) :
-		$slide_image = ( ! get_theme_mod( 'slide_image_'.$i ) ) ? '' : get_theme_mod( 'slide_image_'.$i );
+	$i=1;
+	while ( $i <= count( $slider_array ) ) :
+		$slide_image = ( ! get_theme_mod( array_keys( $slider_array )[$i-1] ) ) ? '' : get_theme_mod( array_keys( $slider_array )[$i-1] );
 		?>
 
 		<li class="wonka-slider-item wonka-slider-item-<?php echo $i; ?>"><img src="<?php echo $slide_image; ?>" /></li>
 		<?php
-
+		$i++;
 /**
 * This is the end of the for loop that loads all featured images
 */
-endfor; ?>
+endwhile; ?>
 </ul> <!-- /ul -->
 </div> <!-- /wonka-slider-wrap -->
 <?php endif; ?>
@@ -80,35 +83,38 @@ if ( $featured_array ) :
 		<div class="row align-items-center justify-content-center">
 			<div class="col">
 				<div class="wonka-slider-wrap">
-					<a class="left-control control-btn" role=left data-slider-btn="previous"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+					<!-- uncomment tag to activate the left control -->
+					<!-- <a class="left-control control-btn"  role=left data-slider-btn="previous"><i class="fa fa-chevron-left" aria-hidden="true"></i></a> -->
 					<ol class="slider-indicators">
 						<?php 
-						for ($i=1; $i <= count( $featured_array ); $i++) :
-							$featured_image = ( ! get_theme_mod( 'featured_image_' . $i ) ) ? '' : get_theme_mod( 'featured_image_' . $i );
+						$i=1;
+						while( $i <= count( $featured_array ) ) :
+							$featured_image = ( ! get_theme_mod( array_keys( $featured_array )[$i-1] ) ) ? '' : get_theme_mod( array_keys( $featured_array )[$i-1] );
 							?>
 							<li class="indicator-dot indicator-dot-<?php echo $i; ?>"><img src="<?php echo $featured_image; ?>" /></li>
 							<?php
-
+							$i++;
 /**
 * This is the end of the for loop that loads all featured images
 */
-endfor; ?>
+endwhile; ?>
 </ol> <!-- /slider-indicators -->
-<a class="right-control control-btn" role=right data-slider-btn="next"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+<!-- uncomment tag to activate the right control -->
+<!-- <a class="right-control control-btn" role=right data-slider-btn="next"><i class="fa fa-chevron-right" aria-hidden="true"></i></a> -->
 <ul id="wonka-slider-2" class="wonka-slider-images">
 	<?php 
-
-	for ($i=1; $i <= count( $featured_array ); $i++) :
-		$featured_image = ( ! get_theme_mod( 'featured_image_' . $i ) ) ? '' : get_theme_mod( 'featured_image_' . $i );
+		$i=1;
+		while( $i <= count( $featured_array ) ) :
+		$featured_image = ( ! get_theme_mod( array_keys( $featured_array )[$i-1] ) ) ? '' : get_theme_mod( array_keys( $featured_array )[$i-1] );
 		?>
 
 		<li class="wonka-slider-item wonka-slider-item-<?php echo $i; ?>"><img src="<?php echo $featured_image; ?>" /></li>
 		<?php
-
+		$i++;
 /**
 * This is the end of the for loop that loads all featured images
 */
-endfor; ?>
+endwhile; ?>
 </ul> <!-- /ul -->
 </div> <!-- /wonka-slider-wrap -->
 </div> <!-- /col -->
