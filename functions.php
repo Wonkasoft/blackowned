@@ -191,12 +191,13 @@ if ( class_exists( 'WooCommerce' ) ) {
 }
 
 /**
- * featured_category_function | This function is to filter the featured category images
- * @return array | all featured images for categories added in the customizer
+ * custom_arrays_function | This function is to build an array from the customizer sections from this theme.
+ * @param  string | $array_type | string should be set as featured-array or slider-array
+ * @return array | This array is build from the featured section or slider section in the customizer
  */
-function featured_category_function() {
-	require get_template_directory() . '/inc/featured_category_array_builder.php';
-	if ( count( $array ) == 0 ) :
+function custom_arrays_function( $array_type ) {
+	require get_template_directory() . '/inc/custom_array_builder.php';
+	if ( count( $array ) == 0 || !$array_good ) :
 		return false;
 	endif;
 	return $array;
