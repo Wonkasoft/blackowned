@@ -75,7 +75,8 @@ function slide_setup(el) {
 
 function do_slide( slider_obj ) {
 	if ( slider_obj.direction === 'previous' ) {
-		console.log(slider_obj.direction);
-		
+		slider_obj.cur_indicator.classList.remove( 'active' );
+		slider_obj.cur_slide.classList.add( 'slide-right' );
+		slider_obj.next_slide.classList.add( 'previous' );
 	}
 } 
