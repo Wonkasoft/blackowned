@@ -24,14 +24,10 @@ button {
 		@include prefix( transition, all 0.2s ease-in-out, webkit moz o);
 
 		&-top {
-			border-radius: 60% 60% 1px 1px;
-			height: 9px;
 			top: 0;
 		}
 
 		&-bottom {
-			border-radius: 1px 1px 20% 20%;
-			height: 5px;
 			bottom: 0;
 		}
 	}
@@ -39,9 +35,8 @@ button {
 	&[aria-expanded="true"] {
 
 		.hang-a-bur-top {
-			top: 0.75rem;
-			left: 1.5rem;
-			@include prefix( transform, rotate(200deg), webkit moz o );
+			top: 0.35rem;
+			@include prefix( transform, rotate(225deg), webkit moz o );
 		}
 
 		.hang-a-bur-mid {
@@ -49,7 +44,8 @@ button {
 		}
 
 		.hang-a-bur-bottom {
-			@include prefix( transform, rotate(-180deg), webkit moz o );
+			bottom: .4rem;
+			@include prefix( transform, rotate(-225deg), webkit moz o );
 		}
 	}
 
