@@ -2,6 +2,12 @@
 	display: block;
 }
 
+.separator {
+	height: 26px;
+	border-right: 2px solid #fff;
+	@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .8 ), o moz webkit );
+}
+
 #page {
 	position: relative;
 	min-height: 100%;
@@ -10,12 +16,13 @@
 /**
  * Header 
  */
-
 #masthead {
 	position: relative;
 	height: 140px;
 	background: url('./assets/img/header-bg.jpg');
 	z-index: 100;
+	border-bottom: 1px solid rgba( #000, .6 );
+	@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .5 ), o moz webkit );
 
 	> .row {
 		margin-top: 15px;
@@ -23,6 +30,57 @@
 
 	a, i {
 		color: #fff;
+	}
+
+	#primary-menu {
+		@include font-size(1);
+	}
+
+	.menu-bar {
+		position: relative;
+		height: 100%;
+
+		> .row {
+			position: relative;
+			height: 100%;
+
+			> div:first-of-type {
+				height: 100%;
+			}
+		}
+
+		.search-form-top {
+			position: absolute;
+			top: 100%;
+			@include prefix( transition, all .2s ease-in-out, o moz webkit );
+
+			.search-input-wrap {
+				display: inline-flex;
+				width: 100%;
+				input[type="text"] {
+					display: none;
+					opacity: 0;
+					background: #edf1f5;
+					border: 1px solid #555555;
+					border-radius: 0;
+					width: 100%;
+					@include prefix( transition, all .2s ease-in-out, o moz webkit );
+				}
+
+				#search-btn {
+					@include prefix( transition, all .2s ease-in-out, o moz webkit );
+					@include prefix( text-shadow, 1px 1px 2px rgba( #000, .8 ), o moz webkit );
+					position: fixed;
+					top: 25px;
+					right: 25px;
+					color: #fff;
+					background: transparent;
+					padding: 8px;
+					border: 1px solid transparent;
+				}
+			}
+		}
+
 	}
 	
 	.custom-logo {
@@ -37,7 +95,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			padding: 15px;
+			padding: 8px;
 			background: #fff;                                                                               
 			border-radius: 50%;
 			height: 150px;
@@ -50,54 +108,57 @@
 		}
 	}
 
-	.nav-row {
-		min-height: 3rem;
-
-		> .col {
-			align-self: flex-end;
-		}
-	}
-
-	#primary-menu {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		text-transform: uppercase;
-		@include font-size(1);
-	}
-
-	@media screen and ( min-width: 992px ) {
+	@include media-breakpoint-up( md ) {
 		display: flex;
 		align-items:flex-end;
 
+		#primary-menu {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			text-transform: uppercase;
+			@include font-size(1);
+		}
+
 		.menu-bar {
-			margin-bottom: 15px;
 
-			.search-input-wrap {
-				display: inline-flex;
-				width: 100%;
-				input[type="text"] {
-					background: #edf1f5;
-					border: 1px solid #666666;
-					border-radius: 0;
-					width: 100%;
-				}
+			> .row {
+				align-items: flex-end;
+				position: relative;
+				padding-bottom: 15px;
 
-				#search-btn {
-					color: #fff;
-					background: #333333;
-					padding: 8px;
-					border: 1px solid #666666;
+				> div:first-of-type {
+					height: 34px;
 				}
 			}
 
-		}
+			.search-form-top {
+				position: relative;
+				top: 0;
+				
+				.search-input-wrap {
 
-		.col-2 {
-			height: 34px;
+					input[type="text"] {
+						display: inline-block;
+						opacity: 1;
+					}
+
+					#search-btn {
+						position: relative;
+						top: 0;
+						right: 0;
+						background: #333333;
+						border: 1px solid #555555;
+					}
+				}
+			}
+
+
 		}
 
 	}
+
+
 }
 
 /**
@@ -262,7 +323,6 @@
 				}
 			}
 		}
-		
 	}
 	/**
 	 * End Slider
@@ -486,7 +546,6 @@ body:not(.home) #primary {
 			bottom: 0;
 			border: 255px solid transparent;
 			border-right: 805px solid #561223;
-			box-sizing: border-box;
 		}
 	}
 
@@ -550,7 +609,14 @@ body:not(.home) #primary {
 		background: #fff;
 		border-radius: 50%;
 
+		a {
+			width: 25px;
+			height: 25px;
+		}
+
 	    i.fa {
+	    	width: 25px;
+	    	height: 25px;
 	    	color: #561223;
 	    }
 	}

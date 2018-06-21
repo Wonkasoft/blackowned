@@ -1,17 +1,96 @@
+/**
+ * Hang-a-bur Menu
+ */
+button {
+	position: relative;
+	top: 0;
+	left: 0;
+	margin-top: 0;
+	height: 40px;
+	background: transparent;
+	border: none;
+	z-index: 100;
+
+	.hang-a-bur {
+		position: relative;
+		display: block;
+		width: 26px;
+		height: 4px;
+		margin: 2px 0;
+		opacity: 1;
+		background: #fff;
+		border-radius: 2px;
+		@include prefix( box-shadow, 0 1px 6px rgba(0, 0, 0, 0.7), o moz webkit );
+		@include prefix( transition, all 0.2s ease-in-out, webkit moz o);
+
+		&-top {
+			border-radius: 60% 60% 1px 1px;
+			height: 9px;
+			top: 0;
+		}
+
+		&-bottom {
+			border-radius: 1px 1px 20% 20%;
+			height: 5px;
+			bottom: 0;
+		}
+	}
+
+	&[aria-expanded="true"] {
+
+		.hang-a-bur-top {
+			top: 0.75rem;
+			left: 1.5rem;
+			@include prefix( transform, rotate(200deg), webkit moz o );
+		}
+
+		.hang-a-bur-mid {
+			opacity: 0;
+		}
+
+		.hang-a-bur-bottom {
+			@include prefix( transform, rotate(-180deg), webkit moz o );
+		}
+	}
+
+	&:active,
+	&:focus {
+		outline: none;
+	}
+}
+/**
+ * End Hang-a-bur Menu
+ */
+
 .main-navigation {
-	clear: both;
 	display: block;
+	position: relative;
+	clear: both;
 	float: left;
 	width: 100%;
+	top: -50px;
+	@include prefix( transition, all .2s ease-in-out, o moz webkit );
+
+	.menu-main-menu-container {
+		margin-top: 10px;
+	}
 
 	ul {
 		display: none;
 		list-style: none;
+		background: url('./assets/img/header-bg.jpg');
 		margin: 0;
+		min-height: 0;
 		padding-left: 0;
+		clear: both;
+		border-right: 1px solid rgba( #000, .6 );
+		border-bottom: 1px solid rgba( #000, .6 );
+		border-left: 1px solid rgba( #000, .6 );
+		@include prefix( transition, all .2s ease-in-out, o moz webkit );
+		@include prefix( box-shadow, 0 1px 6px rgba(0, 0, 0, 0.5), o moz webkit );
 
 		ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+			@include prefix( box-shadow, 0 1px 6px rgba(0, 0, 0, 0.5), o moz webkit );
 			float: left;
 			position: absolute;
 			top: 100%;
@@ -50,9 +129,10 @@
 	}
 
 	li {
-		float: left;
+		float: none;
 		position: relative;
 		@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, 0), webkit moz o );
+		@include prefix( transition, all .2s ease-in-out, o moz webkit );
 
 		&:hover > a,
 		&.focus > a {
@@ -80,16 +160,7 @@
 .menu-toggle,
 .main-navigation.toggled ul {
 	display: block;
-}
-
-@media screen and (min-width: 37.5em) {
-	.menu-toggle {
-		display: none;
-	}
-	.main-navigation ul {
-		display: flex;
-		font-family: $font__opsanbold;
-	}
+	min-height: 25px;
 }
 
 .comment-navigation,
@@ -113,11 +184,123 @@
 	}
 }
 
-.cart-icon {
+/**
+ * sub-menu
+ */
+#masthead .cart-icon {
 	position: absolute;
-  right: 10%;
-}
+	text-align: center;
+	height: 52px;
+	bottom: 15px;
+  	right: 8px;
+  	width: 80px;
+  	color: #fff;
+  	line-height: 1.5;
+  	@include prefix( text-shadow, 1px 1px 2px rgba( #000, .9), o moz webkit );
+  	@include prefix( transition, all .2s ease-in-out, o moz webkit );
 
-#login-btn {
-	padding-left: 10px;
+  	i {
+			@include prefix( transition, all .2s ease-in-out, o moz webkit );
+  	}
+
+  	a:hover {
+  		color: #888;
+
+  		i {
+  			color: #888;
+  		}
+  	}
+
+  	.separator {
+  		display: none;
+  	}
+
+  	#login-btn {
+  		display: flex;
+  		align-items: center;
+  		justify-content: center;
+  		width: 75px;
+
+  		i {
+  			padding-right: 8px;
+  			line-height: 1.5; 
+  		}
+  	}
+
+}
+/**
+ * End sub-menu
+ */
+
+@include media-breakpoint-up( md ) {
+	.menu-toggle {
+		display: none;
+	}
+
+	.main-navigation {
+		display: flex;
+		align-items: center;
+  		justify-content: space-evenly;
+  		top: 0;
+
+  		.menu-main-menu-container {
+  			margin-top: 10px;
+  			width: 100%;
+  		}
+
+		ul {
+			display: flex;
+			font-family: $font__opsanbold;
+			border: none;
+			background: none;
+			@include prefix( box-shadow, none, o moz webkit );
+		}
+
+		li {
+			float: left;
+		}
+
+	} 
+
+	#masthead .cart-icon {
+  		position: absolute;
+  		display: flex;
+  		align-items: center;
+  		justify-content: space-around;
+		height: 35px;
+	  	right: -165px;
+	  	bottom: 15px;
+  	  	width: 150px;
+  	  	color: #fff;
+  	  	line-height: 1.5;
+  	  	@include prefix( text-shadow, 1px 1px 2px rgba( #000, .9), o moz webkit );
+
+  	  	i {
+  				@include prefix( transition, all .2s ease-in-out, o moz webkit );
+  	  	}
+
+  	  	a:hover {
+  	  		color: #888;
+
+  	  		i {
+  	  			color: #888;
+  	  		}
+  	  	}
+
+  	  	.separator {
+  	  		display: inline-block;
+  	  	}
+
+  	  	#login-btn {
+  	  		display: flex;
+  	  		align-items: center;
+  	  		justify-content: center;
+  	  		width: 75px;
+
+  	  		i {
+  	  			padding-right: 8px;
+  	  			line-height: 1.5; 
+  	  		}
+  	  	}
+	}
 }

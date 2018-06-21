@@ -24,10 +24,10 @@
 	<div id="page" class="site">
 		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'blackowned' ); ?></a>
 
-		<header id="masthead" class="container-fluid site-header">
+		<header id="masthead" class="site-header">
 			<div class="container menu-bar">
-				<div class="row align-items-center">
-					<div class="col col-2">
+				<div class="row">
+					<div class="col-md-2">
 						<div class="custom-logo">
 							<?php
 							$custom_logo = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full');
@@ -43,31 +43,35 @@
 							$blackowned_description = get_bloginfo( 'description', 'display' );
 							if ( $blackowned_description || is_customize_preview() ) :
 								?>
-							</div> <!-- .custom-logo -->
 							<p class="site-description"><?php echo $blackowned_description; /* WPCS: xss ok. */ ?></p>
 						<?php endif; ?>
+						</div> <!-- .custom-logo -->
 					</div> <!-- .col-2 -->
-					<div class="col col-6">
+					<div class="col-md-6">
 						<nav id="site-navigation" class="main-navigation align-items-center">
-							<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'blackowned' ); ?></button>
+							<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+								<span class="hang-a-bur hang-a-bur-top"></span>
+								<span class="hang-a-bur hang-a-bur-mid"></span>
+								<span class="hang-a-bur hang-a-bur-bottom"></span></button>
 							<?php
 							wp_nav_menu( array(
 								'theme_location' => 'menu-1',
 								'menu_id'        => 'primary-menu',
-								'class'        => 'align-items-center',
+								'class'        => 'main-menu',
 							) );
 							?>
 						</nav><!-- #site-navigation -->
 					</div> <!-- .col -->
 
-					<div class="col-4 text-center">
+					<div class="col-md-4 search-form-top">
 						<?php
 						get_search_form();
 						?>	
 					</div><!-- .col-4 -->
-					<div class="cart-icon text-right">
-						<a href="/cart"><i class="fa fa-cart-plus"></i></a> |
-						<a id="login-btn" href="/my-account"><i class="fa fa-user"></i>Login</a>
+					<div class="cart-icon">
+						<a href="/cart"><i class="fa fa-cart-plus"></i></a>
+						<span class="separator"> </span>
+						<a id="login-btn" href="/my-account"><i class="fa fa-user"></i> Login</a>
 					</div> <!-- /cart-icon -->
 
 				</div><!-- .row -->

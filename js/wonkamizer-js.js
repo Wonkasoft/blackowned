@@ -1,6 +1,7 @@
 ( function() {
 	'use strict';
 
+
 	if ( document.querySelector( '.home') ) {
     if ( document.querySelectorAll( '.wonka-slider-images') ) { 
     	var wonka_sliders = document.querySelectorAll( '.wonka-slider-images'),
