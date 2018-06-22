@@ -267,6 +267,11 @@ p.no-comments {
  * Account
  */
 .woocommerce {
+
+	> nav, > div {
+		float: none;
+		@include prefix( transition, all .2s ease-in-out, o moz webkit );
+	}
 	
 	.woocommerce-MyAccount-navigation {
 		width: 100%;
@@ -274,6 +279,7 @@ p.no-comments {
 		ul {
 			list-style: none;
 			li {
+				text-align: left;
 
 				a {
 					color: #222222;
@@ -301,6 +307,10 @@ p.no-comments {
 	}
 
 	@include media-breakpoint-up( sm ) {
+
+		> nav, > div {
+			float: left;
+		}
 
 		.woocommerce-MyAccount-navigation {
 			width: 49.8%;
