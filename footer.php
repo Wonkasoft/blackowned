@@ -35,12 +35,7 @@
 			<div class="row">
 				<div class="col text-left">
 					<h3 class="font-upper">Categories</h3>
-					<?php
-					wp_nav_menu( array(
-						'theme_location' => 'footer-menu1',
-						'menu_id'        => 'footer-categories',
-					) );
-					?>
+					<?php dynamic_sidebar( 'categories' ); ?>
 				</div> <!-- /col -->
 				<div class="col text-left">
 					<h3 class="font-upper">Info</h3>
