@@ -549,7 +549,11 @@ body:not(.home) #primary {
 	}
 
 	@include media-breakpoint-up( md ) {
-		padding-bottom: 455px;
+		padding-bottom: 775px;
+	}
+
+	@include media-breakpoint-up( lg ) {
+		padding-bottom: 460px;
 	}
 }
 
