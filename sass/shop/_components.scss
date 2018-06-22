@@ -267,13 +267,10 @@ p.no-comments {
  * Account
  */
 .woocommerce {
-
-	> nav, > div {
-		float: none;
-		@include prefix( transition, all .2s ease-in-out, o moz webkit );
-	}
 	
 	.woocommerce-MyAccount-navigation {
+		float: none;
+		@include prefix( transition, all .2s ease-in-out, o moz webkit );
 		width: 100%;
 
 		ul {
@@ -298,6 +295,8 @@ p.no-comments {
 	}
 
 	.woocommerce-MyAccount-content {
+		float: none;
+		@include prefix( transition, all .2s ease-in-out, o moz webkit );
 		width: 100%;
 
 		p {
@@ -316,15 +315,13 @@ p.no-comments {
 
 	@include media-breakpoint-up( sm ) {
 
-		> nav, > div {
-			float: left;
-		}
-
 		.woocommerce-MyAccount-navigation {
+			float: left;
 			width: 29.8%;
 		}
 
 		.woocommerce-MyAccount-content {
+			float: left;
 			width: 49.8%;
 		}
 	}
