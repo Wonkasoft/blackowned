@@ -665,6 +665,15 @@ body:not(.home) #primary {
 			justify-content: center;
 			align-self: flex-start;
 
+			a {
+				color: #ffffff;
+
+				&:hover {
+					color: $color__link-hover;
+					text-decoration: none;
+				}
+			}
+
 		}
 
 		> .row:nth-child(2) {
@@ -679,25 +688,6 @@ body:not(.home) #primary {
 				padding: 15px 0;
 			    display: inline-block;
 				line-height: 1.1;
-			}
-		}
-
-		.woocommerce {
-			
-			.product-categories {
-				list-style: none;
-
-				li {
-
-					a {
-						color: #ffffff;
-
-						&:hover {
-							color: $color__link-hover;
-							text-decoration: none;
-						}
-					}
-				}
 			}
 		}
 	}
