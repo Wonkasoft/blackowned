@@ -677,6 +677,25 @@ body:not(.home) #primary {
 				line-height: 1.1;
 			}
 		}
+
+		.woocommerce {
+			
+			.product-categories {
+				list-style: none;
+
+				li {
+
+					a {
+						color: #ffffff;
+
+						&:hover {
+							color: $color__link-hover;
+							text-decoration: none;
+						}
+					}
+				}
+			}
+		}
 	}
 
 
