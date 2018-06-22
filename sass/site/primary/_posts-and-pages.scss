@@ -686,13 +686,13 @@ body:not(.home) #primary {
 	}
 
 	@include media-breakpoint-up( md ) {
-		height: 440px;
+		height: 760px;
 		bottom: 0;
 
 		> .row {
 
 			&:before {
-				border: 440px solid transparent;
+				border: 760px solid transparent;
 				border-right: 450px solid #561223;
 
 			}
@@ -700,9 +700,13 @@ body:not(.home) #primary {
 	}
 
 	@include media-breakpoint-up( lg ) {
+		height: 445px;
+		bottom: 0;
+
 		> .row {
 
 			&:before {
+				border: 445px solid transparent;
 				border-right: 650px solid #561223;
 
 			}
