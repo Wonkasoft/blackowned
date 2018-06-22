@@ -1,6 +1,9 @@
 ( function() {
 	'use strict';
 
+	var search_btn = document.querySelector('#search-btn');
+
+	search_btn.onclick = function(e) { search_bar_toggle(e); };
 
 	if ( document.querySelector( '.home') ) {
     if ( document.querySelectorAll( '.wonka-slider-images') ) { 
@@ -180,3 +183,20 @@ function do_slide( slider_obj ) {
 	}, 5000 );
 
 } 
+
+function search_bar_toggle(e) {
+	var browser_width = window.innerWidth;
+	var search_bar = document.querySelector( '.search-slide' );
+	if ( browser_width < 992 ) {
+		search_bar.style.display = 'block';
+		setTimeout( function() {
+			search_bar.classList.add( 'searchable' );
+			search_bar.focus();
+			search_bar.value = '';
+			search_bar.onblur = function() {
+				search_bar.classList.remove( 'searchable' ); 
+				setTimeout( function() { search_bar.removeAttribute( 'style' ); } );
+			};
+		}, 250 );
+	}
+}

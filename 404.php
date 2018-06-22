@@ -10,10 +10,10 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+	<div id="primary" class="container-fluid content-area">
+		<main id="main" class="row site-main">
 
-			<section class="error-404 not-found">
+			<section class="col error-404 not-found">
 				<header class="page-header">
 					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'blackowned' ); ?></h1>
 				</header><!-- .page-header -->

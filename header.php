@@ -63,7 +63,7 @@
 						</nav><!-- #site-navigation -->
 					</div> <!-- .col -->
 
-					<div class="col-md-4 search-form-top">
+					<div class="col-lg-4 search-form-top">
 						<?php
 						get_search_form();
 						?>	

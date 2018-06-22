@@ -59,6 +59,11 @@
 			@content;
 		}
 	}
+	@if $breakpoint == xxl {
+		@media ( min-width: 1440px ) {
+			@content;
+		}
+	}
 
 }
 

@@ -7,10 +7,10 @@
  * @package blackowned
  */
 ?>
-<form action="<?php get_site_url(); ?>" method="get">
+<form action="<?php echo home_url( '/' ); ?>" method="get">
 	<div class="search-input-wrap">
     <label for="s" class="sr-only">Search</label>
-    <input type="text" name="s" id="s" class="slid" value="<?php the_search_query(); ?>" />
+    <input type="text" name="s" id="s" class="search-slide" placeholder="<?php esc_attr_e( 'Search...', 'blackowned' ); ?>" value="<?php the_search_query(); ?>" />
 	<i id="search-btn" class="fa fa-search"></i>
 	</div>
 </form>

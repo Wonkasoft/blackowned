@@ -20,6 +20,7 @@
 	position: relative;
 	height: 140px;
 	background: url('./assets/img/header-bg.jpg');
+	background-position: center top;
 	z-index: 100;
 	border-bottom: 1px solid rgba( #000, .6 );
 	@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .5 ), o moz webkit );
@@ -65,13 +66,17 @@
 					border-radius: 0;
 					width: 100%;
 					@include prefix( transition, all .2s ease-in-out, o moz webkit );
+
+					&.searchable {
+						opacity: 1;
+					}
 				}
 
 				#search-btn {
 					@include prefix( transition, all .2s ease-in-out, o moz webkit );
 					@include prefix( text-shadow, 1px 1px 2px rgba( #000, .8 ), o moz webkit );
-					position: fixed;
-					top: 25px;
+					position: absolute;
+					top: -135px;
 					right: 25px;
 					color: #fff;
 					background: transparent;
@@ -108,7 +113,7 @@
 		}
 	}
 
-	@include media-breakpoint-up( md ) {
+	@include media-breakpoint-up( lg ) {
 		display: flex;
 		align-items:flex-end;
 
@@ -152,13 +157,8 @@
 					}
 				}
 			}
-
-
 		}
-
-	}
-
-
+	} // End Media Query
 }
 
 /**
@@ -177,6 +177,7 @@
 	margin-top: 50px;
 	position: relative;
 	min-height: 425px;
+	overflow: hidden;
 
 	/**
 	 * Slider
@@ -185,6 +186,7 @@
 		position: relative;
 		display: flex;
 		justify-content: center;
+		height: 130px;
 
 		.control-btn {
 			@include font-size(2.5);
@@ -243,9 +245,9 @@
 		.slider-indicators {
 			position: absolute;
 			list-style: none;
-			width: 30%;
+			width: 100%;
 			margin: 0 auto;
-			padding: 0 0 15px;
+			padding: 0;
 			text-align: center;
 			align-self: flex-end;
 			z-index: 25;
@@ -255,19 +257,18 @@
 				display: inline-flex;
 				align-items: center;
 				justify-content: center;
-				margin: 8px;
-				width: 32px;
+				width: 50px;
 
 				img {
 					@include prefix( transition, all .2s ease-in-out, o moz webkit );
-					width: 16px;
-					height: 16px;
+					width: 25px;
+					height: 25px;
 					border: 2px solid #000;
 					border-radius: 100%;
 					
 					&:hover {
-						width: 32px;
-						height: 32px;
+						width: 50px;
+						height: 50px;
 						border-color: #cc0000;
 					}
 				}
@@ -287,8 +288,8 @@
  			overflow: hidden;
 			list-style: none;
 			display: block;
-			max-height: 500px;
-			width: 800px;
+			max-height: calc( 100% - 30px );
+			width: 100%;
 			text-align: center;
 			margin: 0 auto;
 			padding: 0;
@@ -323,6 +324,18 @@
 				}
 			}
 		}
+
+		@include media-breakpoint-up( sm ) {
+			height: 190px;
+		}
+
+		@include media-breakpoint-up( md ) {
+			height: 245px;
+		}
+
+		@include media-breakpoint-up( lg ) {
+			height: 375px;
+		}
 	}
 	/**
 	 * End Slider
@@ -330,7 +343,7 @@
 }
 
 body:not(.home) #primary {
-	margin-top: 0;
+	margin-top: 15px;
 }
 
 .keep-word {
@@ -362,8 +375,6 @@ body:not(.home) #primary {
  */
 #featured-items-section {
  	overflow: hidden;
- 	margin: 0 auto;
- 	padding: 0;
 
 	/**
 	 * Slider
@@ -372,6 +383,7 @@ body:not(.home) #primary {
 		position: relative;
 		display: flex;
 		justify-content: center;
+		height: 130px;
 
 		.control-btn {
 			@include font-size(2.5);
@@ -430,9 +442,9 @@ body:not(.home) #primary {
 		.slider-indicators {
 			position: absolute;
 			list-style: none;
-			width: 30%;
+			width: 100%;
 			margin: 0 auto;
-			padding: 0 0 15px;
+			padding: 0;
 			text-align: center;
 			align-self: flex-end;
 			z-index: 25;
@@ -442,19 +454,18 @@ body:not(.home) #primary {
 				display: inline-flex;
 				align-items: center;
 				justify-content: center;
-				margin: 8px;
-				width: 32px;
+				width: 50px;
 
 				img {
 					@include prefix( transition, all .2s ease-in-out, o moz webkit );
-					width: 16px;
-					height: 16px;
+					width: 25px;
+					height: 25px;
 					border: 2px solid #000;
 					border-radius: 100%;
 					
 					&:hover {
-						width: 32px;
-						height: 32px;
+						width: 50px;
+						height: 50px;
 						border-color: #cc0000;
 					}
 				}
@@ -474,8 +485,8 @@ body:not(.home) #primary {
  			overflow: hidden;
 			list-style: none;
 			display: block;
-			max-height: 500px;
-			width: 800px;
+			max-height: calc( 100% - 30px );
+			width: 100%;
 			text-align: center;
 			margin: 0 auto;
 			padding: 0;
@@ -511,6 +522,17 @@ body:not(.home) #primary {
 			}
 		}
 		
+		@include media-breakpoint-up( sm ) {
+			height: 190px;
+		}
+
+		@include media-breakpoint-up( md ) {
+			height: 245px;
+		}
+
+		@include media-breakpoint-up( lg ) {
+			height: 375px;
+		}
 	}
 	/**
 	 * End Slider
@@ -521,14 +543,17 @@ body:not(.home) #primary {
  */
 
 #content {
-	padding-bottom: 250px;
+	padding-bottom: 615px;
+
+	@include media-breakpoint-up( md ) {
+		padding-bottom: 265px;
+	}
 }
 
 #colophon {
 	background: #000000;
 	color: #fff;
-	height: 250px;
-	min-height: 250px;
+	height: 600px;
 	bottom: 0;
 	position: absolute;
 
@@ -544,8 +569,8 @@ body:not(.home) #primary {
 			top: 0;
 			right: 0;
 			bottom: 0;
-			border: 255px solid transparent;
-			border-right: 805px solid #561223;
+			border: 600px solid transparent;
+			border-right: 400px solid #561223;
 		}
 	}
 
@@ -558,7 +583,6 @@ body:not(.home) #primary {
 	}
 
 	.footer-center  {
-		height: 100%;
 
 		> .row:nth-child(1) {
 			align-items: center;
@@ -635,6 +659,42 @@ body:not(.home) #primary {
 		border: none;
 		padding: 25px;
 
+	}
+
+	@include media-breakpoint-up( md ) {
+		height: 250px;
+		bottom: 0;
+
+		> .row {
+
+			&:before {
+				border: 250px solid transparent;
+				border-right: 450px solid #561223;
+
+			}
+		}
+	}
+
+	@include media-breakpoint-up( lg ) {
+		> .row {
+
+			&:before {
+				border: 250px solid transparent;
+				border-right: 650px solid #561223;
+
+			}
+		}
+	}
+
+	@include media-breakpoint-up( xl ) {
+		> .row {
+
+			&:before {
+				border: 250px solid transparent;
+				border-right: 950px solid #561223;
+
+			}
+		}
 	}
 
 }

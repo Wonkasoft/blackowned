@@ -229,6 +229,12 @@ button {
  */
 
 @include media-breakpoint-up( md ) {
+	.main-navigation {
+		top: calc( 100% - 50px );		
+	}
+}
+
+@include media-breakpoint-up( lg ) {
 	.menu-toggle {
 		display: none;
 	}
@@ -264,7 +270,50 @@ button {
   		align-items: center;
   		justify-content: space-around;
 		height: 35px;
-	  	right: -165px;
+	  	bottom: calc(100% - 50px);
+  	  	width: 150px;
+  	  	color: #fff;
+  	  	line-height: 1.5;
+  	  	@include prefix( text-shadow, 1px 1px 2px rgba( #000, .9), o moz webkit );
+
+  	  	i {
+  				@include prefix( transition, all .2s ease-in-out, o moz webkit );
+  	  	}
+
+  	  	a:hover {
+  	  		color: #888;
+
+  	  		i {
+  	  			color: #888;
+  	  		}
+  	  	}
+
+  	  	.separator {
+  	  		display: inline-block;
+  	  	}
+
+  	  	#login-btn {
+  	  		display: flex;
+  	  		align-items: center;
+  	  		justify-content: center;
+  	  		width: 75px;
+
+  	  		i {
+  	  			padding-right: 8px;
+  	  			line-height: 1.5; 
+  	  		}
+  	  	}
+	}
+}
+
+@include media-breakpoint-up( xxl ) {
+	#masthead .cart-icon {
+  		position: absolute;
+  		display: flex;
+  		align-items: center;
+  		justify-content: space-around;
+		height: 35px;
+	  	right: -150px;
 	  	bottom: 15px;
   	  	width: 150px;
   	  	color: #fff;
