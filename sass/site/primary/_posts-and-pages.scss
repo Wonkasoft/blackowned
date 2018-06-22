@@ -607,8 +607,12 @@ body:not(.home) #primary {
 #content {
 	padding-bottom: 1115px;
 
+	@include media-breakpoint-up( sm ) {
+		padding-bottom: 800px;
+	}
+
 	@include media-breakpoint-up( md ) {
-		padding-bottom: 405px;
+		padding-bottom: 455px;
 	}
 }
 
@@ -631,7 +635,7 @@ body:not(.home) #primary {
 			top: 0;
 			right: 0;
 			bottom: 0;
-			border: 600px solid transparent;
+			border: 1100px solid transparent;
 			border-right: 400px solid #561223;
 		}
 	}
@@ -740,14 +744,28 @@ body:not(.home) #primary {
 
 	}
 
-	@include media-breakpoint-up( md ) {
-		height: 390px;
+	@include media-breakpoint-up( sm ) {
+		height: 785px;
 		bottom: 0;
 
 		> .row {
 
 			&:before {
-				border: 390px solid transparent;
+				border: 785px solid transparent;
+				border-right: 450px solid #561223;
+
+			}
+		}
+	}
+
+	@include media-breakpoint-up( md ) {
+		height: 440px;
+		bottom: 0;
+
+		> .row {
+
+			&:before {
+				border: 440px solid transparent;
 				border-right: 450px solid #561223;
 
 			}
