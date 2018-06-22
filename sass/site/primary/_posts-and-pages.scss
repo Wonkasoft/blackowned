@@ -371,68 +371,6 @@ body:not(.home) #primary {
 }
 
 /**
- * Store
- */
-.woocommerce {
-	
-	.product-categories {
-		list-style: none;
-
-		li {
-
-			a {
-				color: #222222;
-
-				&:hover {
-					color: $color__link-hover;
-					text-decoration: none;
-				}
-			}
-		}
-	}
-}
-/**
- * End Store
- */
-
-/**
- * Account
- */
-.woocommerce {
-	
-	.woocommerce-MyAccount-navigation {
-
-		ul {
-			list-style: none;
-			li {
-
-				a {
-					color: #222222;
-
-					&:hover {
-						color: $color__link-hover;
-						text-decoration: none;
-					}
-				}
-			}
-		}
-	}
-
-	a {
-		color: #222222;
-
-		&:hover {
-			color: $color__link-hover;
-			text-decoration: none;
-		}
-	}
-}
-/**
- * End Account
- */
-
-
-/**
  * Featured-items
  */
 #featured-items-section {
