@@ -365,8 +365,14 @@ body:not(.home) #primary {
 }
 
 .package-module {
-	border: 5px solid #222222;
+	border: 6px solid #222222;
 }
+
+.btn.btn-lg {
+	background: #561223;
+}
+
+
 
 /**
  * Featured-items
