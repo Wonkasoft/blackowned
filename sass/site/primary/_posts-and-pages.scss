@@ -381,7 +381,7 @@ body:not(.home) #primary {
 		li {
 
 			a {
-				color: #333333;
+				color: #222222;
 
 				&:hover {
 					color: $color__link-hover;
@@ -407,7 +407,7 @@ body:not(.home) #primary {
 			li {
 
 				a {
-					color: #333333;
+					color: #222222;
 
 					&:hover {
 						color: $color__link-hover;
@@ -415,6 +415,15 @@ body:not(.home) #primary {
 					}
 				}
 			}
+		}
+	}
+
+	a {
+		color: #222222;
+
+		&:hover {
+			color: $color__link-hover;
+			text-decoration: none;
 		}
 	}
 }
@@ -648,7 +657,7 @@ body:not(.home) #primary {
 		}
 
 		> .row:nth-child(1) {
-			align-items: center;
+			align-items: flex-start;
 			justify-content: center;
 			align-self: flex-start;
 
