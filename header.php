@@ -47,7 +47,7 @@
 						<?php endif; ?>
 						</div> <!-- .custom-logo -->
 					</div> <!-- .col-2 -->
-					<div class="col-md-6">
+					<div class="col-md-7 col-lg-6">
 						<nav id="site-navigation" class="main-navigation align-items-center">
 							<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
 								<span class="hang-a-bur hang-a-bur-top"></span>
@@ -63,7 +63,7 @@
 						</nav><!-- #site-navigation -->
 					</div> <!-- .col -->
 
-					<div class="col-lg-4 search-form-top">
+					<div class="col-md-3 col-lg-4 search-form-top">
 						<?php
 						get_search_form();
 						?>	
