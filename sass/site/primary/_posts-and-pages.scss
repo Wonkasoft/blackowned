@@ -371,6 +371,59 @@ body:not(.home) #primary {
 }
 
 /**
+ * Store
+ */
+.woocommerce {
+	
+	.product-categories {
+		list-style: none;
+
+		li {
+
+			a {
+				color: #333333;
+
+				&:hover {
+					color: $color__link-hover;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}
+/**
+ * End Store
+ */
+
+/**
+ * Account
+ */
+.woocommerce {
+	
+	.woocommerce-MyAccount-navigation {
+
+		ul {
+			list-style: none;
+			li {
+
+				a {
+					color: #333333;
+
+					&:hover {
+						color: $color__link-hover;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+}
+/**
+ * End Account
+ */
+
+
+/**
  * Featured-items
  */
 #featured-items-section {
@@ -543,17 +596,17 @@ body:not(.home) #primary {
  */
 
 #content {
-	padding-bottom: 615px;
+	padding-bottom: 1115px;
 
 	@include media-breakpoint-up( md ) {
-		padding-bottom: 265px;
+		padding-bottom: 405px;
 	}
 }
 
 #colophon {
 	background: #000000;
 	color: #fff;
-	height: 600px;
+	height: 1100px;
 	bottom: 0;
 	position: absolute;
 
@@ -576,13 +629,23 @@ body:not(.home) #primary {
 
 	ul {
 		list-style: none;
+		margin: 0;
+		padding: 0;
 	}
 
 	li {
-	    padding: 8px 0;
+	    padding: 8px 0 0;
 	}
 
 	.footer-center  {
+
+		> .row {
+
+			> .col {
+				margin: 15px;
+				font-size: 1rem;
+			}
+		}
 
 		> .row:nth-child(1) {
 			align-items: center;
@@ -592,13 +655,6 @@ body:not(.home) #primary {
 		}
 
 		> .row:nth-child(2) {
-			align-items: center;
-			justify-content: center;
-			align-self: center;
-
-		}
-
-		> .row:nth-child(3) {
 			align-items: center;
 			justify-content: center;
 			align-self: flex-end;
@@ -645,11 +701,6 @@ body:not(.home) #primary {
 	    }
 	}
 
-	.footer-right > .design-cred {
-		min-height: 55%;
-		align-items: flex-end;
-	}
-
 	h3.font-upper {
 		@include font-size(1.25);
 		font-family: $font__opsansemibold;
@@ -657,18 +708,18 @@ body:not(.home) #primary {
 
 	.footer-section {
 		border: none;
-		padding: 25px;
+		margin-bottom: 15px;
 
 	}
 
 	@include media-breakpoint-up( md ) {
-		height: 250px;
+		height: 390px;
 		bottom: 0;
 
 		> .row {
 
 			&:before {
-				border: 250px solid transparent;
+				border: 390px solid transparent;
 				border-right: 450px solid #561223;
 
 			}
@@ -679,7 +730,6 @@ body:not(.home) #primary {
 		> .row {
 
 			&:before {
-				border: 250px solid transparent;
 				border-right: 650px solid #561223;
 
 			}
@@ -690,7 +740,6 @@ body:not(.home) #primary {
 		> .row {
 
 			&:before {
-				border: 250px solid transparent;
 				border-right: 950px solid #561223;
 
 			}

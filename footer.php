@@ -35,36 +35,28 @@
 			<div class="row">
 				<div class="col text-left">
 					<h3 class="font-upper">Categories</h3>
-				</div> <!-- /col -->
-				<div class="col text-left">
-					<h3 class="font-upper">Info</h3>
-				</div> <!-- /col -->
-				<div class="col text-left">
-					<h3 class="font-upper">Services</h3>
-				</div> <!-- /col -->
-			</div> <!-- /row -->
-			<div class="row">
-				<div class="col">
 					<?php
 					wp_nav_menu( array(
 						'theme_location' => 'footer-menu1',
-						'menu_id'        => 'footer-1',
+						'menu_id'        => 'footer-categories',
 					) );
 					?>
 				</div> <!-- /col -->
-				<div class="col">
+				<div class="col text-left">
+					<h3 class="font-upper">Info</h3>
 					<?php
 					wp_nav_menu( array(
 						'theme_location' => 'footer-menu2',
-						'menu_id'        => 'footer-2',
+						'menu_id'        => 'footer-info',
 					) );
 					?>
 				</div> <!-- /col -->
-				<div class="col">
+				<div class="col text-left">
+					<h3 class="font-upper">Services</h3>
 					<?php
 					wp_nav_menu( array(
 						'theme_location' => 'footer-menu3',
-						'menu_id'        => 'footer-3',
+						'menu_id'        => 'footer-services',
 					) );
 					?>
 				</div> <!-- /col -->
