@@ -555,6 +555,10 @@ body:not(.home) #primary {
 	@include media-breakpoint-up( lg ) {
 		padding-bottom: 460px;
 	}
+
+	@include media-breakpoint-up( xl ) {
+		padding-bottom: 360px;
+	}
 }
 
 #colophon {
@@ -718,6 +722,9 @@ body:not(.home) #primary {
 	}
 
 	@include media-breakpoint-up( xl ) {
+		height: 345px;
+		bottom: 0;
+
 		> .row {
 
 			&:before {
