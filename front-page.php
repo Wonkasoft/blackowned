@@ -9,11 +9,10 @@
 
 get_header();
 
-$categories = get_categories( array ('taxonomy' => 'product_cat','orderby' => 'name', 'order' => 'asc', 'hide_empty' => 0 ) );
+$woo_cats = get_categories( array ('taxonomy' => 'product_cat','orderby' => 'name', 'order' => 'asc', 'hide_empty' => 0 ) );
 $slider_array = custom_arrays_function( 'slider-array' );
 $slide_image = ( !$slider_array ) ? get_template_directory_uri() . '/assets/img/default-slide-image.jpg': '';
 
-var_dump($categories);
 ?>
 <section id="primary" class="container">
 	<div class="row justify-content-center">
@@ -64,23 +63,23 @@ endwhile; ?>
 </section><!-- #primary -->
 <?php 
 
-// if ( $featured_array ) :
+if ( $woo_cats ) :
 
 	?>
 	<section id="featured-items-section" class="container content-section">
 		<div class="row">
 			<div class="col text-center">
-				<!-- <?php	
-				// if ( count( $featured_array ) > 1 ) :
+				<?php	
+				if ( count( $woo_cats ) > 1 ) :
 					?>
 					<h2>Featured Categories</h2>
 					<?php
-				// else :
+				else :
 					?>
 					<h2>Featured Category</h2>
 					<?php
-				// endif;
-				?> -->
+				endif;
+				?>
 			</div> <!-- /col -->
 		</div> <!-- /row -->
 		<div class="row">
@@ -95,7 +94,7 @@ endwhile; ?>
 * This is the end of the check for the first featured image
 * then load section
 */
-// endif;
+endif;
 
 
 $ig_code =  ( ! get_theme_mod( 'ig_code' ) ) ? '' : get_theme_mod( 'ig_code' );
