@@ -70,6 +70,7 @@ if ( $woo_cats ) :
 		<div class="row">
 			<div class="col text-center">
 				<?php	
+				var_dump(count( $woo_cats ));
 				if ( count( $woo_cats ) > 1 ) :
 					?>
 					<h2>Featured Categories</h2>
