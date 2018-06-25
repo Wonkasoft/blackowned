@@ -9,7 +9,7 @@
 
 get_header();
 
-$categories = get_categories( array ('taxonomy' => 'product_cat','orderby' => 'name', 'order' => 'asc' ) );
+$categories = get_categories( array ('taxonomy' => 'product_cat','orderby' => 'name', 'order' => 'asc', 'empty' => 1 ) );
 $slider_array = custom_arrays_function( 'slider-array' );
 $slide_image = ( !$slider_array ) ? get_template_directory_uri() . '/assets/img/default-slide-image.jpg': '';
 
