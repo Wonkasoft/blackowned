@@ -64,14 +64,12 @@ endwhile; ?>
 <?php 
 
 if ( $woo_cats ) :
-
+	global $woo_cats;
 	?>
 	<section id="featured-items-section" class="container content-section">
 		<div class="row">
 			<div class="col text-center">
 				<?php	
-				var_dump(count( $woo_cats ));
-				var_dump($woo_cats);
 				if ( count( $woo_cats ) > 1 ) :
 					?>
 					<h2>Featured Categories</h2>
@@ -84,11 +82,9 @@ if ( $woo_cats ) :
 				?>
 			</div> <!-- /col -->
 		</div> <!-- /row -->
-		<div class="row">
-			<div class="col">
-				
-</div> <!-- /col -->
-</div> <!-- /row -->
+				<?php
+				get_template_part( 'template-parts/content', 'featured' );
+				?>
 </section> <!-- .container-fluid contemt-section -->
 
 <?php

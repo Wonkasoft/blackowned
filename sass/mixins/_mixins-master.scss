@@ -38,6 +38,16 @@
 #{$property}: $value;
 }
 
+// Set the prefixes
+@mixin value_prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{$property}: '-' + $prefix + '-' + $value;
+  }
+
+// Output standard non-prefixed declaration
+#{$property}: $value;
+}
+
 @mixin media-breakpoint-up( $breakpoint ) {
 	@if $breakpoint == sm {
 		@media ( min-width: 576px ) {
