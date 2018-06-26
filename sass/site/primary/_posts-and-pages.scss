@@ -395,6 +395,14 @@ body:not(.home) #primary {
  		min-height: 150px;
  		overflow: hidden;
 
+ 		a {
+ 			color: #222222;
+
+ 			&:hover {
+ 				color: $color__link-hover;
+ 			}
+ 		}
+
  		.img-container {
  			overflow: hidden;
  			min-height: 80%;
