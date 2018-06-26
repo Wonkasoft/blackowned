@@ -10,7 +10,6 @@
 $i = 1;
 global $woo_cats;
 foreach ( $woo_cats as $cat ) :
-	var_dump($cat);
 	$cat_id = $cat->cat_ID;
 	$thumbnail_id = get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true ); 
 	$image = wp_get_attachment_url( $thumbnail_id );
