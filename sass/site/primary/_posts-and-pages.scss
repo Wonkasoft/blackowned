@@ -529,7 +529,7 @@ body:not(.home) #primary {
 		@include prefix( transition, all .2s ease-in-out, o moz webkit );
 		@include font-size(1);
 		position: relative;
-		display: flex;
+		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		margin: 0 4px;
@@ -538,7 +538,6 @@ body:not(.home) #primary {
 		height: 35px;
 		background: #fff;
 		border-radius: 50%;
-		float: left;
 		top: 0;
 
 		a {

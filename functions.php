@@ -211,12 +211,3 @@ function custom_arrays_function( $array_type ) {
 	endif;
 	return $array;
 }
-   
-/**
- * Register Testimonial Post Type
- * @since 1.0.0 [<init>]
- */
-function testimonials_post_type() {
-	require get_template_directory() . '/inc/register-testimonials.php';
-}
-add_action( 'init', 'testimonials_post_type', 0 );
