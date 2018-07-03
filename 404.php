@@ -27,18 +27,8 @@ get_header();
 					?>
 
 					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'blackowned' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-							?>
-						</ul>
+						<h2 class="widget-title"><?php esc_html_e( 'Product Categories', 'blackowned' ); ?></h2>
+						<?php dynamic_sidebar( 'categories' ); ?>
 					</div><!-- .widget -->
 
 					<?php
