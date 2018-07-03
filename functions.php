@@ -223,7 +223,6 @@ function memberships_capabilities() {
 		
 	endforeach;
 	
-	return;
 }
 
 add_action( 'wp_loaded', 'memberships_capabilities', 30);
