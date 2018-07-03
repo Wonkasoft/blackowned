@@ -211,18 +211,3 @@ function custom_arrays_function( $array_type ) {
 	endif;
 	return $array;
 }
-
-function memberships_capabilities() {
-	global $wp_roles;
-
-	foreach ($wp_roles->roles as $role) :
-		if ( strpos( $role['name'], 'pmpro_role_' ) !== false ) :
-			var_dump($role['name']);
-
-		endif;
-		
-	endforeach;
-	
-}
-
-add_action( 'wp_loaded', 'memberships_capabilities', 30);
