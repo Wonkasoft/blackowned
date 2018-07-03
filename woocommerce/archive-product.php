@@ -54,10 +54,8 @@ if ( woocommerce_product_loop() ) {
 	 * @hooked woocommerce_result_count - 20
 	 * @hooked woocommerce_catalog_ordering - 30
 	 */
-	?>
-	<div class="products-container">
-	<?php
 	do_action( 'woocommerce_before_shop_loop' );
+
 	woocommerce_product_loop_start();
 
 	if ( wc_get_loop_prop( 'total' ) ) {
@@ -76,10 +74,6 @@ if ( woocommerce_product_loop() ) {
 	}
 
 	woocommerce_product_loop_end();
-
-	?>
-	</div> <!-- /products-container -->
-	<?php
 
 	/**
 	 * Hook: woocommerce_after_shop_loop.
