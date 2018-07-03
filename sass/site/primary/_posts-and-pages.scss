@@ -258,7 +258,7 @@
 				justify-content: center;
 				width: 50px;
 
-				img {
+				.img-wrap {
 					@include prefix( transition, all .2s ease-in-out, o moz webkit );
 					width: 25px;
 					height: 25px;
@@ -270,7 +270,9 @@
 						height: 50px;
 						border-color: #cc0000;
 					}
+
 				}
+
 
 				&.active {
 

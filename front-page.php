@@ -48,7 +48,7 @@ endwhile; ?>
 							while ( $i <= count( $slider_array ) ) :
 								$slide_image = ( ! get_theme_mod( array_keys( $slider_array )[$i-1] ) ) ? '' : get_theme_mod( array_keys( $slider_array )[$i-1] );
 								?>
-								<li class="indicator-dot indicator-dot-<?php echo $i; ?>"><img src="<?php echo $slide_image; ?>" /></li>
+								<li class="indicator-dot indicator-dot-<?php echo $i; ?>"><div class="img-wrap" style="background: url('<?php echo $slide_image; ?>');background-size: cover; background-position: center center;"></div></li>
 								<?php
 								$i++;
 /**
