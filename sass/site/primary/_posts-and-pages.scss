@@ -443,6 +443,22 @@ body:not(.home) #primary {
 	}
 }
 
+.vendortype-template-default {
+	.hentry {
+		width: 100%;
+
+		.vendortype .entry-summary {
+			float: none;
+			width: 100%;
+			padding: 0;
+
+			ul {
+				list-style: none;
+			}
+		}
+	}
+}
+
 #colophon {
 	background: #000000;
 	color: #fff;
