@@ -444,6 +444,11 @@ body:not(.home) #primary {
 }
 
 .vendortype-template-default {
+
+	#package-wrap {
+		margin: 25px 0;
+	}
+
 	.hentry {
 		width: 100%;
 		text-align: center;
@@ -455,8 +460,8 @@ body:not(.home) #primary {
 		.entry-summary {
 			float: none;
 			width: 100%;
-			padding: 0;
-
+			padding: 20px;
+			border: 6px solid #222222;
 		}
 
 		ul {
