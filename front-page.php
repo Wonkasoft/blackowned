@@ -9,7 +9,7 @@
 
 get_header();
 
-$woo_cats = get_categories( array ('taxonomy' => 'product_cat','orderby' => 'name', 'order' => 'asc', 'hide_empty' => 1 ) );
+$woo_cats = get_categories( array ('taxonomy' => 'product_cat','orderby' => 'name', 'order' => 'asc', 'hide_empty' => false ) );
 $slider_array = custom_arrays_function( 'slider-array' );
 $slide_image = ( !$slider_array ) ? get_template_directory_uri() . '/assets/img/default-slide-image.jpg': '';
 
@@ -24,33 +24,33 @@ $slide_image = ( !$slider_array ) ? get_template_directory_uri() . '/assets/img/
 					<div class="wonka-slider-wrap">
 						<!-- uncomment tag to activate the left control -->
 						<!-- <a class="left-control control-btn"  role=left data-slider-btn="previous"><i class="fa fa-chevron-left" aria-hidden="true"></i></a> -->
-						
-<!-- uncomment tag to activate the right control -->
-<!-- <a class="right-control control-btn" role=right data-slider-btn="next"><i class="fa fa-chevron-right" aria-hidden="true"></i></a> -->
-<ul id="wonka-slider-1" class="wonka-slider-images">
-	<?php 
-	$i=1;
-	while ( $i <= count( $slider_array ) ) :
-		$slide_image = ( ! get_theme_mod( array_keys( $slider_array )[$i-1] ) ) ? '' : get_theme_mod( array_keys( $slider_array )[$i-1] );
-		?>
 
-		<li class="wonka-slider-item wonka-slider-item-<?php echo $i; ?>"><img src="<?php echo $slide_image; ?>" /></li>
-		<?php
-		$i++;
-/**
-* This is the end of the for loop that loads all featured images
-*/
-endwhile; ?>
-</ul> <!-- /ul -->
-						<ol class="slider-indicators">
+						<!-- uncomment tag to activate the right control -->
+						<!-- <a class="right-control control-btn" role=right data-slider-btn="next"><i class="fa fa-chevron-right" aria-hidden="true"></i></a> -->
+						<ul id="wonka-slider-1" class="wonka-slider-images">
 							<?php 
 							$i=1;
 							while ( $i <= count( $slider_array ) ) :
 								$slide_image = ( ! get_theme_mod( array_keys( $slider_array )[$i-1] ) ) ? '' : get_theme_mod( array_keys( $slider_array )[$i-1] );
 								?>
-								<li class="indicator-dot indicator-dot-<?php echo $i; ?>"><div class="img-wrap" style="background: url('<?php echo $slide_image; ?>');background-size: cover; background-position: center center;"></div></li>
+
+								<li class="wonka-slider-item wonka-slider-item-<?php echo $i; ?>"><img src="<?php echo $slide_image; ?>" /></li>
 								<?php
 								$i++;
+/**
+* This is the end of the for loop that loads all featured images
+*/
+endwhile; ?>
+</ul> <!-- /ul -->
+<ol class="slider-indicators">
+	<?php 
+	$i=1;
+	while ( $i <= count( $slider_array ) ) :
+		$slide_image = ( ! get_theme_mod( array_keys( $slider_array )[$i-1] ) ) ? '' : get_theme_mod( array_keys( $slider_array )[$i-1] );
+		?>
+		<li class="indicator-dot indicator-dot-<?php echo $i; ?>"><div class="img-wrap" style="background: url('<?php echo $slide_image; ?>');background-size: cover; background-position: center center;"></div></li>
+		<?php
+		$i++;
 /**
 * This is the end of the for loop that loads all featured images
 */
@@ -82,12 +82,12 @@ if ( $woo_cats ) :
 				?>
 			</div> <!-- /col -->
 		</div> <!-- /row -->
-				<?php
-				get_template_part( 'template-parts/content', 'featured' );
-				?>
-</section> <!-- .container-fluid contemt-section -->
+		<?php
+		get_template_part( 'template-parts/content', 'featured' );
+		?>
+	</section> <!-- .container-fluid contemt-section -->
 
-<?php
+	<?php
 /**
 * This is the end of the check for the first featured image
 * then load section
