@@ -75,7 +75,7 @@ for ($i=1; $i < 5; $i++) :
 			'section'			=> 'slide_section', 
 			'setting'			=> 'slide_image_'.$i, 
 			'type'				=> 'image',
-			'description'	=> __( 'Chose Slide Image '.$i, 'blackowned' )
+			'description'	=> __( 'Recommended size: 1330 x 401 pixels', 'blackowned' )
 		)
 	) );
 endfor;
