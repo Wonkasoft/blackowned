@@ -45,7 +45,6 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                             <?php
                             $_vendor_billing_field = get_post_meta($post->ID, '_vendor_billing_field', true);
                             if (isset($_vendor_billing_field['_initial_payment']) && !empty($_vendor_billing_field['_initial_payment']) && $_vendor_billing_field['_initial_payment'] > 0) {
-                                echo __(' Initial Payment ', 'wcmp-vendor_membership');
                                 echo get_woocommerce_currency_symbol();
                                 echo number_format($_vendor_billing_field['_initial_payment'], 2);
                             }
@@ -58,7 +57,7 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                                         echo __(' for First 15 Days', 'wcmp-vendor_membership');
                                     }
                                     if ($_vendor_billing_field['_vendor_billing_amt_cycle'] == 'Month') {
-                                        echo __(' for First Month', 'wcmp-vendor_membership');
+                                        echo __(' per Month', 'wcmp-vendor_membership');
                                     } elseif ($_vendor_billing_field['_vendor_billing_amt_cycle'] == 'Day') {
                                         echo __(' for First Day', 'wcmp-vendor_membership');
                                     } elseif ($_vendor_billing_field['_vendor_billing_amt_cycle'] == 'Year') {
@@ -81,7 +80,47 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                             }
                             ?>
                         </p>
+                        <?php $payment_page_url = get_wcmp_vendor_settings('vendor_registration', 'vendor', 'general'); ?>
+                        <form name="frm_subscribe_vandor_plan" method="post" action="<?php echo get_permalink($payment_page_url); ?>" >
+                            <input type="hidden" name="vendor_plan_id" value="<?php echo $post->ID; ?>" />
+                            <div class="subscription-container">
+
+                                <?php
+                                $button_text = __('Subscribe Now', 'wcmp-vendor_membership');
+                                if (isset($_vendor_billing_field['_subscribe_button_text']) && $_vendor_billing_field['_subscribe_button_text'] != '') {
+                                    $button_text = $_vendor_billing_field['_subscribe_button_text'];
+                                }
+                                if ($current_user->ID != 0) {
+                                    $button_text = __('Upgrade Now', 'wcmp-vendor_membership');
+                                    if (isset($_vendor_billing_field['_subscribe_button_text_logged_in']) && $_vendor_billing_field['_subscribe_button_text_logged_in'] != '') {
+                                        $button_text = $_vendor_billing_field['_subscribe_button_text_logged_in'];
+                                    }
+                                }
+                                if (isset($is_vendor) && $is_vendor != 0 && $is_vendor != '' && $is_vendor != false) {
+
+                                    $button_text = __('Upgrade Now', 'wcmp-vendor_membership');
+                                    if (isset($_vendor_billing_field['_subscribe_button_text_upgrade']) && $_vendor_billing_field['_subscribe_button_text_upgrade'] != '') {
+                                        $button_text = $_vendor_billing_field['_subscribe_button_text_upgrade'];
+                                    }
+                                }
+
+                                if (current_user_can('manage_options')) {
+                                    ?>
+                                    <p style="color:red;">
+                                        <?php echo __('Sorry you are logged in as admin please try with another account or logoff', 'wcmp-vendor_membership'); ?>
+                                    </p>
+
+                                    <?php
+                                } else if($post->ID != get_user_meta(get_current_user_id(), 'vendor_group_id', true)) {
+                                    ?>
+                                    
+                                    <input type="submit" value="<?php echo $button_text; ?>" name="vendor_plan_payment" class="button vendor_subscribe_now" />
+                                <?php } ?>
+                            </div>
+                        </form>
                     <?php endif; ?>
+                    
+                </div>
                     <div itemprop="description">
                         <?php echo get_the_content(); ?>
                     </div>
@@ -98,45 +137,6 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                         }
                         ?>
                     </ul>
-                    <?php $payment_page_url = get_wcmp_vendor_settings('vendor_registration', 'vendor', 'general'); ?>
-                    <form name="frm_subscribe_vandor_plan" method="post" action="<?php echo get_permalink($payment_page_url); ?>" >
-                        <input type="hidden" name="vendor_plan_id" value="<?php echo $post->ID; ?>" />
-                        <div class="subscription-container">
-
-                            <?php
-                            $button_text = __('Subscribe Now', 'wcmp-vendor_membership');
-                            if (isset($_vendor_billing_field['_subscribe_button_text']) && $_vendor_billing_field['_subscribe_button_text'] != '') {
-                                $button_text = $_vendor_billing_field['_subscribe_button_text'];
-                            }
-                            if ($current_user->ID != 0) {
-                                $button_text = __('Upgrade Now', 'wcmp-vendor_membership');
-                                if (isset($_vendor_billing_field['_subscribe_button_text_logged_in']) && $_vendor_billing_field['_subscribe_button_text_logged_in'] != '') {
-                                    $button_text = $_vendor_billing_field['_subscribe_button_text_logged_in'];
-                                }
-                            }
-                            if (isset($is_vendor) && $is_vendor != 0 && $is_vendor != '' && $is_vendor != false) {
-
-                                $button_text = __('Upgrade Now', 'wcmp-vendor_membership');
-                                if (isset($_vendor_billing_field['_subscribe_button_text_upgrade']) && $_vendor_billing_field['_subscribe_button_text_upgrade'] != '') {
-                                    $button_text = $_vendor_billing_field['_subscribe_button_text_upgrade'];
-                                }
-                            }
-
-                            if (current_user_can('manage_options')) {
-                                ?>
-                                <p style="color:red;">
-                                    <?php echo __('Sorry you are logged in as admin please try with another account or logoff', 'wcmp-vendor_membership'); ?>
-                                </p>
-
-                                <?php
-                            } else if($post->ID != get_user_meta(get_current_user_id(), 'vendor_group_id', true)) {
-                                ?>
-                                
-                                <input type="submit" value="<?php echo $button_text; ?>" name="vendor_plan_payment" class="button vendor_subscribe_now" />
-                            <?php } ?>
-                        </div>
-                    </form>
-                </div>
             </div>
 
             <?php
