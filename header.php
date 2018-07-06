@@ -7,7 +7,7 @@
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package blackowned
- * @since  1.0.0 [<init>]
+ * @since  1.0.0 init
  */
 
 ?>
@@ -71,7 +71,17 @@
 					<div class="cart-icon">
 						<a href="/cart"><i class="fa fa-cart-plus"></i></a>
 						<span class="separator"> </span>
-						<a id="login-btn" href="/my-account"><i class="fa fa-user"></i> Login</a>
+						<?php
+							if ( is_user_logged_in() ) :
+								?>
+								<a id="login-btn" href="<?php echo wp_logout_url( get_permalink( get_option('woocommerce_myaccount_page_id') ) ); ?>"><i class="fa fa-user"></i> Logout</a>
+								<?php
+							else :
+								?>
+								<a id="login-btn" href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"><i class="fa fa-user"></i> Login</a>
+								<?php
+							endif;
+							?>
 					</div> <!-- /cart-icon -->
 
 				</div><!-- .row -->
