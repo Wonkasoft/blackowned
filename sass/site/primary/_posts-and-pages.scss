@@ -370,26 +370,16 @@ body:not(.home) #primary {
 	border: 6px solid #222222;
 }
 
-.btn.btn-lg {
-	background: #561223;
-
-	&:hover, &:focus, &:active {
-		background: #3c2f32;
-	}
-}
-
-
-
 /**
  * Featured-items
  */
 #featured-items-section {
  	overflow: hidden;
+ 	margin: 15px auto;
 
  	.featured-module {
  		@include value_prefix( width, calc( 96% / 2 ), moz webkit );
  		@include prefix( transition, all .2s ease-in-out, o moz webkit );
- 		@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
  		position: relative;
  		margin: 8px calc( 2% / 2 );
  		padding: 0;
@@ -406,8 +396,11 @@ body:not(.home) #primary {
  		}
 
  		.img-container {
+ 			@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
  			overflow: hidden;
- 			max-height: 175px;
+ 			max-width: 200px;
+ 			max-height: 200px;
+ 			border-radius: 50%;
  		}
 
  	}

@@ -25,7 +25,15 @@ textarea {
 }
 
 select {
+	@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
 	border: 1px solid $color__border-input;
+	background: #531424;
+	color: #ffffff;
+	padding: 8px;
+	margin: 0 0 1rem;
+	font-family: $font__opsanlight;
+	border-radius: 10px;
+	outline: none;
 }
 
 textarea {

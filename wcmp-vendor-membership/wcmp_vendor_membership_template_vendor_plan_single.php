@@ -39,7 +39,6 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                 <div class="summary entry-summary">
 
                     <h1 itemprop="name" class="product_title entry-title"><?php echo get_the_title(); ?></h1>
-                    <hr />
                     <?php if (get_post_meta($post->ID, '_is_free_plan', true) != 'Enable') : ?>
                         <p class="wcmp-plan-price">
                             <?php
@@ -78,6 +77,39 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                                     echo __(' One Time', 'wcmp-vendor_membership');
                                 }
                             }
+                            // WP_Query arguments
+                            // $args = array (
+                            // 'post_type'              => array( 'vendortype' ),
+                            // 'post_status'            => array( 'publish' ),
+                            // 'nopaging'               => true,
+                            // 'order'                  => 'ASC',
+                            // 'orderby'                => 'menu_order',
+                            // );
+
+                            // // The Query
+                            // $vendors = new WP_Query( $args );
+                            // $match = '';
+                            // $current_post = get_the_title();
+                            // $id = 0;
+                            // var_dump($vendors);
+                            // The Loop
+                            // if ( $vendors->have_posts() ) {
+                            //     while ( $vendors->have_posts() ) {
+                            //     the_post();
+                            //     $match = get_the_title();
+                            //     var_dump($match);
+                            //         if ( $match == $current_post . '- Year' ) {
+                            //         $id = get_the_ID();
+                            //         var_dump($id);
+                            //         }
+                            //     }
+                            //     // Restore original Post Data
+                            //     wp_reset_postdata();
+                            //     wp_die();
+                            // } else {
+                            // // no posts found
+                            // }
+
                             ?>
                         </p>
                         <?php $payment_page_url = get_wcmp_vendor_settings('vendor_registration', 'vendor', 'general'); ?>
@@ -114,7 +146,7 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                                 } else if($post->ID != get_user_meta(get_current_user_id(), 'vendor_group_id', true)) {
                                     ?>
                                     
-                                    <input type="submit" value="<?php echo $button_text; ?>" name="vendor_plan_payment" class="button vendor_subscribe_now" />
+                                    <input type="submit" value="<?php echo $button_text; ?>" name="vendor_plan_payment" class="btn btn-lg vendor_subscribe_now" />
                                 <?php } ?>
                             </div>
                         </form>
@@ -124,19 +156,18 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                     <div itemprop="description">
                         <?php echo get_the_content(); ?>
                     </div>
+                    <?php $_vender_featurelist = get_post_meta($post->ID, '_vender_featurelist', true); ?>
+                    <?php
+                    if (is_array($_vender_featurelist)) : ?>
                     <h3 class=""><?php echo __('Features List', 'wcmp-vendor_membership'); ?></h3>
                     <ul>
-                        <?php $_vender_featurelist = get_post_meta($post->ID, '_vender_featurelist', true); ?>
-                        <?php
-                        if (is_array($_vender_featurelist)) {
-                            foreach ($_vender_featurelist as $flist) {
+                        <?php foreach ($_vender_featurelist as $flist) :
                                 ?>
                                 <li><?php echo $flist; ?></li>
                                 <?php
-                            }
-                        }
-                        ?>
+                            endforeach; ?>
                     </ul>
+                    <?php endif; ?>
             </div>
 
             <?php

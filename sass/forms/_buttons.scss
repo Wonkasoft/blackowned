@@ -1,22 +1,36 @@
-button,
+button:not( nav>button.menu-toggle ),
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	border: 1px solid;
-	border-color: $color__border-button;
-	border-radius: 3px;
-	background: $color__background-button;
-	color: rgba(0, 0, 0, .8);
-	@include font-size(0.75);
-	line-height: 1;
-	padding: .6em 1em .4em;
+	@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
+	@include prefix( transition, all .2s ease-in-out, o moz webkit );
+	background: #561223;
+	border-radius: 10px;
+	font-family: $font__opsanlight;
+	color: #fff;
+	padding: 8px 15px;
+	border: none;
+	outline: none;
 
-	&:hover {
-		border-color: $color__border-button-hover;
+	&:hover:not( .menu-toggle ), &:focus:not( .menu-toggle ), &:active:not( .menu-toggle ) {
+		background: $color__primary;
+		color: $color__link-hover;
 	}
+}
 
-	&:active,
-	&:focus {
-		border-color: $color__border-button-focus;
+.btn.btn-lg, .submit {
+	@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
+	@include prefix( transition, all .2s ease-in-out, o moz webkit );
+	background: #561223;
+	border-radius: 10px;
+	font-family: $font__opsanlight;
+	border: none;
+	outline: none;
+	color: #fff;
+	padding: 8px 15px;
+
+	&:hover, &:focus, &:active {
+		background: $color__primary;
+		color: $color__link-hover;
 	}
 }

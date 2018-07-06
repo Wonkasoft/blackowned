@@ -12,7 +12,7 @@ ul.products {
 		margin-bottom: 2em;
 
 		.woocommerce-loop-product__title {
-			font-size: 1rem;
+			@include font-size(1.8);
 		}
 
 		img {

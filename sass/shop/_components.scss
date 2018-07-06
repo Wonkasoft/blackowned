@@ -259,11 +259,21 @@ p.no-comments {
 		}
 	}
 
-	.add_to_cart_button {
+	.add_to_cart_button, .single_add_to_cart_button {
+		@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
+		@include prefix( transition, all .2s ease-in-out, o moz webkit );
+		background: $color__secondary;
 		color: #fff;
-		background: #bbb;
 		padding: 8px 15px;
 		text-align: center;
+		border-radius: 10px;
+		font-family: $font__opsanlight;
+		margin: 15px auto;
+
+		&:hover, &:focus, &:active {
+			background: $color__primary;
+			color: $color__link-hover;
+		}
 	}
 }
 /**
