@@ -69,7 +69,19 @@
 						?>	
 					</div><!-- .col-4 -->
 					<div class="cart-icon">
-						<a href="<?php echo wp_logout_url( get_permalink( wc_get_page_id( 'cart' ) ) ); ?>"><i class="fa fa-cart-plus"></i></a>
+						<a href="<?php echo get_permalink( wc_get_page_id( 'cart' ) ); ?>">
+							<i class="fa fa-cart-plus"></i>
+							<?php 
+							if ( WC()->cart->get_cart_contents_count() > 0 ) :
+								?>
+							<span class="badge badge-dark">
+							<?php
+							echo WC()->cart->get_cart_contents_count(); ?>
+							</span>
+							<?php 
+						endif;
+						?>
+						</a>
 						<span class="separator"> </span>
 						<?php
 							if ( is_user_logged_in() ) :
