@@ -348,7 +348,8 @@ body:not(.home) #primary {
 }
 
 .hentry {
-	margin: 0 0 1.5em;
+	margin: 1.5em 0;
+	padding: 0 25px;
 }
 
 .updated:not(.published) {
@@ -368,6 +369,16 @@ body:not(.home) #primary {
 
 .package-module {
 	border: 6px solid #222222;
+}
+
+.package-featured-list {
+	margin-top: 15px;
+	font-family: $font__opsansemibold;
+}
+
+.package-featured-list ~ hr {
+	margin: .5rem auto;
+	width: 60%;
 }
 
 /**
@@ -452,14 +463,26 @@ body:not(.home) #primary {
 		text-align: center;
 
 		.entry-title {
+			@include font-size(4.5);
 			text-transform: uppercase;
+			font-family: $font__opsanbold;
+			margin: 0;
 		}
 
 		.entry-summary {
 			float: none;
-			width: 100%;
-			padding: 20px;
+			width: 85%;
+			padding: 15px;
+			margin: 1.5em auto 0;
 			border: 6px solid #222222;
+
+			p {
+				margin-bottom: 1rem;
+			}
+
+			p.wcmp-plan-price {
+				@include font-size(3.5);
+			}
 		}
 
 		ul {

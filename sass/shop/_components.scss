@@ -186,6 +186,33 @@ p.stars {
 /**
  * Forms
  */
+.woocommerce-form-login {
+	@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
+	width: 500px;
+	margin: 15px auto;
+	padding: 20px 24px;
+	justify-content: center;
+	border-radius: 10px;
+
+	p:nth-child(3) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		label {
+			margin-left: 15px;
+		}
+	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+
+	label {
+		margin-bottom: 0;
+	}
+}
+
 .form-row {
 	&.woocommerce-validated {
 		input.input-text {

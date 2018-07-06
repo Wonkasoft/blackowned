@@ -1,4 +1,6 @@
-button:not( nav>button.menu-toggle ),
+button:not( .menu-toggle ),
+.wcmp_regi_main input.button,
+button[type="submit"],
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
@@ -9,6 +11,7 @@ input[type="submit"] {
 	font-family: $font__opsanlight;
 	color: #fff;
 	padding: 8px 15px;
+	line-height: 1;
 	border: none;
 	outline: none;
 

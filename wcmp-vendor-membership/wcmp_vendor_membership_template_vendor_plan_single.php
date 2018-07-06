@@ -38,7 +38,7 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                 </div> 
                 <div class="summary entry-summary">
 
-                    <h1 itemprop="name" class="product_title entry-title"><?php echo get_the_title(); ?></h1>
+                    <h1 itemprop="name" class="product_title entry-title"><?php echo get_the_title(); ?> Package:</h1>
                     <?php if (get_post_meta($post->ID, '_is_free_plan', true) != 'Enable') : ?>
                         <p class="wcmp-plan-price">
                             <?php
@@ -56,14 +56,14 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                                         echo __(' for First 15 Days', 'wcmp-vendor_membership');
                                     }
                                     if ($_vendor_billing_field['_vendor_billing_amt_cycle'] == 'Month') {
-                                        echo __(' per Month', 'wcmp-vendor_membership');
+                                        echo __('/mo.', 'wcmp-vendor_membership');
                                     } elseif ($_vendor_billing_field['_vendor_billing_amt_cycle'] == 'Day') {
                                         echo __(' for First Day', 'wcmp-vendor_membership');
                                     } elseif ($_vendor_billing_field['_vendor_billing_amt_cycle'] == 'Year') {
                                         echo __(' for First Year', 'wcmp-vendor_membership');
                                     }
 
-                                    echo __(' and Next ', 'wcmp-vendor_membership');
+                                    echo __(' | ', 'wcmp-vendor_membership');
                                 }
                                 $billing_amt = isset($_vendor_billing_field['_vendor_billing_amt']) && !empty($_vendor_billing_field['_vendor_billing_amt']) ? $_vendor_billing_field['_vendor_billing_amt'] : 0;
                                 if (isset($global_settings['display_method']) && !empty($global_settings['display_method']) && $global_settings['display_method'] == 'inclusive') {
@@ -71,45 +71,43 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                                         $billing_amt += $_vendor_billing_field['_vendor_billing_tax_amt'];
                                     }
                                 }
-                                echo get_woocommerce_currency_symbol() . number_format($billing_amt, 2) . ' per ' . $_vendor_billing_field['_vendor_billing_amt_cycle'];
+                                // WP_Query arguments
+                                $args = array (
+                                'post_type'              => array( 'vendortype' ),
+                                'post_status'            => array( 'publish' ),
+                                'nopaging'               => true,
+                                'order'                  => 'ASC',
+                                'orderby'                => 'menu_order',
+                                );
+
+                                // The Query
+                                $vendors = new WP_Query( $args );
+                                $match = '';
+                                $post_meta = '';
+                                $yearly = '';
+                                $cycle = '';
+                                $current_post = get_post_field( 'post_name', get_post() );
+                                $id = 0;
+                                // The Loop
+                                if ( $vendors->have_posts() ) {
+                                    while ( $vendors->have_posts() ) {
+                                    $vendors->the_post();
+                                    $match = get_post_field( 'post_name', get_post() );
+                                        if ( $match == $current_post . '-year' ) {
+                                            $id = get_the_ID();
+                                            $post_meta = get_post_meta($id, '_vendor_billing_field', true);
+                                            $yearly = $post_meta['_vendor_billing_amt'];
+                                        }
+                                    }
+                                }
+
+                                echo get_woocommerce_currency_symbol() . number_format($yearly, 2) . '/yr.';
                             } else {
                                 if (isset($_vendor_billing_field['_initial_payment']) && $_vendor_billing_field['_initial_payment'] > 0) {
                                     echo __(' One Time', 'wcmp-vendor_membership');
                                 }
                             }
-                            // WP_Query arguments
-                            // $args = array (
-                            // 'post_type'              => array( 'vendortype' ),
-                            // 'post_status'            => array( 'publish' ),
-                            // 'nopaging'               => true,
-                            // 'order'                  => 'ASC',
-                            // 'orderby'                => 'menu_order',
-                            // );
-
-                            // // The Query
-                            // $vendors = new WP_Query( $args );
-                            // $match = '';
-                            // $current_post = get_the_title();
-                            // $id = 0;
-                            // var_dump($vendors);
-                            // The Loop
-                            // if ( $vendors->have_posts() ) {
-                            //     while ( $vendors->have_posts() ) {
-                            //     the_post();
-                            //     $match = get_the_title();
-                            //     var_dump($match);
-                            //         if ( $match == $current_post . '- Year' ) {
-                            //         $id = get_the_ID();
-                            //         var_dump($id);
-                            //         }
-                            //     }
-                            //     // Restore original Post Data
-                            //     wp_reset_postdata();
-                            //     wp_die();
-                            // } else {
-                            // // no posts found
-                            // }
-
+                            
                             ?>
                         </p>
                         <?php $payment_page_url = get_wcmp_vendor_settings('vendor_registration', 'vendor', 'general'); ?>
@@ -159,7 +157,8 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                     <?php $_vender_featurelist = get_post_meta($post->ID, '_vender_featurelist', true); ?>
                     <?php
                     if (is_array($_vender_featurelist)) : ?>
-                    <h3 class=""><?php echo __('Features List', 'wcmp-vendor_membership'); ?></h3>
+                    <h2 class="package-featured-list"><?php echo __('Features List', 'wcmp-vendor_membership'); ?></h2>
+                    <hr />
                     <ul>
                         <?php foreach ($_vender_featurelist as $flist) :
                                 ?>
