@@ -69,16 +69,16 @@
 						?>	
 					</div><!-- .col-4 -->
 					<div class="cart-icon">
-						<a href="/cart"><i class="fa fa-cart-plus"></i></a>
+						<a href="<?php echo wp_logout_url( get_permalink( wc_get_page_id( 'cart' ) ) ); ?>"><i class="fa fa-cart-plus"></i></a>
 						<span class="separator"> </span>
 						<?php
 							if ( is_user_logged_in() ) :
 								?>
-								<a id="login-btn" href="<?php echo wp_logout_url( get_permalink( get_option('woocommerce_myaccount_page_id') ) ); ?>"><i class="fa fa-user"></i> Logout</a>
+								<a id="login-btn" href="<?php echo wp_logout_url( get_permalink( wc_get_page_id( 'myaccount' ) ) ); ?>"><i class="fa fa-user"></i> Logout</a>
 								<?php
 							else :
 								?>
-								<a id="login-btn" href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"><i class="fa fa-user"></i> Login</a>
+								<a id="login-btn" href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>"><i class="fa fa-user"></i> Login</a>
 								<?php
 							endif;
 							?>
