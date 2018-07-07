@@ -165,6 +165,16 @@ function blackowned_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'blackowned_scripts' );
 
+ 
+function boupdate_cart_count_fragments( $fragments ) {
+    	$fragments['span.header-cart-count'] = '<span class="badge badge-dark header-cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
+    return $fragments;
+}
+
+add_filter( 'woocommerce_add_to_cart_fragments', 'boupdate_cart_count_fragments', 10, 1 );
+
+
+
 /**
  * Implement the Custom Header feature.
  */
