@@ -60,11 +60,9 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                                     } elseif ($_vendor_billing_field['_vendor_billing_amt_cycle'] == 'Day') {
                                         echo __(' for First Day', 'wcmp-vendor_membership');
                                     } elseif ($_vendor_billing_field['_vendor_billing_amt_cycle'] == 'Year') {
-                                        echo __(' for First Year', 'wcmp-vendor_membership');
+                                        echo __('/yr.', 'wcmp-vendor_membership');
                                     }
 
-                                    echo __(' | ', 'wcmp-vendor_membership');
-                                }
                                 $billing_amt = isset($_vendor_billing_field['_vendor_billing_amt']) && !empty($_vendor_billing_field['_vendor_billing_amt']) ? $_vendor_billing_field['_vendor_billing_amt'] : 0;
                                 if (isset($global_settings['display_method']) && !empty($global_settings['display_method']) && $global_settings['display_method'] == 'inclusive') {
                                     if (isset($_vendor_billing_field['_vendor_billing_tax_amt']) && !empty($_vendor_billing_field['_vendor_billing_tax_amt'])) {
@@ -84,7 +82,7 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                                 $vendors = new WP_Query( $args );
                                 $match = '';
                                 $post_meta = '';
-                                $yearly = '';
+                                $yearly;
                                 $cycle = '';
                                 $current_post = get_post_field( 'post_name', get_post() );
                                 $id = 0;
@@ -93,20 +91,28 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                                     while ( $vendors->have_posts() ) {
                                     $vendors->the_post();
                                     $match = get_post_field( 'post_name', get_post() );
+                                    $id = get_the_ID();
+                                    $post_meta = get_post_meta($id, '_vendor_billing_field', true);
                                         if ( $match == $current_post . '-year' ) {
-                                            $id = get_the_ID();
-                                            $post_meta = get_post_meta($id, '_vendor_billing_field', true);
+                                            $yearly = $post_meta['_vendor_billing_amt'];
+                                        }
+                                        if ( strpos( $match, '-year' ) ) {
                                             $yearly = $post_meta['_vendor_billing_amt'];
                                         }
                                     }
                                 }
+                                
+                                if ( !$yearly ) {
+                                    echo __(' | ', 'wcmp-vendor_membership');
 
-                                echo get_woocommerce_currency_symbol() . number_format($yearly, 2) . '/yr.';
+                                    echo get_woocommerce_currency_symbol() . number_format($yearly, 2) . '/yr.';
+                                }
                             } else {
                                 if (isset($_vendor_billing_field['_initial_payment']) && $_vendor_billing_field['_initial_payment'] > 0) {
                                     echo __(' One Time', 'wcmp-vendor_membership');
                                 }
                             }
+                                }
                             
                             ?>
                         </p>
