@@ -13,7 +13,7 @@
 </div><!-- #content -->
 <footer id="colophon" class="site-footer container-fluid">
 	<div class="row align-items-center">
-		<div class="col-lg-2 footer-left footer-section">
+		<div class="col-lg-1 footer-left footer-section">
 			<div class="row">
 				<div class="col text-center">
 					<div class="footer-logo">
@@ -31,7 +31,7 @@
 				</div> <!-- /col -->
 			</div> <!-- /row -->
 		</div> <!-- .col-4 -->
-		<div class="col-lg-6 footer-center footer-section align-self-start">
+		<div class="col-lg-7 footer-center footer-section align-self-start">
 			<div class="row">
 				<div class="col text-left">
 					<h3 class="font-upper">Categories</h3>

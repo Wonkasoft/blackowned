@@ -15,22 +15,7 @@
     	wonka_sliders.forEach( function( element ) { wonka_slider_setup( element ); } );
     	wonka_slider_controls.forEach( control_listener );
 
-    	self_timer = setInterval( function() {
-    		var active_indicators = document.querySelectorAll( '.slider-indicators li.active' ),
-    		currently,
-    		next;
-    		active_indicators.forEach( function( el ) {
-    			currently = el;
-    			next = currently.nextElementSibling;
-	    		if ( next !== null ) {
-	    			next.click();
-	    		} else {
-	    			next = currently.parentElement.firstElementChild;
-	    			next.click();
-	    		}
-    		});
-
-    	}, 5000 );
+    	set_self_timer();
     }
 
     
@@ -57,21 +42,20 @@ function control_listener( cur_control ) {
 function slide_setup( e ) {
 	clearInterval( self_timer );
 	var slide_control, new_target, direction, current_parent, previous_dot, current_dot, next_dot, current_slide, next_slide, slider_obj, a, b;
-
-	if ( e.target.nodeName == 'I' || e.target.nodeName == 'IMG' ) {
+	if ( e.target.nodeName === 'I' || e.target.nodeName === 'DIV' ) {
 		new_target = e.target.parentElement;
 	} else {
 		new_target = e.target;
 	}
 
-	if ( new_target.nodeName == 'A' ) {
+
+	if ( new_target.nodeName === 'A' ) {
 		slide_control = new_target;
 		direction = slide_control.getAttribute('data-slider-btn');
 		current_parent = slide_control.parentElement;
 	}
 
-
-	if ( new_target.nodeName == 'LI'  ) {
+	if ( new_target.nodeName === 'LI'  ) {
 		current_parent = new_target.parentElement.parentElement;
 		slide_control = new_target;
 		current_parent = slide_control.parentElement.parentElement;
@@ -80,7 +64,12 @@ function slide_setup( e ) {
 	current_dot = current_parent.querySelector( '.indicator-dot.active' );
 	current_slide = current_parent.querySelector( '.wonka-slider-item.active' );
 
-	if ( new_target.nodeName == 'LI' ) {
+	if ( current_dot === new_target ) {
+		set_self_timer();
+		return;
+	}
+
+	if ( new_target.nodeName === 'LI' ) {
 		a = current_dot.classList[1].substr( current_dot.classList[1].length - 1);
 		b = slide_control.classList[1].substr( slide_control.classList[1].length - 1);
 		if ( a < b ) {
@@ -90,8 +79,7 @@ function slide_setup( e ) {
 			direction = 'previous';
 		}
 	}
-
-	if ( direction == 'previous' ) {
+	if ( direction === 'previous' ) {
 		next_slide = ( slide_control.nodeName == 'LI' ) ? current_parent.querySelector( '.wonka-slider-item-' + b ): current_slide.previousElementSibling;
 		next_dot = ( slide_control.nodeName == 'LI' ) ? current_parent.querySelector( '.indicator-dot-' + b ): current_dot.previousElementSibling;
 		if ( next_slide === null ) {
@@ -100,7 +88,7 @@ function slide_setup( e ) {
 		}
 	}
 
-	if ( direction == 'next' ) {
+	if ( direction === 'next' ) {
 		next_slide = ( slide_control.nodeName == 'LI' ) ? current_parent.querySelector( '.wonka-slider-item-' + b ): current_slide.nextElementSibling;
 		next_dot = ( slide_control.nodeName == 'LI' ) ? current_parent.querySelector( '.indicator-dot-' + b ): current_dot.nextElementSibling;
 		if ( next_slide === null ) {
@@ -108,11 +96,14 @@ function slide_setup( e ) {
 			next_dot = current_dot.parentElement.firstElementChild;
 		}
 	}
-
 	slider_obj = {'controller': slide_control,'direction': direction, 'cur_indicator': current_dot, 'cur_slide': current_slide, 'next_indicator': next_dot, 'next_slide': next_slide};
 
-	if ( slider_obj.next_slide !== slider_obj.cur_slide ) {
+	if ( current_slide.classList.contains( 'fade-set' ) && slider_obj.next_slide !== slider_obj.cur_slide) {
+		do_fade( slider_obj );
+	} else if ( slider_obj.next_slide !== slider_obj.cur_slide ) {
 		do_slide( slider_obj );
+	} else {
+		set_self_timer();
 	}
 }
 
@@ -164,7 +155,32 @@ function do_slide( slider_obj ) {
 			}, 200 );
 		}, 200 );
 	}
+	set_self_timer();
+} 
 
+function do_fade( slider_obj ) {
+	slider_obj.cur_slide.classList.add( 'fade-out' );
+	slider_obj.next_slide.classList.add( 'fade-in' );
+	setTimeout( function() {
+		slider_obj.cur_indicator.classList.remove( 'active' );
+		slider_obj.cur_slide.style.opacity = '0';
+		slider_obj.next_indicator.classList.add( 'active' );
+		setTimeout( function() {
+			slider_obj.cur_slide.style.display = 'none';
+			slider_obj.cur_slide.classList.remove( 'active');
+			slider_obj.cur_slide.classList.remove( 'fade-out');
+			slider_obj.cur_slide.removeAttribute( 'style' );
+			slider_obj.next_slide.classList.add( 'active' );
+			slider_obj.next_slide.removeAttribute( 'style' );
+			slider_obj.next_slide.classList.remove( 'fade-in' );
+		}, 800 );
+	}, 400 );
+
+	set_self_timer();
+} 
+
+function set_self_timer() {
+	var delay = 5000;
 	self_timer = setInterval( function() {
 		var active_indicators = document.querySelectorAll( '.slider-indicators li.active' ),
 		currently,
@@ -180,9 +196,8 @@ function do_slide( slider_obj ) {
     		}
 		});
 
-	}, 5000 );
-
-} 
+	}, delay );
+}
 
 function search_bar_toggle(e) {
 	var browser_width = window.innerWidth;

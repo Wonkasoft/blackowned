@@ -12,6 +12,9 @@ get_header();
 $woo_cats = get_categories( array ('taxonomy' => 'product_cat','orderby' => 'name', 'order' => 'asc', 'hide_empty' => false ) );
 $slider_array = custom_arrays_function( 'slider-array' );
 $slide_image = ( !$slider_array ) ? get_template_directory_uri() . '/assets/img/default-slide-image.jpg': '';
+$featured_img = ( !get_theme_mod( 'featured_image_banner' ) ) ? '': get_theme_mod( 'featured_image_banner' );
+$featured_title = ( !get_theme_mod( 'featured_image_banner_text' ) ) ? '': get_theme_mod( 'featured_image_banner_text' );
+$featured_link = ( !get_theme_mod( 'featured_image_banner_link' ) ) ? '': get_theme_mod( 'featured_image_banner_link' );
 
 ?>
 <section id="primary" class="container">
@@ -30,11 +33,13 @@ $slide_image = ( !$slider_array ) ? get_template_directory_uri() . '/assets/img/
 						<ul id="wonka-slider-1" class="wonka-slider-images">
 							<?php 
 							$i=1;
+							$image_scaling = ( get_option( 'slider_image_scale') == 'enabled' ) ? 'class="scale"': '';
+							$image_fade = ( get_option( 'slider_style') == 'fade-set' ) ? ' fade-set': '';
 							while ( $i <= count( $slider_array ) ) :
 								$slide_image = ( ! get_theme_mod( array_keys( $slider_array )[$i-1] ) ) ? '' : get_theme_mod( array_keys( $slider_array )[$i-1] );
 								?>
 
-								<li class="wonka-slider-item wonka-slider-item-<?php echo $i; ?>"><img src="<?php echo $slide_image; ?>" /></li>
+								<li class="wonka-slider-item wonka-slider-item-<?php echo $i . $image_fade; ?>"><img <?php if ( !empty( $image_scaling ) ) echo $image_scaling; ?> src="<?php echo $slide_image; ?>" /></li>
 								<?php
 								$i++;
 /**
@@ -48,7 +53,7 @@ endwhile; ?>
 	while ( $i <= count( $slider_array ) ) :
 		$slide_image = ( ! get_theme_mod( array_keys( $slider_array )[$i-1] ) ) ? '' : get_theme_mod( array_keys( $slider_array )[$i-1] );
 		?>
-		<li class="indicator-dot indicator-dot-<?php echo $i; ?>"><div class="img-wrap" style="background: url('<?php echo $slide_image; ?>');background-size: cover; background-position: center center;"></div></li>
+		<li class="indicator-dot indicator-dot-<?php echo $i; ?>"><div class="img-wrap"></div></li>
 		<?php
 		$i++;
 /**
@@ -92,9 +97,23 @@ if ( $woo_cats ) :
 * This is the end of the check for the first featured image
 * then load section
 */
+endif; 
+if ( !empty( $featured_img ) ) : ?>
+<section id="featured-banner-section" class="container">
+	<div class="row">
+		<div class="col">
+			<img src="<?php echo $featured_img; ?>" class="featured-img" />
+			<div class="row">
+			<div class="col-12">
+				<h1 class="featured-title"><?php echo $featured_title; ?></h1>
+				<a href="<?php echo $featured_link; ?>" class="featured-cta-btn btn btn-lg">Join Now</a>
+			</div><!-- .col-12 -->
+			</div><!-- .row -->
+		</div><!-- .col -->
+	</div><!-- .row -->
+</section><!-- #featured-banner-section -->
+<?php
 endif;
-
-
 $ig_code =  ( ! get_theme_mod( 'ig_code' ) ) ? '' : get_theme_mod( 'ig_code' );
 if ( $ig_code != '' ) :
 	?>

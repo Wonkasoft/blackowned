@@ -53,10 +53,75 @@ function blackowned_customize_register( $wp_customize ) {
 		'panel'					=> 'ft_theme_options' 
 		) );
 
+	/**
+	 * Slider Style setting
+	 * @since 1.0.0 [Slide Style Settings]
+	 */
+	$wp_customize->add_setting( 'slider_style', array(
+		'default'		=> 'Slide',
+		'type'		=> 'option',
+		'transport'	=> 'refresh',
+		'capability' => 'edit_theme_options'
+		) );
+
+	/**
+	 * Control for Slider Style
+	 * @since 1.0.0 [Control for Slider Style]
+	 */
+	$wp_customize->add_control( new WP_Customize_Control(
+		$wp_customize,
+		'slider_style_controller', 
+		array(
+			'label' 			=> __( 'Slider Style', 'blackowned' ), 
+			'settings'			=> 'slider_style',
+			'section'			=> 'slide_section', 
+			'priority'			=> 9,
+			'description'	=> __( 'Select Style of Slider to slider images or fade', 'blackowned' ),
+			'type'				=> 'select',
+			'choices' 		=> array(
+				'slide' => 'Slide',
+				'fade-set'		=> 'Fade',
+			)
+		)
+	) );
+
+	/**
+	 * Slider Style setting
+	 * @since 1.0.0 [Slide Style Settings]
+	 */
+	$wp_customize->add_setting( 'slider_image_scale', array(
+		'default'		=> 'disabled',
+		'type'		=> 'option',
+		'transport'	=> 'refresh',
+		'capability' => 'edit_theme_options'
+		) );
+
+	/**
+	 * Control for Slider Style
+	 * @since 1.0.0 [Control for Slider Style]
+	 */
+	$wp_customize->add_control( new WP_Customize_Control(
+		$wp_customize,
+		'slider_image_scale_controller', 
+		array(
+			'label' 			=> __( 'Image Style', 'blackowned' ), 
+			'settings'			=> 'slider_image_scale',
+			'section'			=> 'slide_section', 
+			'priority'			=> 10,
+			'description'	=> __( 'Enable image scale effect on slider', 'blackowned' ),
+			'type'				=> 'select',
+			'choices' 		=> array(
+				'disabled' => 'Disabled',
+				'enabled'		=> 'Enabled',
+			)
+		)
+	) );
+
+
 for ($i=1; $i < 5; $i++) :
 	/**
-	 * Headaing image setting
-	 * @since 1.0.0 [Slide Image setings]
+	 * Slider image setting
+	 * @since 1.0.0 [Slide Image settings]
 	 */
 	$wp_customize->add_setting( 'slide_image_'.$i, array(
 		'defualt'		=> '',
@@ -64,23 +129,23 @@ for ($i=1; $i < 5; $i++) :
 		) );
 
 	/**
-	 * Control for main iamge
+	 * Control for main image
 	 * @since 1.0.0 [Control for Slide Image]
 	 */
 	$wp_customize->add_control( new WP_Customize_Image_Control(
 		$wp_customize,
 		'slide_image_'.$i, 
 		array(
-			'label' 			=> __( 'Slide Image', 'blackowned' ), 
+			'label' 			=> __( 'Slide Image ' . $i, 'blackowned' ), 
 			'section'			=> 'slide_section', 
-			'setting'			=> 'slide_image_'.$i, 
+			'settings'			=> 'slide_image_'.$i, 
 			'type'				=> 'image',
 			'description'	=> __( 'Recommended size: 1330 x 401 pixels', 'blackowned' )
 		)
 	) );
 endfor;
 
-		/**
+	/**
 	 * For Featured Image
 	 * @since 1.0.0 [Adding in Testimonials Background Image]
 	 */
@@ -93,12 +158,11 @@ endfor;
 		'panel'					=> 'ft_theme_options' 
 		) );
 
-for ($i=1; $i < 4 ; $i++) :
 	/**
 	 * Featured Image setting
 	 * @since 1.0.0 [Featured Image setings]
 	 */
-	$wp_customize->add_setting( 'featured_image_'.$i, array(
+	$wp_customize->add_setting( 'featured_image_banner', array(
 		'defualt'		=> '',
 		'transport'	=> 'refresh'
 		) );
@@ -109,16 +173,65 @@ for ($i=1; $i < 4 ; $i++) :
 	 */
 	$wp_customize->add_control( new WP_Customize_Image_Control(
 		$wp_customize,
-		'featured_image_'.$i, 
+		'featured_image_banner_control', 
 		array(
 			'label' 			=> __( 'Featured Image', 'blackowned' ), 
-			'section'			=> 'featured_section', 
-			'setting'			=> 'featured_image_'.$i, 
+			'section'			=> 'featured_section',
+			'settings'			=> 'featured_image_banner',
 			'type'				=> 'image',
-			'description'	=> __( 'Chose Featured Image '.$i, 'blackowned' )
+			'description'	=> __( 'Choose a Featured Image', 'blackowned' )
 		)
 	) );
-endfor;
+
+	/**
+	 * Featured Image Link Setting
+	 * @since 1.0.0 [Featured Image Link Setings]
+	 */
+	$wp_customize->add_setting( 'featured_image_banner_text', array(
+		'defualt'		=> '',
+		'transport'	=> 'refresh'
+		) );
+
+	/**
+	 * Controller for Featured Image Link
+	 * @since 1.0.0 [Control for Featured Image Link]
+	 */
+	$wp_customize->add_control( new WP_Customize_Control(
+		$wp_customize,
+		'featured_image_banner_text_control', 
+		array(
+			'label' 			=> __( 'Featured Image Text', 'blackowned' ), 
+			'section'			=> 'featured_section',
+			'settings'			=> 'featured_image_banner_text',
+			'type'				=> 'text',
+			'description'	=> __( 'This will be overlayed up the banner', 'blackowned' )
+		)
+	) );
+
+	/**
+	 * Featured Image Link Setting
+	 * @since 1.0.0 [Featured Image Link Setings]
+	 */
+	$wp_customize->add_setting( 'featured_image_banner_link', array(
+		'defualt'		=> '',
+		'transport'	=> 'refresh'
+		) );
+
+	/**
+	 * Controller for Featured Image Link
+	 * @since 1.0.0 [Control for Featured Image Link]
+	 */
+	$wp_customize->add_control( new WP_Customize_Control(
+		$wp_customize,
+		'featured_image_banner_link_control', 
+		array(
+			'label' 			=> __( 'Featured Image Link', 'blackowned' ), 
+			'section'			=> 'featured_section',
+			'settings'			=> 'featured_image_banner_link',
+			'type'				=> 'dropdown-pages',
+			'description'	=> __( 'Choose a Page for the Link to send to', 'blackowned' )
+		)
+	) );
 
 	/**
 	 * Follow us Section
@@ -152,7 +265,7 @@ endfor;
 		array(
 		  'label' 			=> __( 'IG API', 'blackowned' ), 
 			'section'			=> 'followus_section', 
-			'setting'			=> 'ig_code', 
+			'settings'			=> 'ig_code', 
 			'type'				=> 'text',
 			'description'	=> __( 'Input Shortcode for IG', 'blackowned' )
 		)
@@ -173,11 +286,11 @@ endfor;
 	 */
 	$wp_customize->add_control( new WP_Customize_Control(
 		$wp_customize,
-		'follow_message',
+		'follow_message_controller',
 		array(
 		  'label' 			=> __( 'Follow us message', 'blackowned' ), 
 			'section'			=> 'followus_section', 
-			'setting'			=> 'follow_message', 
+			'settings'			=> 'follow_message', 
 			'type'				=> 'text',
 			'description'	=> __( 'Input follow us message for IG', 'blackowned' )
 		)
@@ -215,7 +328,7 @@ endfor;
 		array(
 		  'label' 			=> __( 'Footer Logo', 'blackowned' ), 
 			'section'			=> 'footer_section', 
-			'setting'			=> 'footer_logo', 
+			'settings'			=> 'footer_logo', 
 			'image'				=> 'image',
 			'description'	=> __( 'Select a Logo recommended size 300px x 150px ', 'blackowned' )
 		)
@@ -240,7 +353,7 @@ endfor;
 		array(
 		    'label' 		=> __( 'Copyright Text', 'blackowned' ), 
 			'section'			=> 'footer_section', 
-			'setting'			=> 'copyright', 
+			'settings'			=> 'copyright', 
 			'type'				=> 'text',
 			'description'	=> __( 'Input Copyright Information', 'blackowned' )
 		)
@@ -265,7 +378,7 @@ endfor;
 		array(
 		  'label' 			=> __( 'Design credit', 'blackowned' ), 
 			'section'			=> 'footer_section', 
-			'setting'			=> 'design_credits', 
+			'settings'			=> 'design_credits', 
 			'type'				=> 'text',
 			'description'	=> __( 'Input design credits text', 'blackowned' )
 		)
@@ -303,7 +416,7 @@ endfor;
 			array(
 			  'label' 			=> __( 'SnapChat', 'blackowned' ), 
 				'section'			=> 'social_section', 
-				'setting'			=> 'snapchat', 
+				'settings'			=> 'snapchat', 
 				'type'				=> 'text',
 				'description'	=> __( 'Input SnapChat Link', 'blackowned' )
 			)
@@ -328,7 +441,7 @@ endfor;
 			array(
 			  'label' 			=> __( 'Instagram', 'blackowned' ), 
 				'section'			=> 'social_section', 
-				'setting'			=> 'instagraml', 
+				'settings'			=> 'instagraml', 
 				'type'				=> 'text',
 				'description'	=> __( 'Input instagram Link', 'blackowned' )
 			)
@@ -353,7 +466,7 @@ endfor;
 			array(
 			  'label' 			=> __( 'Facebook', 'blackowned' ), 
 				'section'			=> 'social_section', 
-				'setting'			=> 'facebook', 
+				'settings'			=> 'facebook', 
 				'type'				=> 'text',
 				'description'	=> __( 'Input Facebook Link', 'blackowned' )
 			)
@@ -378,7 +491,7 @@ endfor;
 		array(
 		  'label' 			=> __( 'Twitter', 'blackowned' ), 
 			'section'			=> 'social_section', 
-			'setting'			=> 'twitter', 
+			'settings'			=> 'twitter', 
 			'type'				=> 'text',
 			'description'	=> __( 'Input Twitter Link', 'blackowned' )
 		)
@@ -403,7 +516,7 @@ endfor;
 		array(
 		  'label' 			=> __( 'Yelp', 'blackowned' ), 
 			'section'			=> 'social_section', 
-			'setting'			=> 'yelp', 
+			'settings'			=> 'yelp', 
 			'type'				=> 'text',
 			'description'	=> __( 'Input Yelp Link', 'blackowned' )
 		)
