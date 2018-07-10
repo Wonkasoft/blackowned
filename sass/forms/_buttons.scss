@@ -1,9 +1,4 @@
-button:not( .menu-toggle ),
-.wcmp_regi_main input.button,
-button[type="submit"],
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+.btn.btn-lg, .submit {
 	@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
 	@include prefix( transition, all .2s ease-in-out, o moz webkit );
 	background: #561223;
@@ -11,6 +6,7 @@ input[type="submit"] {
 	font-family: $font__opsanlight;
 	color: #fff;
 	padding: 8px 15px;
+	@include font-size(.8);
 	line-height: 1;
 	border: none;
 	outline: none;
@@ -19,21 +15,17 @@ input[type="submit"] {
 		background: $color__primary;
 		color: $color__link-hover;
 	}
-}
 
-.btn.btn-lg, .submit {
-	@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
-	@include prefix( transition, all .2s ease-in-out, o moz webkit );
-	background: #561223;
-	border-radius: 10px;
-	font-family: $font__opsanlight;
-	border: none;
-	outline: none;
-	color: #fff;
-	padding: 8px 15px;
-
-	&:hover, &:focus, &:active {
-		background: $color__primary;
-		color: $color__link-hover;
+	@include media-breakpoint-up( sm ) {
+		@include font-size(1);
 	}
+
+	@include media-breakpoint-up( md ) {
+		@include font-size(1.1);
+	}
+
+	@include media-breakpoint-up( lg ) {
+		@include font-size(1.25);
+	}
+
 }
