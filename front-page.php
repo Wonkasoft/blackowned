@@ -14,7 +14,7 @@ $slider_array = custom_arrays_function( 'slider-array' );
 $slide_image = ( !$slider_array ) ? get_template_directory_uri() . '/assets/img/default-slide-image.jpg': '';
 $featured_img = ( !get_theme_mod( 'featured_image_banner' ) ) ? '': get_theme_mod( 'featured_image_banner' );
 $featured_title = ( !get_theme_mod( 'featured_image_banner_text' ) ) ? '': get_theme_mod( 'featured_image_banner_text' );
-$featured_link = ( !get_theme_mod( 'featured_image_banner_link' ) ) ? '': get_theme_mod( 'featured_image_banner_link' );
+$featured_link = ( !get_theme_mod( 'featured_image_banner_link' ) ) ? '': get_permalink( get_theme_mod( 'featured_image_banner_link' ) );
 
 ?>
 <section id="primary" class="container">
