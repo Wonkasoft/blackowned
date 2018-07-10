@@ -658,6 +658,38 @@ body:not(.home) #primary {
 	}
 }
 
+.post-type-archive-vendortype {
+	.hentry {
+		width: calc(98% / 2);
+
+		.entry-summary {
+			padding-left: 15px;
+
+			&.full-width {
+				width: 100%;
+			}
+
+			&.right-half {
+				width: calc( 98% / 2 );
+				float: right;
+			}
+		}
+
+		.package-featured-list {
+			padding-left: 8px;
+		}
+
+		hr {
+			margin-top: 8px;
+			margin-bottom: 8px;
+		}
+
+		ul {
+			list-style: disc;
+		}
+	}
+}
+
 #colophon {
 	background: #000000;
 	color: #fff;

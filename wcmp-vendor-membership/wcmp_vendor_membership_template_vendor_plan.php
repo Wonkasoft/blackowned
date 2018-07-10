@@ -18,7 +18,7 @@ $args = array(
     'posts_per_page' => -1,
     'offset' => 0,
     'orderby' => 'menu_order',
-    'order' => 'ASC',
+    'order' => 'DESC',
     'meta_key' => 'is_visible_in_list',
     'meta_value' => 'Enable',
     'post_type' => 'vendortype',
@@ -28,7 +28,6 @@ $args = array(
 $posts_array = get_posts($args);
 $plan_id = get_user_meta(get_current_user_id(), 'vendor_group_id', true) ? get_user_meta(get_current_user_id(), 'vendor_group_id', true) : '';
 $recomended_count = 0;
-
 ?>
 <div id="wvm_pricr" class="wvm_plans wvm_<?php echo count($posts_array); ?>_plans wvm_style_basic">
     <div class="">

@@ -24,19 +24,24 @@ $global_settings = $WCMP_Vendor_Membership->get_global_settings();
 $current_stylesheet = get_option('stylesheet');
 $stylesheet_support = array('flatsome', 'flatsome-child', 'wyzi-business-finder', 'wyzi-business-finder-child');
 $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' : '';
+$args = array(
+    'order' => 'DESC',
+);
 ?>
 <div id="container" class="container">
     <div role="main" class="row">
         <?php
         // Start the loop.
-        while (have_posts()) : the_post();
+        while (have_posts( $args )) : the_post();
             // Include the page content template.
             ?>
             <div id="post-<?php the_ID(); ?>" <?php post_class($body_class); ?>>
-                <div class="wcmp-plan-images">
-                    <a href="<?php echo get_the_permalink(); ?>" itemprop="image" title=""><img width="300" height="300" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>" class="attachment-shop_single size-shop_single wp-post-image" alt="" title="<?php echo the_title(); ?>"></a>
-                </div> 
-                <div class="summary entry-summary">
+                <?php if ( !empty( wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ) ) ) : ?>
+                    <div class="wcmp-plan-images">
+                        <a href="<?php echo get_the_permalink(); ?>" itemprop="image" title=""><img width="300" height="300" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>" class="attachment-shop_single size-shop_single wp-post-image" alt="" title="<?php echo the_title(); ?>"></a>
+                    </div> 
+                <?php endif; ?>
+                <div class="summary entry-summary <?php $added_class = ( !empty( wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ) ) ) ? 'right-half': 'full-width'; echo $added_class; ?>">
 
                     <h1 itemprop="name" class="product_title entry-title"><?php echo get_the_title(); ?> Package:</h1>
                     <?php if (get_post_meta($post->ID, '_is_free_plan', true) != 'Enable') : ?>
