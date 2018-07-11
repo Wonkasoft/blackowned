@@ -473,7 +473,6 @@ body:not(.home) #primary {
 			
 			> .row {
 				align-items: center;
-				min-height: 85px;
 			}
 		}
 
@@ -488,104 +487,9 @@ body:not(.home) #primary {
 
 		.col-12 {
 			text-align: center;
-
-			.featured-title {
-				@include font-size(1);
-				font-family: $font__opsanbold;
-				margin: 8px 0;
-			}
 		}
 	}
 
-	@include media-breakpoint-up( sm ) {
-
-		> .row {
-
-			> .col {
-				
-				> .row {
-					min-height: 120px;
-				}
-			}
-
-			.featured-img {
-			}
-
-			.col-12 {
-
-				.featured-title {
-					@include font-size(1);
-				}
-			}
-		}
-	}
-
-	@include media-breakpoint-up( md ) {
-		> .row {
-
-			> .col {
-				
-				> .row {
-					min-height: 160px;
-				}
-			}
-
-			.featured-img {
-			}
-
-			.col-12 {
-
-				.featured-title {
-					@include font-size(1.5);
-				}
-			}
-		}
-	}
-
-	@include media-breakpoint-up( lg ) {
-
-		> .row {
-
-			> .col {
-				
-				> .row {
-					min-height: 250px;
-				}
-			}
-
-			.featured-img {
-			}
-
-			.col-12 {
-
-				.featured-title {
-					@include font-size(2.5);
-				}
-			}
-		}
-	}
-
-	@include media-breakpoint-up( xl ) {
-		
-		> .row {
-
-			> .col {
-				
-				> .row {
-				}
-			}
-
-			.featured-img {
-			}
-
-			.col-12 {
-
-				.featured-title {
-					@include font-size(3.7);
-				}
-			}
-		}
-	}
 }
 /**
  * End Featured-items
@@ -696,7 +600,38 @@ body:not(.home) #primary {
 .page-id-30 {
 	
 	.membership-package-modules {
+		@include prefix( transition, all .2s ease-in-out, o moz webkit );
+		@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .5 ), o moz webkit );
 
+		.header-area {
+			align-items: center;
+			justify-content: center;
+			height: 168px;
+			color: #fff;
+
+			h2 {
+				@include prefix( text-shadow, 1px 1px 2px rgba( #000, .8 ), o moz webkit );
+				margin: 8px auto;
+				font-family: $font__opsanbold;
+			}
+
+			span {
+				@include prefix( text-shadow, 1px 1px 2px rgba( #000, .8 ), o moz webkit );
+			}
+		}
+
+		.description-area {
+			margin: 8px 0;
+			color: #222222;
+
+			ul {
+				list-style: disc;
+			}
+
+			span {
+				color: #222222;
+			}
+		}
 	}
 }
 
