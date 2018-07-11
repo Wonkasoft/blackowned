@@ -607,7 +607,6 @@ body:not(.home) #primary {
 		@include prefix( transition, all .2s ease-in-out, o moz webkit );
 		@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .5 ), o moz webkit );
 		overflow: hidden;
-		height: 358px;
 
 		.module-link {
 			display: block;
@@ -639,7 +638,7 @@ body:not(.home) #primary {
 			color: #222222;
 			display: flex;
 			justify-content: center;
-			height: 175px;
+			height: 225px;
 
 			ul {
 				list-style: disc;
