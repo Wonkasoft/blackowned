@@ -477,10 +477,13 @@ body:not(.home) #primary {
 			}
 		}
 
-		.featured-img {
-			position: absolute;
-			max-width: 100%;
-			left: 0;
+		.featured-cta-btn {
+			display: inline-block;
+
+			.featured-img {
+				position: relative;
+				max-width: 100%;
+			}
 		}
 
 		.col-12 {
@@ -687,6 +690,13 @@ body:not(.home) #primary {
 		ul {
 			list-style: disc;
 		}
+	}
+}
+
+.page-id-30 {
+	
+	.membership-package-modules {
+
 	}
 }
 
