@@ -603,8 +603,14 @@ body:not(.home) #primary {
 		@include prefix( transition, all .2s ease-in-out, o moz webkit );
 		@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .5 ), o moz webkit );
 		overflow: hidden;
+		height: 358px;
+
+		.module-link {
+			display: block;
+		}
 
 		.header-area {
+			@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .5 ), o moz webkit );
 			align-items: center;
 			justify-content: center;
 			height: 168px;
@@ -628,6 +634,9 @@ body:not(.home) #primary {
 		.description-area {
 			margin: 8px 0;
 			color: #222222;
+			display: flex;
+			justify-content: center;
+			height: 175px;
 
 			ul {
 				list-style: disc;
@@ -639,6 +648,7 @@ body:not(.home) #primary {
 			}
 
 			span {
+				align-self: flex-end;
 				font-family: $font__opsansemibold;
 				color: #222222;
 			}
