@@ -1,6 +1,6 @@
 a {
 	@include prefix( transition, all .2s ease-in-out, webkit moz o );
-	color: $color__link;
+	color: #222222;
 
 	&:visited {
 		color: $color__link-visited;
