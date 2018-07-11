@@ -610,7 +610,6 @@ body:not(.home) #primary {
 		}
 
 		.header-area {
-			@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .5 ), o moz webkit );
 			align-items: center;
 			justify-content: center;
 			height: 168px;
