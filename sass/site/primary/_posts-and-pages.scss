@@ -580,6 +580,10 @@ body:not(.home) #primary {
 				width: calc( 98% / 2 );
 				float: right;
 			}
+
+			.yearly-price {
+				display: none;
+			}
 		}
 
 		.package-featured-list {

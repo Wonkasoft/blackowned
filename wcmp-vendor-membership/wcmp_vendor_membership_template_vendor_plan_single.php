@@ -4,8 +4,8 @@
  *
  * Override this template by copying it to yourtheme/wcmp-vendor-membership/wcmp-vendor-membership_template_vendor_plan_single.php
  *
- * @author 		dualcube
- * @package 	WCMp-Vendor-Catagorization/Templates
+ * @author      dualcube
+ * @package     WCMp-Vendor-Catagorization/Templates
  * @version     0.0.1
  */
 if (!defined('ABSPATH')) {
@@ -24,30 +24,29 @@ $global_settings = $WCMP_Vendor_Membership->get_global_settings();
 $current_stylesheet = get_option('stylesheet');
 $stylesheet_support = array('flatsome', 'flatsome-child', 'wyzi-business-finder', 'wyzi-business-finder-child');
 $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' : '';
-$args = array(
-    'order' => 'DESC',
-);
+
 ?>
 <div id="container" class="container">
     <div role="main" class="row">
         <?php
         // Start the loop.
-        while (have_posts( $args )) : the_post();
+        while (have_posts()) : the_post();
             // Include the page content template.
+            $post_id = get_the_ID();
             ?>
             <div id="post-<?php the_ID(); ?>" <?php post_class($body_class); ?>>
-                <?php if ( !empty( wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ) ) ) : ?>
+                <?php if ( !empty( wp_get_attachment_url( get_post_thumbnail_id( $post_id ) ) ) ) : ?>
                     <div class="wcmp-plan-images">
-                        <a href="<?php echo get_the_permalink(); ?>" itemprop="image" title=""><img width="300" height="300" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>" class="attachment-shop_single size-shop_single wp-post-image" alt="" title="<?php echo the_title(); ?>"></a>
+                        <a href="<?php echo get_the_permalink(); ?>" itemprop="image" title=""><img width="300" height="300" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post_id)); ?>" class="attachment-shop_single size-shop_single wp-post-image" alt="" title="<?php echo the_title(); ?>"></a>
                     </div> 
                 <?php endif; ?>
-                <div class="summary entry-summary <?php $added_class = ( !empty( wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ) ) ) ? 'right-half': 'full-width'; echo $added_class; ?>">
+                <div class="summary entry-summary <?php $added_class = ( !empty( wp_get_attachment_url( get_post_thumbnail_id( $post_id ) ) ) ) ? 'right-half': 'full-width'; echo $added_class; ?>">
 
                     <h1 itemprop="name" class="product_title entry-title"><?php echo get_the_title(); ?></h1>
-                    <?php if (get_post_meta($post->ID, '_is_free_plan', true) != 'Enable') : ?>
+                    <?php if (get_post_meta($post_id, '_is_free_plan', true) != 'Enable') : ?>
                         <p class="wcmp-plan-price">
                             <?php
-                            $_vendor_billing_field = get_post_meta($post->ID, '_vendor_billing_field', true);
+                            $_vendor_billing_field = get_post_meta($post_id, '_vendor_billing_field', true);
                             if (isset($_vendor_billing_field['_initial_payment']) && !empty($_vendor_billing_field['_initial_payment']) && $_vendor_billing_field['_initial_payment'] > 0) {
                                 echo get_woocommerce_currency_symbol();
                                 echo number_format($_vendor_billing_field['_initial_payment'], 2);
@@ -101,16 +100,17 @@ $args = array(
                                         if ( $match == $current_post . '-year' ) {
                                             $yearly = $post_meta['_vendor_billing_amt'];
                                         }
-                                        if ( strpos( $match, '-year' ) ) {
+                                        if ( strpos( $match, '-year' ) && $match === $current_post ) {
                                             $yearly = $post_meta['_vendor_billing_amt'];
                                         }
                                     }
+
                                 }
                                 
-                                if ( !$yearly ) {
-                                    echo __(' | ', 'wcmp-vendor_membership');
+                                if ( !empty( $yearly ) ) {
+                                    echo __(' <span class="yearly-price">| ', 'wcmp-vendor_membership');
 
-                                    echo get_woocommerce_currency_symbol() . number_format($yearly, 2) . '/yr.';
+                                    echo get_woocommerce_currency_symbol() . number_format($yearly, 2) . '/yr.</span>';
                                 }
                             } else {
                                 if (isset($_vendor_billing_field['_initial_payment']) && $_vendor_billing_field['_initial_payment'] > 0) {
@@ -123,7 +123,7 @@ $args = array(
                         </p>
                         <?php $payment_page_url = get_wcmp_vendor_settings('vendor_registration', 'vendor', 'general'); ?>
                         <form name="frm_subscribe_vandor_plan" method="post" action="<?php echo get_permalink($payment_page_url); ?>" >
-                            <input type="hidden" name="vendor_plan_id" value="<?php echo $post->ID; ?>" />
+                            <input type="hidden" name="vendor_plan_id" value="<?php echo $post_id; ?>" />
                             <div class="subscription-container">
 
                                 <?php
@@ -152,7 +152,7 @@ $args = array(
                                     </p>
 
                                     <?php
-                                } else if($post->ID != get_user_meta(get_current_user_id(), 'vendor_group_id', true)) {
+                                } else if($post_id != get_user_meta(get_current_user_id(), 'vendor_group_id', true)) {
                                     ?>
                                     
                                     <input type="submit" value="<?php echo $button_text; ?>" name="vendor_plan_payment" class="btn btn-lg vendor_subscribe_now" />
@@ -165,7 +165,7 @@ $args = array(
                     <div itemprop="description">
                         <?php echo get_the_content(); ?>
                     </div>
-                    <?php $_vender_featurelist = get_post_meta($post->ID, '_vender_featurelist', true); ?>
+                    <?php $_vender_featurelist = get_post_meta($post_id, '_vender_featurelist', true); ?>
                     <?php
                     if (is_array($_vender_featurelist)) : ?>
                     <h2 class="package-featured-list"><?php echo __('Features List', 'wcmp-vendor_membership'); ?></h2>
