@@ -43,7 +43,7 @@ $args = array(
                 <?php endif; ?>
                 <div class="summary entry-summary <?php $added_class = ( !empty( wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ) ) ) ? 'right-half': 'full-width'; echo $added_class; ?>">
 
-                    <h1 itemprop="name" class="product_title entry-title"><?php echo get_the_title(); ?> Package:</h1>
+                    <h1 itemprop="name" class="product_title entry-title"><?php echo get_the_title(); ?></h1>
                     <?php if (get_post_meta($post->ID, '_is_free_plan', true) != 'Enable') : ?>
                         <p class="wcmp-plan-price">
                             <?php

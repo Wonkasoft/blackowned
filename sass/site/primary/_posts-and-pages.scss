@@ -602,12 +602,17 @@ body:not(.home) #primary {
 	.membership-package-modules {
 		@include prefix( transition, all .2s ease-in-out, o moz webkit );
 		@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .5 ), o moz webkit );
+		overflow: hidden;
 
 		.header-area {
 			align-items: center;
 			justify-content: center;
 			height: 168px;
 			color: #fff;
+
+			> .col-12 {
+				bottom: 15px;
+			}
 
 			h2 {
 				@include prefix( text-shadow, 1px 1px 2px rgba( #000, .8 ), o moz webkit );
@@ -626,9 +631,15 @@ body:not(.home) #primary {
 
 			ul {
 				list-style: disc;
+				padding-left: 20px;
+
+				li {
+					text-align: left;
+				}
 			}
 
 			span {
+				font-family: $font__opsansemibold;
 				color: #222222;
 			}
 		}
