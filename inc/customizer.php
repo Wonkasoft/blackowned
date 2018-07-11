@@ -187,31 +187,6 @@ endfor;
 	 * Featured Image Link Setting
 	 * @since 1.0.0 [Featured Image Link Setings]
 	 */
-	$wp_customize->add_setting( 'featured_image_banner_text', array(
-		'defualt'		=> '',
-		'transport'	=> 'refresh'
-		) );
-
-	/**
-	 * Controller for Featured Image Link
-	 * @since 1.0.0 [Control for Featured Image Link]
-	 */
-	$wp_customize->add_control( new WP_Customize_Control(
-		$wp_customize,
-		'featured_image_banner_text_control', 
-		array(
-			'label' 			=> __( 'Featured Image Text', 'blackowned' ), 
-			'section'			=> 'featured_section',
-			'settings'			=> 'featured_image_banner_text',
-			'type'				=> 'text',
-			'description'	=> __( 'This will be overlayed up the banner', 'blackowned' )
-		)
-	) );
-
-	/**
-	 * Featured Image Link Setting
-	 * @since 1.0.0 [Featured Image Link Setings]
-	 */
 	$wp_customize->add_setting( 'featured_image_banner_link', array(
 		'defualt'		=> '',
 		'transport'	=> 'refresh'

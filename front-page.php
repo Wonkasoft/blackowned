@@ -13,7 +13,6 @@ $woo_cats = get_categories( array ('taxonomy' => 'product_cat','orderby' => 'nam
 $slider_array = custom_arrays_function( 'slider-array' );
 $slide_image = ( !$slider_array ) ? get_template_directory_uri() . '/assets/img/default-slide-image.jpg': '';
 $featured_img = ( !get_theme_mod( 'featured_image_banner' ) ) ? '': get_theme_mod( 'featured_image_banner' );
-$featured_title = ( !get_theme_mod( 'featured_image_banner_text' ) ) ? '': get_theme_mod( 'featured_image_banner_text' );
 $featured_link = ( !get_theme_mod( 'featured_image_banner_link' ) ) ? '': get_permalink( get_theme_mod( 'featured_image_banner_link' ) );
 
 ?>
@@ -102,13 +101,9 @@ if ( !empty( $featured_img ) ) : ?>
 <section id="featured-banner-section" class="container">
 	<div class="row">
 		<div class="col">
-			<img src="<?php echo $featured_img; ?>" class="featured-img" />
-			<div class="row">
-			<div class="col-12">
-				<h1 class="featured-title"><?php echo $featured_title; ?></h1>
-				<a href="<?php echo $featured_link; ?>" class="featured-cta-btn btn btn-lg">Join Now</a>
-			</div><!-- .col-12 -->
-			</div><!-- .row -->
+			<a href="<?php echo $featured_link; ?>" class="featured-cta-btn">
+				<img src="<?php echo $featured_img; ?>" class="featured-img" />
+			</a>
 		</div><!-- .col -->
 	</div><!-- .row -->
 </section><!-- #featured-banner-section -->
