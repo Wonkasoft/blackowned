@@ -74,7 +74,7 @@
 							<?php 
 							if ( WC()->cart->get_cart_contents_count() > 0 ) :
 								?>
-							<span class="badge badge-dark header-cart-count">
+							<span class="badge badge-dark">
 							<?php
 							echo WC()->cart->get_cart_contents_count(); ?>
 							</span>
