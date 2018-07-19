@@ -155,7 +155,7 @@ function blackowned_scripts() {
 	 */
 	wp_enqueue_script( 'bootstrapjs', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array( 'jquery' ), 'all', true );
 
-	wp_enqueue_script( 'bootstrapjs-toggle', 'https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js', array( 'bootstrap-toggle' ), 'all', true );
+	wp_enqueue_script( 'bootstrapjs-toggle', 'https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js', array(), 'all', true );
 	
 	wp_enqueue_script( 'blackowned-navigation', str_replace( array( 'http:', 'https:' ), '', get_template_directory_uri() . '/js/navigation.js' ), array(), '20151215', true );
 
