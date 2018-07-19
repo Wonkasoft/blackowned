@@ -24,13 +24,12 @@
   		var sell_page = document.querySelector( '.page-id-30' );
   		sell_page.onload = function() {
 	  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
-	  		console.log(switch_btn);
-	  		package_toggle( switch_btn );
+	  		switch_btn.addEventListener( 'change', package_toggle( switch_btn ) );
   		};
   	}
 
   	function package_toggle( switch_btn ) {
-  		console.log(switch_btn);
+  		console.log( switch_btn.checked );
   	}
 
 	function wonka_slider_setup( current_slider ) {
