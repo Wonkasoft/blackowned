@@ -33,7 +33,7 @@
 		package_modules.forEach( function ( item, index ) {
 			var link = item.querySelector( 'a' ).href;
 			if ( link.includes( '-yearly' ) ) {
-				link.replace( '-yearly', '' );
+				link = link.replace( '-yearly', '' );
 				console.log(link + ' checking');
 			}
 			if ( switch_btn.checked ) {
