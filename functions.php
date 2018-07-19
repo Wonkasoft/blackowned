@@ -144,6 +144,8 @@ function blackowned_scripts() {
 	 */
 	wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' );
 
+	wp_enqueue_style( 'bootstrap-toggle', 'https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css' );
+
 	wp_enqueue_style( 'fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
 
 	wp_enqueue_style( 'blackowned-style', get_stylesheet_uri() );
@@ -152,6 +154,8 @@ function blackowned_scripts() {
 	 * For enqueues of scripts
 	 */
 	wp_enqueue_script( 'bootstrapjs', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array( 'jquery' ), 'all', true );
+
+	wp_enqueue_script( 'bootstrapjs-toggle', 'https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js', array(), 'all', true );
 	
 	wp_enqueue_script( 'blackowned-navigation', str_replace( array( 'http:', 'https:' ), '', get_template_directory_uri() . '/js/navigation.js' ), array(), '20151215', true );
 
