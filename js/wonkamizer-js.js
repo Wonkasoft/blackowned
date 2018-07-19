@@ -20,10 +20,13 @@
 	    }
   	}
 
-  	if ( document.querySelector( '.page-id-30' ) && document.querySelector( '.toggle input[type=checkbox]' ) ) {
-  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
-  		console.log(switch_btn);
-  		package_toggle( switch_btn );
+  	if ( document.querySelector( '.page-id-30' ) ) {
+  		var sell_page = document.querySelector( '.page-id-30' );
+  		sell_page.onload = function() {
+	  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
+	  		console.log(switch_btn);
+	  		package_toggle( switch_btn );
+  		};
   	}
 
   	function package_toggle( switch_btn ) {
