@@ -29,12 +29,21 @@
   	}
 
   	function package_toggle( switch_btn ) {
-  		console.log( switch_btn.checked );
-  		if ( switch_btn.checked ) {
-  			document.querySelectorAll( '.pricing-window' ).forEach( function( item, index ) { item.classList.add( 'yearly-pricing' ); });
-  		} else if ( document.querySelector( '.yearly-pricing' ) ) {
-  			document.querySelectorAll( '.pricing-window' ).forEach( function( item, index ) { item.classList.remove( 'yearly-pricing' ); });
-  		}
+		var package_modules = document.querySelectorAll( '.membership-package-modules' );
+		package_modules.forEach( function ( item, index ) {
+			var link;
+			var check = item.querySelector( 'a' ).href;
+			if ( check.includes( '-yearly' ) === false ) {
+				link = item.querySelector( 'a' ).href;
+			}
+			if ( switch_btn.checked ) {
+				item.querySelector( 'a' ).href = link + '-yearly';
+				item.querySelector( '.pricing-window' ).classList.add( 'yearly-pricing' );
+			} else if ( item.querySelector( '.yearly-pricing' ) ) {
+				item.querySelector( 'a' ).href = link;
+				item.querySelector( '.pricing-window' ).classList.remove( 'yearly-pricing' );
+			}
+		});
   	}
 
 	function wonka_slider_setup( current_slider ) {
