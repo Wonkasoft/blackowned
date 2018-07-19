@@ -31,10 +31,9 @@
   	function package_toggle( switch_btn ) {
 		var package_modules = document.querySelectorAll( '.membership-package-modules' );
 		package_modules.forEach( function ( item, index ) {
-			var link = item.querySelector( 'a' ).href;
+			var link = item.querySelector( 'a' ).href.replace( 'https://blackownedus.com', '' );
 			if ( link.includes( '-yearly' ) ) {
 				link = link.replace( '-yearly', '' );
-				console.log(link + ' checking');
 			}
 			if ( switch_btn.checked ) {
 				item.querySelector( 'a' ).href = link + '-yearly';
