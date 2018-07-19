@@ -6,7 +6,7 @@
 
 	search_btn.onclick = function(e) { search_bar_toggle(e); };
 
-	if ( document.querySelector( '.home') ) {
+	if ( document.querySelector( '.home' ) ) {
 	    if ( document.querySelectorAll( '.wonka-slider-images') ) { 
 	    	var wonka_sliders = document.querySelectorAll( '.wonka-slider-images'),
 	    	wonka_slider_controls = document.querySelectorAll( '.control-btn' ),
@@ -21,7 +21,7 @@
   	}
 
   	if ( document.querySelector( '.page-id-30' ) ) {
-  		var switch_btn = document.querySelector( '.toggle.btn>input' );
+  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
   		console.log(switch_btn);
   		package_toggle( switch_btn );
   	}
