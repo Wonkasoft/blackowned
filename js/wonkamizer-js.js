@@ -11,7 +11,6 @@
 	    	var wonka_sliders = document.querySelectorAll( '.wonka-slider-images'),
 	    	wonka_slider_controls = document.querySelectorAll( '.control-btn' ),
 	    	wonka_slider_indicators = document.querySelectorAll( '.slider-indicators li' );
-
 	    	wonka_slider_indicators.forEach( control_listener );
 	    	wonka_sliders.forEach( function( element ) { wonka_slider_setup( element ); } );
 	    	wonka_slider_controls.forEach( control_listener );
@@ -24,7 +23,7 @@
   		var sell_page = document.querySelector( '.page-id-30' );
   		sell_page.onload = function() {
 	  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
-	  		switch_btn.addEventListener( 'change', package_toggle( switch_btn ) );
+	  		switch_btn.addEventListener( 'change', function() { package_toggle( switch_btn ); });
   		};
   	}
 
