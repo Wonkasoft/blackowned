@@ -30,6 +30,11 @@
 
   	function package_toggle( switch_btn ) {
   		console.log( switch_btn.checked );
+  		if ( switch_btn.checked ) {
+  			document.querySelectorAll( '.pricing-window' ).forEach( function( item, index ) { item.classList.add( 'yearly-pricing' ); });
+  		} else if ( document.querySelector( '.yearly-pricing' ) ) {
+  			document.querySelectorAll( '.pricing-window' ).forEach( function( item, index ) { item.classList.remove( 'yearly-pricing' ); });
+  		}
   	}
 
 	function wonka_slider_setup( current_slider ) {
