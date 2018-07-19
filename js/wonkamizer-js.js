@@ -32,11 +32,11 @@
 		var package_modules = document.querySelectorAll( '.membership-package-modules' );
 		package_modules.forEach( function ( item, index ) {
 			var link = item.querySelector( 'a' ).href.replace( 'https://blackownedus.com', '' );
-			if ( link.includes( '-yearly' ) ) {
-				link = link.replace( '-yearly', '' );
+			if ( link.includes( '-year' ) ) {
+				link = link.replace( '-year', '' );
 			}
 			if ( switch_btn.checked ) {
-				item.querySelector( 'a' ).href = link + '-yearly';
+				item.querySelector( 'a' ).href = link + '-year';
 				item.querySelector( '.pricing-window' ).classList.add( 'yearly-pricing' );
 			} else if ( item.querySelector( '.yearly-pricing' ) ) {
 				item.querySelector( 'a' ).href = link;
