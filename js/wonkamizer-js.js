@@ -20,7 +20,7 @@
 	    }
   	}
 
-  	if ( document.querySelector( '.page-id-30' ) ) {
+  	if ( document.querySelector( '.page-id-30' ) && document.querySelector( '.toggle input[type=checkbox]' ) ) {
   		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
   		console.log(switch_btn);
   		package_toggle( switch_btn );
