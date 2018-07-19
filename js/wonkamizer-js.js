@@ -24,7 +24,7 @@
   		sell_page.onload = function() {
   			var toggler = document.querySelector( '.toggle' );
 	  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
-	  		toggler.addEventListener( 'change', function() { console.log(switch_btn.checked); package_toggle( switch_btn ); });
+	  		toggler.addEventListener( 'click', function() { console.log(switch_btn.checked); package_toggle( switch_btn ); });
   		};
   	}
 
