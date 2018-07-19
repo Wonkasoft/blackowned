@@ -31,10 +31,9 @@
   	function package_toggle( switch_btn ) {
 		var package_modules = document.querySelectorAll( '.membership-package-modules' );
 		package_modules.forEach( function ( item, index ) {
-			var link;
-			var check = item.querySelector( 'a' ).href;
-			if ( check.includes( '-yearly' ) === false ) {
-				link = item.querySelector( 'a' ).href;
+			var link = item.querySelector( 'a' ).href;
+			if ( link.includes( '-yearly' ) ) {
+				link.replace( '-yearly', '' );
 				console.log(link);
 			}
 			if ( switch_btn.checked ) {
