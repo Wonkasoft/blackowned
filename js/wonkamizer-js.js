@@ -35,6 +35,7 @@
 			var check = item.querySelector( 'a' ).href;
 			if ( check.includes( '-yearly' ) === false ) {
 				link = item.querySelector( 'a' ).href;
+				console.log(link);
 			}
 			if ( switch_btn.checked ) {
 				item.querySelector( 'a' ).href = link + '-yearly';
