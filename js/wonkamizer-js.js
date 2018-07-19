@@ -22,8 +22,9 @@
   	if ( document.querySelector( '.page-id-30' ) ) {
   		var sell_page = document.querySelector( '.page-id-30' );
   		sell_page.onload = function() {
+  			var toggler = document.querySelector( '.toggle' );
 	  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
-	  		switch_btn.addEventListener( 'change', function() { console.log(switch_btn.checked); package_toggle( switch_btn ); });
+	  		toggler.addEventListener( 'change', function() { console.log(switch_btn.checked); package_toggle( switch_btn ); });
   		};
   	}
 
