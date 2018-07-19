@@ -22,6 +22,7 @@
 
   	if ( document.querySelector( '.page-id-30' ) ) {
   		var switch_btn = document.querySelector( '.toggle.btn>input' );
+  		console.log(switch_btn);
   		package_toggle( switch_btn );
   	}
 
