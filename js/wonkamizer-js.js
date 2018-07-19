@@ -22,7 +22,7 @@
   	if ( document.querySelector( '.page-id-30' ) ) {
   		var sell_page = document.querySelector( '.page-id-30' );
   		sell_page.onload = function() {
-  			var toggler = document.querySelector( '.toggle' );
+  			var toggler = document.querySelector( '.toggle-group' );
 	  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
 	  		toggler.addEventListener( 'click', function() { console.log(switch_btn.checked); package_toggle( switch_btn ); });
   		};
