@@ -75,46 +75,6 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                                         $billing_amt += $_vendor_billing_field['_vendor_billing_tax_amt'];
                                     }
                                 }
-                                // WP_Query arguments
-                                $args = array (
-                                'post_type'              => array( 'vendortype' ),
-                                'post_status'            => array( 'publish' ),
-                                'nopaging'               => true,
-                                'order'                  => 'DESC',
-                                'orderby'                => 'menu_order',
-                                );
-
-                                // The Query
-                                $vendors = new WP_Query( $args );
-                                $match = '';
-                                $post_meta = '';
-                                $yearly;
-                                $cycle = '';
-                                $current_post = get_post_field( 'post_name', get_post() );
-                                $id = 0;
-                                
-                                // The Loop
-                                if ( $vendors->have_posts() ) {
-                                    while ( $vendors->have_posts() ) {
-                                    $vendors->the_post();
-                                    $match = get_post_field( 'post_name', get_post() );
-                                    $id = get_the_ID();
-                                    $post_meta = get_post_meta($id, '_vendor_billing_field', true);
-                                        if ( $match == $current_post . '-year' ) {
-                                            $yearly = $post_meta['_vendor_billing_amt'];
-                                        }
-                                        if ( strpos( $match, '-year' ) && $match === $current_post ) {
-                                            $yearly = $post_meta['_vendor_billing_amt'];
-                                        }
-                                    }
-
-                                }
-                                
-                                if ( !empty( $yearly ) && $_vendor_billing_field['_vendor_billing_amt_cycle'] !== 'Year' ) {
-                                    echo __(' <span class="yearly-price">| ', 'wcmp-vendor_membership');
-
-                                    echo get_woocommerce_currency_symbol() . number_format($yearly, 2) . '/yr.</span>';
-                                }
                             } else {
                                 if (isset($_vendor_billing_field['_initial_payment']) && $_vendor_billing_field['_initial_payment'] > 0) {
                                     echo __(' One Time', 'wcmp-vendor_membership');
