@@ -25,7 +25,7 @@
   			var toggler = document.querySelector( '.toggle-group' );
 	  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
 	  		package_toggle( switch_btn );
-	  		toggler.addEventListener( 'click', function() { package_toggle( switch_btn ); });
+	  		switch_btn.addEventListener( 'change', function() { package_toggle( switch_btn ); });
   		};
   	}
 
