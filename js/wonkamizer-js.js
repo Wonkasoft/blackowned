@@ -45,7 +45,7 @@
 					item.querySelector( 'a' ).href = link;
 					item.querySelector( '.pricing-window' ).classList.remove( 'yearly-pricing' );
 				}
-			}, 250);
+			}, 125);
 		});
   	}
 

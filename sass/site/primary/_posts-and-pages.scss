@@ -674,6 +674,10 @@ span.example-url {
 				}
 			}
 
+			.align-btn {
+				align-self: flex-end;
+			}
+
 			span {
 				align-self: flex-end;
 				font-family: $font__opsansemibold;
