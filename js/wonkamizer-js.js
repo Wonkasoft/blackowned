@@ -37,14 +37,15 @@
 				link = link.replace( '-year', '' );
 			}
 			console.log(switch_btn.checked);
-			setTimeout( function() { console.log(switch_btn.checked); }, 1000);
-			if ( switch_btn.checked ) {
-				item.querySelector( 'a' ).href = link + '-year';
-				item.querySelector( '.pricing-window' ).classList.add( 'yearly-pricing' );
-			} else if ( item.querySelector( '.yearly-pricing' ) ) {
-				item.querySelector( 'a' ).href = link;
-				item.querySelector( '.pricing-window' ).classList.remove( 'yearly-pricing' );
-			}
+			setTimeout( function() { 
+				if ( switch_btn.checked === false ) {
+					item.querySelector( 'a' ).href = link + '-year';
+					item.querySelector( '.pricing-window' ).classList.add( 'yearly-pricing' );
+				} else if ( item.querySelector( '.yearly-pricing' ) ) {
+					item.querySelector( 'a' ).href = link;
+					item.querySelector( '.pricing-window' ).classList.remove( 'yearly-pricing' );
+				}
+			}, 1000);
 		});
   	}
 
