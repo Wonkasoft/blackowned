@@ -43,8 +43,6 @@
 #masthead {
 	position: relative;
 	height: 140px;
-	background: url('./assets/img/header-bg.jpg');
-	background-position: center top;
 	z-index: 100;
 	border-bottom: 1px solid rgba( #000, .6 );
 	@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .5 ), o moz webkit );
@@ -513,6 +511,10 @@ body:not(.home) #primary {
 	@include media-breakpoint-up( xl ) {
 		padding-bottom: 360px;
 	}
+}
+
+span.example-url {
+	font-size: 12px;
 }
 
 .single-vendortype {

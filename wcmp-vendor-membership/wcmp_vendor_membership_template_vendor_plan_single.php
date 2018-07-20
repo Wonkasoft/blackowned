@@ -90,6 +90,7 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                                 $cycle = '';
                                 $current_post = get_post_field( 'post_name', get_post() );
                                 $id = 0;
+                                var_dump($post);
                                 // The Loop
                                 if ( $vendors->have_posts() ) {
                                     while ( $vendors->have_posts() ) {
@@ -106,8 +107,9 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                                     }
 
                                 }
+                                var_dump($post);
                                 
-                                if ( !empty( $yearly ) ) {
+                                if ( !empty( $yearly ) && $_vendor_billing_field['_vendor_billing_amt_cycle'] !== 'Year' ) {
                                     echo __(' <span class="yearly-price">| ', 'wcmp-vendor_membership');
 
                                     echo get_woocommerce_currency_symbol() . number_format($yearly, 2) . '/yr.</span>';

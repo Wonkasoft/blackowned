@@ -21,10 +21,12 @@
 </head>
 
 <body <?php body_class(); ?>>
+	<?php $header_image = ( get_header_image() ) ? get_header_image(): get_theme_support( 'custom-header' )[0]['default-image']; ?>
+	
 	<div id="page" class="site">
 		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'blackowned' ); ?></a>
 
-		<header id="masthead" class="site-header">
+		<header id="masthead" class="site-header" style="background: url('<?php echo $header_image; ?>'); background-position: center top; background-size: cover;">
 			<div class="container menu-bar">
 				<div class="row">
 					<div class="col-md-2">
