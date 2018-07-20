@@ -36,6 +36,7 @@
 			if ( link.includes( '-year' ) ) {
 				link = link.replace( '-year', '' );
 			}
+			console.log(switch_btn.checked);
 			if ( switch_btn.checked ) {
 				item.querySelector( 'a' ).href = link + '-year';
 				item.querySelector( '.pricing-window' ).classList.add( 'yearly-pricing' );
