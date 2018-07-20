@@ -21,8 +21,8 @@
   "homepage": "https://github.com/Wonkasoft/blackowned#readme",
   "devDependencies": {
     "browser-sync": "^2.24.5",
-    "fs-extra": "^6.0.1",
-    "gulp": "github:gulpjs/gulp#4.0",
+    "fs-extra": "^7.0.0",
+    "gulp": "^4.0.0",
     "gulp-clean-css": "^3.9.0",
     "gulp-cli": "^2.0.1",
     "gulp-concat": "^2.6.1",
@@ -41,6 +41,5 @@
     "tunnel-agent": "^0.6.0",
     "update": "^0.7.4"
   },
-  "siteName": "blackowned.us",
-  "dependencies": {}
+  "siteName": "blackowned.us"
 }
