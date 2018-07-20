@@ -29,10 +29,12 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
 <div id="container" class="container">
     <div role="main" class="row">
         <?php
+
         // Start the loop.
         while (have_posts()) : the_post();
             // Include the page content template.
             $post_id = get_the_ID();
+
             ?>
             <div id="post-<?php the_ID(); ?>" <?php post_class($body_class); ?>>
                 <?php if ( !empty( wp_get_attachment_url( get_post_thumbnail_id( $post_id ) ) ) ) : ?>
@@ -78,7 +80,7 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                                 'post_type'              => array( 'vendortype' ),
                                 'post_status'            => array( 'publish' ),
                                 'nopaging'               => true,
-                                'order'                  => 'ASC',
+                                'order'                  => 'DESC',
                                 'orderby'                => 'menu_order',
                                 );
 
@@ -90,7 +92,7 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                                 $cycle = '';
                                 $current_post = get_post_field( 'post_name', get_post() );
                                 $id = 0;
-                                var_dump($post);
+                                
                                 // The Loop
                                 if ( $vendors->have_posts() ) {
                                     while ( $vendors->have_posts() ) {
@@ -107,7 +109,6 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                                     }
 
                                 }
-                                var_dump($post);
                                 
                                 if ( !empty( $yearly ) && $_vendor_billing_field['_vendor_billing_amt_cycle'] !== 'Year' ) {
                                     echo __(' <span class="yearly-price">| ', 'wcmp-vendor_membership');
@@ -165,27 +166,26 @@ $body_class = in_array($current_stylesheet, $stylesheet_support) ? 'container' :
                     
                 </div>
                     <div itemprop="description">
-                        <?php echo get_the_content(); ?>
+                    <h2 class="package-featured-list"><?php echo __('Features List', 'wcmp-vendor_membership'); ?></h2>
+                    <hr />
+
+                    <?php echo get_post($post_id, 'OBJECT')->post_content; ?>
                     </div>
                     <?php $_vender_featurelist = get_post_meta($post_id, '_vender_featurelist', true); ?>
                     <?php
                     if (is_array($_vender_featurelist)) : ?>
-                    <h2 class="package-featured-list"><?php echo __('Features List', 'wcmp-vendor_membership'); ?></h2>
-                    <hr />
                     <ul>
                         <?php foreach ($_vender_featurelist as $flist) :
                                 ?>
                                 <li><?php echo $flist; ?></li>
-                                <?php
-                            endforeach; ?>
+                        <?php endforeach; ?>
                     </ul>
                     <?php endif; ?>
             </div>
 
-            <?php
+        <?php
         // End the loop.
-        endwhile;
-        ?>
+        endwhile; ?>
     </div>
 </div>
 
