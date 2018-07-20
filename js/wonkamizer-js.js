@@ -41,9 +41,11 @@
 				if ( switch_btn.checked === false ) {
 					item.querySelector( 'a' ).href = link + '-year';
 					item.querySelector( '.pricing-window' ).classList.add( 'yearly-pricing' );
-				} else if ( item.querySelector( '.yearly-pricing' ) ) {
+				} else if ( switch_btn.checked ) {
 					item.querySelector( 'a' ).href = link;
-					item.querySelector( '.pricing-window' ).classList.remove( 'yearly-pricing' );
+					if ( item.querySelector( '.yearly-pricing' ) ) {
+						item.querySelector( '.pricing-window' ).classList.remove( 'yearly-pricing' );
+					}
 				}
 			}, 125);
 		});
