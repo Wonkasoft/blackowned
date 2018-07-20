@@ -528,25 +528,28 @@ span.example-url {
 		text-align: center;
 
 		.entry-title {
-			@include font-size(4.5);
+			@include font-size(2);
 			text-transform: uppercase;
 			font-family: $font__opsanbold;
 			margin: 0;
 		}
 
-		.entry-summary {
-			float: none;
-			width: 85%;
-			padding: 15px;
-			margin: 1.5em auto 0;
-			border: 6px solid #222222;
+		.summary {
 
-			p {
-				margin-bottom: 1rem;
-			}
+			&.entry-summary {
+				float: none;
+				width: 85%;
+				padding: 15px;
+				margin: 1.5em auto 0;
+				border: 6px solid #222222;
 
-			p.wcmp-plan-price {
-				@include font-size(3.5);
+				p {
+					margin-bottom: 1rem;
+				}
+
+				p.wcmp-plan-price {
+					@include font-size(1.5);
+				}
 			}
 		}
 
@@ -563,6 +566,26 @@ span.example-url {
 		.package-featured-list ~ hr {
 			margin: .5rem auto;
 			width: 60%;
+		}
+	}
+
+	@include media-breakpoint-up( sm ) {
+		.hentry {
+
+			.entry-title {
+				@include font-size(4.5);
+			}
+
+			.summary {
+
+				&.entry-summary {
+					margin: 1.5em auto 0;
+
+					p.wcmp-plan-price {
+						@include font-size(3.5);
+					}
+				}
+			}
 		}
 	}
 }
