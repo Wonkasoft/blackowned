@@ -627,6 +627,12 @@ span.example-url {
 }
 
 .page-id-30 {
+
+	.toggle.ios .toggle-handle {
+		background: #fff;
+	    width: 36px;
+	    z-index: 5;
+	}
 	
 	.membership-package-modules {
 		@include prefix( transition, all .2s ease-in-out, o moz webkit );
@@ -676,7 +682,7 @@ span.example-url {
 
 			.align-btn {
 				align-self: flex-end;
-				
+
 			}
 
 			span {

@@ -36,7 +36,6 @@
 			if ( link.includes( '-year' ) ) {
 				link = link.replace( '-year', '' );
 			}
-			console.log(switch_btn.checked);
 			setTimeout( function() { 
 				if ( switch_btn.checked === false ) {
 					item.querySelector( 'a' ).href = link + '-year';
