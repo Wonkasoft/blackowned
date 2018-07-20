@@ -703,6 +703,7 @@ span.example-url {
 		margin: 15px;
 		width: calc( 91% / 3 );
 		float: left;
+		@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .8 ), webkit moz o );
 	}
 }
 
