@@ -628,6 +628,10 @@ span.example-url {
 
 .page-id-30 {
 
+	.toggle {
+		border-radius: 20px;
+	}
+
 	.toggle.ios .toggle-handle {
 		border-radius: 20px;
 		background: #fff;
@@ -635,11 +639,11 @@ span.example-url {
 	    z-index: 5;
 	}
 
-	.toggle-on {
+	.toggle-on, .toggle-on:active, .toggle-on:focus {
 		background-color: #605C21;
 	}
 
-	.toggle-off {
+	.toggle-off, .toggle-off:active, .toggle-off:focus {
 		background-color: #1E7F9F;
 	}
 	
