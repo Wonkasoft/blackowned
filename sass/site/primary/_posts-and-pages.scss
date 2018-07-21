@@ -629,9 +629,18 @@ span.example-url {
 .page-id-30 {
 
 	.toggle.ios .toggle-handle {
+		border-radius: 20px;
 		background: #fff;
 	    width: 36px;
 	    z-index: 5;
+	}
+
+	.toggle-on {
+		background-color: #605C21;
+	}
+
+	.toggle-off {
+		background-color: #1E7F9F;
 	}
 	
 	.membership-package-modules {
@@ -691,14 +700,6 @@ span.example-url {
 				color: #222222;
 			}
 		}
-	}
-
-	.toggle-on.btn {
-		padding-right: 12px;
-	}
-
-	.toggle-off.btn {
-		padding-left: 12px;
 	}
 
 	.pricing-window {
