@@ -438,9 +438,11 @@ body:not(.home) #primary {
 
  		.img-container {
  			@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
+ 			@include prefix( transition, all .2s ease-in-out, o moz webkit );
  			overflow: hidden;
- 			max-width: 200px;
- 			max-height: 200px;
+ 			margin: 0 auto;
+ 			max-width: 140px;
+ 			max-height: 140px;
  			border-radius: 50%;
  		}
 
@@ -455,6 +457,11 @@ body:not(.home) #primary {
  		.featured-module {
  			@include value_prefix( width, calc( 93% / 5 ), moz webkit );
 	 		margin: 8px calc( 3% / 5 );
+
+	 		.img-container {
+	 			max-width: 200px;
+	 			max-height: 200px;
+	 		}
  		}
  	}
 }
