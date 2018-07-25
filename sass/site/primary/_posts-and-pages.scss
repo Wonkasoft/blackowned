@@ -440,6 +440,8 @@ body:not(.home) #primary {
  			@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
  			@include prefix( transition, all .2s ease-in-out, o moz webkit );
  			overflow: hidden;
+ 			display: flex;
+ 			align-items: center;
  			margin: 0 auto;
  			max-width: 140px;
  			max-height: 140px;
