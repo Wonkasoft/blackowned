@@ -10,6 +10,14 @@
  */
 
 get_header();
+global $WCMP_Vendor_Membership, $WCMp;
+$current_user = wp_get_current_user();
+if (function_exists('is_user_wcmp_vendor')) {
+    $is_vendor = is_user_wcmp_vendor($current_user);
+} elseif (function_exists('is_user_wcmp_pending_vendor')) {
+    $is_pending_vendor = is_user_wcmp_pending_vendor($current_user);
+}
+$global_settings = $WCMP_Vendor_Membership->get_global_settings();
 ?>
 
 	<div id="primary" class="content-area">
