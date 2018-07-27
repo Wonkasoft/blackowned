@@ -1,6 +1,6 @@
 <?php
 /**
- * Template: why-sell-with-us
+ * Template Name: why-sell-with-us
  *
  * This is the template that displays why-sell-with-us template.
  *
