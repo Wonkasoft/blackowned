@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all pages
+ * Template: why-sell-with-us
  *
  * This is the template that displays why-sell-with-us template.
  *
