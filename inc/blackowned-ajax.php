@@ -66,9 +66,8 @@ function vendor_package_select() {
 
 	$output = array_push( $output, array( 'btn_text' => $btn_text ) );
 	$output = json_encode( $output );
-	$output = json_decode( $output );
 
-	return $output;
+	return wp_send_json_success($output);
 }
 
 add_action( 'wp_ajax_packages_get', 'vendor_package_select' );

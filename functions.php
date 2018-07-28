@@ -169,11 +169,12 @@ function blackowned_scripts() {
 
 	wp_enqueue_script( 'blackowned-js', str_replace( array( 'http:', 'https:' ), '', get_template_directory_uri() . '/assets/js/blackowned.min.js' ), array( 'jquery' ), 'all', true );
 
-	if ( get_post()->post_name == 'why-sell-with-us' ) {
+	// if ( get_post()->post_name == 'why-sell-with-us' ) {
 		wp_localize_script( 'blackowned-js', 'BO_AJAX', array(
 			'security'	=>	wp_create_nonce( 'bo-security' ),
+			'ajaxurl'	=>	admin_url( 'admin-ajax.php' ),
 		) );
-	}
+	// }
 	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

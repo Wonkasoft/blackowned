@@ -21,19 +21,18 @@
 
   	if ( document.querySelector( '.page-id-30' ) ) {
   		var sell_page = document.querySelector( '.page-id-30' );
-  		var response_obj, data, json_data, package_name, package_name_send, do_ajax = new XMLHttpRequest();
+  		var response_obj, data, json_data, package_name, package_name_send, do_ajax = new XMLHttpRequest( arguments );
   		sell_page.onload = function() {
   			var toggler = document.querySelector( '.toggle-group' );
 	  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
-	  		data = { 'action' : 'packages_get', 'security' : BO_AJAX.security };
-			do_ajax.open( "POST", wpAjaxUrl, false);
-			do_ajax.setRequestHeader( "Content-type", "application/json" );
+	  		data = "action=packages_get&security=" + BO_AJAX.security;
+			do_ajax.open( "POST", BO_AJAX.ajaxurl + '?' + data, true);
 			do_ajax.onreadystatechange = function() {
 				if ( this.readyState == 4 && this.status == 200 ) {
-					console.log(this.responseText);
+					console.log( this.responseText );
 				}
 			};
-			do_ajax.send( data );
+			do_ajax.send();
 	  		package_toggle( switch_btn );
 	  		toggler.addEventListener( 'click', function() { package_toggle( switch_btn ); });
   		};
