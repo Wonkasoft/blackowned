@@ -25,7 +25,7 @@
   		sell_page.onload = function() {
   			var toggler = document.querySelector( '.toggle-group' );
 	  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
-	  		data = { "action":"packages_get", "security": BO_AJAX.security };
+	  		data = { 'action' : 'packages_get', 'security' : BO_AJAX.security };
 			do_ajax.open( "POST", wpAjaxUrl, true);
 			do_ajax.setRequestHeader( "Content-type", "application/json" );
 			do_ajax.onreadystatechange = function() {
