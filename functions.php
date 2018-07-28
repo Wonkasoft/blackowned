@@ -167,7 +167,7 @@ function blackowned_scripts() {
 
 	wp_enqueue_script( 'blackowned-skip-link-focus-fix', str_replace( array( 'http:', 'https:' ), '', get_template_directory_uri() . '/js/skip-link-focus-fix.js' ), array(), '20151215', true );
 
-	wp_enqueue_script( 'blackowned-js', str_replace( array( 'http:', 'https:' ), '', get_template_directory_uri() . '/assets/js/blackowned.min.js' ), array(), 'all', true );
+	wp_enqueue_script( 'blackowned-js', str_replace( array( 'http:', 'https:' ), '', get_template_directory_uri() . '/assets/js/blackowned.min.js' ), array( 'jquery' ), 'all', true );
 
 	if ( get_post()->post_name == 'why-sell-with-us' ) {
 		wp_localize_script( 'blackowned-js', 'BO_AJAX', array(
