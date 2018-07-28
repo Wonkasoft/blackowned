@@ -44,7 +44,7 @@
 					}
 				}
 
-				data = {"action":"packages_get", "security": OB_AJAX.security, "package": item.querySelector( 'h2' ).innerText.toLowerCase() };
+				data = {"action":"packages_get", "security": BO_AJAX.security, "package": item.querySelector( 'h2' ).innerText.toLowerCase() };
 				json_data = JSON.stringify( data );
 				do_ajax.onreadystatechange = function() {
 					if ( this.readyState == 4 && this.status == 200 ) {
