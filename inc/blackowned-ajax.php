@@ -7,18 +7,6 @@
  */
 if ( ! defined( 'ABSPATH' ) ) exit; //No Direct Access
 
-function blackowned_localized_script() {
-
-	if ( get_post()->post_name == 'why-sell-with-us' ) {
-		wp_localize_script( 'blackowned-js', 'BO_AJAX', array(
-			'security'	=>	wp_create_nonce( 'bo-security' ),
-		) );
-	}
-
-}
-
-add_action( 'wp_enqueue_scripts', 'blackowned_localized_script' );
-
 function vendor_package_select() {
 
 	if ( ! check_ajax_referer( 'bo-security', 'security' ) ) {
