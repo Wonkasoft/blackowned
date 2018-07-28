@@ -12,7 +12,7 @@ function vendor_package_select() {
 	if ( ! check_ajax_referer( 'bo-security', 'security' ) ) {
 		return wp_send_json_error( 'Invalid Nonce' );
 	}
-	
+
 	global $WCMP_Vendor_Membership, $WCMp;
 	$global_settings = $WCMP_Vendor_Membership->get_global_settings();
 	$user_is_admin = false;
@@ -26,12 +26,17 @@ function vendor_package_select() {
 
 	$args = array(
 		'post_type'	=>	'vendortype',
+		'post_status'	=> 'publish',
 	);
 
 	$get_packages = new WP_Query( $args );
 
-	$payment_page_url = get_wcmp_vendor_settings( 'vendor_registration', 'vendor', 'general' );
-	$payment_page_url = get_permalink( $payment_page_url );
+	while ( $get_packages->has_post() ) : the_post(); 
+
+		$payment_page_url = get_wcmp_vendor_settings( 'vendor_registration', 'vendor', 'general' );
+		$payment_page_url = get_permalink( $payment_page_url );
+		
+	endwhile;
 	$output = [];
 
 	foreach ( $get_packages->posts as $package ) {
@@ -67,9 +72,8 @@ function vendor_package_select() {
 
 
 	array_push( $output, array( 'btn_text' => $btn_text ) );
-	$json_obj = json_encode( $output );
 
-	return wp_send_json_success( $json_obj );
+	return wp_send_json_success( $output );
 }
 
 add_action( 'wp_ajax_packages_get', 'vendor_package_select' );
