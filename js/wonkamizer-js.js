@@ -31,22 +31,27 @@
 
   	function package_toggle( switch_btn ) {
 		var package_modules = document.querySelectorAll( '.membership-package-modules' );
-		var bo_obj, data, json_data, do_ajax = new XMLHttpRequest();
+		var response_obj, data, json_data, package_name, package_name_send, do_ajax = new XMLHttpRequest();
 		package_modules.forEach( function ( item, index ) {
-			
+			package_name = item.querySelector( 'h2' ).innerText.toLowerCase();
+			package_name_send = package_name;
+
 			setTimeout( function() { 
 				
 				if ( switch_btn.checked === false ) {
 					item.querySelector( '.pricing-window' ).classList.add( 'yearly-pricing' );
+					package_name_send = package_name + '-year';
 				} else if ( switch_btn.checked ) {
 					if ( item.querySelector( '.yearly-pricing' ) ) {
 						item.querySelector( '.pricing-window' ).classList.remove( 'yearly-pricing' );
+						package_name_send = package_name;
 					}
 				}
 
-				data = {"action":"packages_get", "security": BO_AJAX.security, "package": item.querySelector( 'h2' ).innerText.toLowerCase() };
+				data = { "action":"packages_get", "security": BO_AJAX.security, "package": package_name_send };
 				json_data = JSON.stringify( data );
 				console.log(json_data);
+
 				do_ajax.onreadystatechange = function() {
 					if ( this.readyState == 4 && this.status == 200 ) {
 						console.log(this.responseText);
