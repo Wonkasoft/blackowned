@@ -30,7 +30,8 @@
 			do_ajax.onreadystatechange = function() {
 				if ( this.readyState == 4 && this.status == 200 ) {
 					response_obj = JSON.parse(this.responseText);
-					console.log( response_obj.data );
+					json_data = JSON.parse( response_obj.data );
+					console.log( json_data );
 				}
 			};
 			do_ajax.send();
