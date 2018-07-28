@@ -13,6 +13,8 @@ function vendor_package_select() {
 		return wp_send_json_error( 'Invalid Nonce' );
 	}
 	
+	global $WCMP_Vendor_Membership, $WCMp;
+	$global_settings = $WCMP_Vendor_Membership->get_global_settings();
 	$user_is_admin = false;
 	$current_user = wp_get_current_user();
 	
@@ -24,7 +26,6 @@ function vendor_package_select() {
 
 	$args = array(
 		'post_type'	=>	'vendortype',
-		'post_status '	=>	'publish',
 	);
 
 	$get_packages = new WP_Query( $args );
@@ -33,12 +34,12 @@ function vendor_package_select() {
 	$payment_page_url = get_permalink( $payment_page_url );
 	$output = [];
 
-	foreach ( $get_packages as $package ) {
-		$output .= array('payment_url' => $payment_url, 'ID' => $package->ID, 'post_name' => $package->post_name, );
+	foreach ( $get_packages->posts as $package ) {
+		array_push( $output, array('payment_url' => $payment_url, 'ID' => $package->ID, 'post_name' => $package->post_name ) );
 	}
 
 	$json_obj = json_encode( $output );
-	$json_obj = json_encode( $json_obj );
+	$json_obj = json_decode( $json_obj );
 
 	$_vendor_billing_field = get_post_meta( $json_obj->ID, '_vendor_billing_field', true );
 
@@ -64,10 +65,11 @@ function vendor_package_select() {
 		$btn_text = __( 'Sorry you are logged in as admin please try with another account or logoff', 'blackowned' );
 	}
 
-	$output = array_push( $output, array( 'btn_text' => $btn_text ) );
-	$output = json_encode( $output );
 
-	return wp_send_json_success($output);
+	array_push( $output, array( 'btn_text' => $btn_text ) );
+	$json_obj = json_encode( $output );
+
+	return wp_send_json_success( $json_obj );
 }
 
 add_action( 'wp_ajax_packages_get', 'vendor_package_select' );
