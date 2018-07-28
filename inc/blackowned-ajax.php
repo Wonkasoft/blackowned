@@ -20,6 +20,7 @@ function blackowned_localized_script() {
 }
 
 add_action( 'wp_ajax_packages_get', 'vendor_package_select' );
+add_action( 'wp_ajax_nopriv_packages_get', 'vendor_package_select' );
 
 function vendor_package_select() {
 
