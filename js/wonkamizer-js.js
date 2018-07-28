@@ -29,7 +29,8 @@
 			do_ajax.open( "POST", BO_AJAX.ajaxurl + '?' + data, true);
 			do_ajax.onreadystatechange = function() {
 				if ( this.readyState == 4 && this.status == 200 ) {
-					console.log( JSON.parse( this.responseText.data ) );
+					response_obj = JSON.parse( this.responseText.data );
+					console.log( response_obj );
 				}
 			};
 			do_ajax.send();
