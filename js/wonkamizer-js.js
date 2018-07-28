@@ -21,10 +21,10 @@
 
   	if ( document.querySelector( '.page-id-30' ) ) {
   		var sell_page = document.querySelector( '.page-id-30' );
+  		var response_obj, data, json_data, package_name, package_name_send, do_ajax = new XMLHttpRequest();
   		sell_page.onload = function() {
   			var toggler = document.querySelector( '.toggle-group' );
 	  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
-	  		var response_obj, data, json_data, package_name, package_name_send, do_ajax = new XMLHttpRequest();
 	  		data = { "action":"packages_get", "security": BO_AJAX.security };
 			json_data = JSON.stringify( data );
 			do_ajax.open( "POST", wpAjaxUrl, true);
