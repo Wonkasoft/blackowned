@@ -26,7 +26,7 @@
   			var toggler = document.querySelector( '.toggle-group' );
 	  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
 	  		data = { 'action' : 'packages_get', 'security' : BO_AJAX.security };
-			do_ajax.open( "POST", wpAjaxUrl, true);
+			do_ajax.open( "POST", wpAjaxUrl, false);
 			do_ajax.setRequestHeader( "Content-type", "application/json" );
 			do_ajax.onreadystatechange = function() {
 				if ( this.readyState == 4 && this.status == 200 ) {
