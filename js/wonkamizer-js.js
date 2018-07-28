@@ -24,6 +24,17 @@
   		sell_page.onload = function() {
   			var toggler = document.querySelector( '.toggle-group' );
 	  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
+	  		var response_obj, data, json_data, package_name, package_name_send, do_ajax = new XMLHttpRequest();
+	  		data = { "action":"packages_get", "security": BO_AJAX.security};
+			json_data = JSON.stringify( data );
+			do_ajax.open( "POST", wpAjaxUrl, true);
+			do_ajax.setRequestHeader( "Content-type", "application/json" );
+			do_ajax.onreadystatechange = function() {
+				if ( this.readyState == 4 && this.status == 200 ) {
+					console.log(this.responseText);
+				}
+			};
+			do_ajax.send( json_data );
 	  		package_toggle( switch_btn );
 	  		toggler.addEventListener( 'click', function() { package_toggle( switch_btn ); });
   		};
@@ -31,10 +42,7 @@
 
   	function package_toggle( switch_btn ) {
 		var package_modules = document.querySelectorAll( '.membership-package-modules' );
-		var response_obj, data, json_data, package_name, package_name_send, do_ajax = new XMLHttpRequest();
 		package_modules.forEach( function ( item, index ) {
-			package_name = item.querySelector( 'h2' ).innerText.toLowerCase();
-			package_name_send = package_name;
 
 			setTimeout( function() { 
 				
@@ -48,16 +56,6 @@
 					}
 				}
 
-				data = { "action":"packages_get", "security": BO_AJAX.security, "package": package_name_send };
-				json_data = JSON.stringify( data );
-				do_ajax.open( "POST", wpAjaxUrl, true);
-				do_ajax.setRequestHeader( "Content-type", "application/json" );
-				do_ajax.onreadystatechange = function() {
-					if ( this.readyState == 4 && this.status == 200 ) {
-						console.log(this.responseText);
-					}
-				};
-				do_ajax.send( json_data );
 			}, 125);
 		});
   	}

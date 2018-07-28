@@ -48,10 +48,7 @@ function vendor_package_select() {
 	$output = [];
 
 	foreach ( $get_packages as $package ) {
-		if ( $package->post_name == $_POST['package'] ) {
-			$output .= array('payment_url' => $payment_url, 'ID' => $package->ID, 'post_name' => $package->post_name, );
-			break;
-		}
+		$output .= array('payment_url' => $payment_url, 'ID' => $package->ID, 'post_name' => $package->post_name, );
 	}
 
 	$json_obj = json_encode( $output );
