@@ -90,6 +90,12 @@ if ( ! function_exists( 'blackowned_setup' ) ) :
 		 */
 		add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
 	}
+
+	/**
+	 * Ajax additions.
+	 */
+	require get_template_directory() . '/inc/blackowned-ajax.php';
+	
 endif;
 add_action( 'after_setup_theme', 'blackowned_setup' );
 
@@ -198,11 +204,6 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Ajax additions.
- */
-require get_template_directory() . '/inc/blackowned-ajax.php';
 
 /**
  * Load Jetpack compatibility file.
