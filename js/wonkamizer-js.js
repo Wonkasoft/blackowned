@@ -31,7 +31,7 @@
 
   	function package_toggle( switch_btn ) {
 		var package_modules = document.querySelectorAll( '.membership-package-modules' );
-		var bo_obj, do_ajax = new XMLHttpRequest();
+		var bo_obj, data, json_data, do_ajax = new XMLHttpRequest();
 		package_modules.forEach( function ( item, index ) {
 			
 			setTimeout( function() { 
@@ -44,13 +44,15 @@
 					}
 				}
 
+				data = {"action":"packages_get", "security": OB_AJAX.security, "package": item.querySelector( 'h2' ).innerText.toLowerCase() };
+				json_data = JSON.stringify( data );
 				do_ajax.onreadystatechange = function() {
 					if ( this.readyState == 4 && this.status == 200 ) {
 						console.log(this.responseText);
 					}
 				};
 				do_ajax.open( "GET", wpAjaxUrl, true);
-				do_ajax.send( );
+				do_ajax.send( json_data );
 			}, 125);
 		});
   	}
