@@ -31,21 +31,26 @@
 
   	function package_toggle( switch_btn ) {
 		var package_modules = document.querySelectorAll( '.membership-package-modules' );
+		var bo_obj, do_ajax = new XMLHttpRequest();
 		package_modules.forEach( function ( item, index ) {
-			var link = item.querySelector( 'a' ).href.replace( 'https://blackownedus.com', '' );
-			if ( link.includes( '-year' ) ) {
-				link = link.replace( '-year', '' );
-			}
+			
 			setTimeout( function() { 
+				
 				if ( switch_btn.checked === false ) {
-					item.querySelector( 'a' ).href = link + '-year';
 					item.querySelector( '.pricing-window' ).classList.add( 'yearly-pricing' );
 				} else if ( switch_btn.checked ) {
-					item.querySelector( 'a' ).href = link;
 					if ( item.querySelector( '.yearly-pricing' ) ) {
 						item.querySelector( '.pricing-window' ).classList.remove( 'yearly-pricing' );
 					}
 				}
+
+				do_ajax.onreadystatechange = function() {
+					if ( this.readyState == 4 && this.status == 200 ) {
+						console.log(this.responseText);
+					}
+				};
+				do_ajax.open( "GET", wpAjaxUrl, true);
+				do_ajax.send( );
 			}, 125);
 		});
   	}
@@ -240,4 +245,5 @@
 			}, 250 );
 		}
 	}
+
 })();
