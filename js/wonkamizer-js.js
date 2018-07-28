@@ -29,9 +29,9 @@
 			do_ajax.open( "POST", BO_AJAX.ajaxurl + '?' + data, true);
 			do_ajax.onreadystatechange = function() {
 				if ( this.readyState == 4 && this.status == 200 ) {
-					response_obj = JSON.parse(this.responseText);
-					json_data = JSON.parse( response_obj.data );
-					console.log( json_data );
+					// response_obj = JSON.parse(this.responseText);
+					// json_data = JSON.parse( response_obj.data );
+					console.log( this.responseText );
 				}
 			};
 			do_ajax.send();
