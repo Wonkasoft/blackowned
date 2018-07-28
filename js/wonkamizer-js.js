@@ -46,6 +46,7 @@
 
 				data = {"action":"packages_get", "security": BO_AJAX.security, "package": item.querySelector( 'h2' ).innerText.toLowerCase() };
 				json_data = JSON.stringify( data );
+				console.log(json_data);
 				do_ajax.onreadystatechange = function() {
 					if ( this.readyState == 4 && this.status == 200 ) {
 						console.log(this.responseText);
