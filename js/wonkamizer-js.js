@@ -26,7 +26,6 @@
   			var toggler = document.querySelector( '.toggle-group' );
 	  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
 	  		data = { "action":"packages_get", "security": BO_AJAX.security };
-			json_data = JSON.stringify( data );
 			do_ajax.open( "POST", wpAjaxUrl, true);
 			do_ajax.setRequestHeader( "Content-type", "application/json" );
 			do_ajax.onreadystatechange = function() {
@@ -34,7 +33,7 @@
 					console.log(this.responseText);
 				}
 			};
-			do_ajax.send( json_data );
+			do_ajax.send( data );
 	  		package_toggle( switch_btn );
 	  		toggler.addEventListener( 'click', function() { package_toggle( switch_btn ); });
   		};
