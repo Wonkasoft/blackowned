@@ -50,13 +50,13 @@
 
 				data = { "action":"packages_get", "security": BO_AJAX.security, "package": package_name_send };
 				json_data = JSON.stringify( data );
+				do_ajax.open( "POST", wpAjaxUrl, true);
 				do_ajax.setRequestHeader( "Content-type", "application/json" );
 				do_ajax.onreadystatechange = function() {
 					if ( this.readyState == 4 && this.status == 200 ) {
 						console.log(this.responseText);
 					}
 				};
-				do_ajax.open( "POST", wpAjaxUrl, true);
 				do_ajax.send( json_data );
 			}, 125);
 		});
