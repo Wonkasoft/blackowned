@@ -27,7 +27,7 @@
 	  		var response_obj, data, json_data, package_name, package_name_send, do_ajax = new XMLHttpRequest();
 	  		data = { "action":"packages_get", "security": BO_AJAX.security };
 			json_data = JSON.stringify( data );
-			do_ajax.open( "POST", wpAjaxUrl, true);
+			do_ajax.open( "POST", wpAjaxUrl.replace('https://', ''), true);
 			do_ajax.setRequestHeader( "Content-type", "application/json" );
 			do_ajax.onreadystatechange = function() {
 				if ( this.readyState == 4 && this.status == 200 ) {
@@ -43,7 +43,7 @@
   	function package_toggle( switch_btn ) {
 		var package_modules = document.querySelectorAll( '.membership-package-modules' );
 		package_modules.forEach( function ( item, index ) {
-
+			package_name = item.querySelector( 'h2' ).innerText.toLowerCase();
 			setTimeout( function() { 
 				
 				if ( switch_btn.checked === false ) {
