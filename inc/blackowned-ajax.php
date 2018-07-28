@@ -31,17 +31,13 @@ function vendor_package_select() {
 
 	$get_packages = new WP_Query( $args );
 
-	while ( $get_packages->have_posts() ) : the_post(); 
-		
-		var_dump(get_the_ID());
-		$payment_page_url = get_wcmp_vendor_settings( 'vendor_registration', 'vendor', 'general' );
-		$payment_page_url = get_permalink( $payment_page_url );
+	$payment_page_url = get_wcmp_vendor_settings( 'vendor_registration', 'vendor', 'general' );
+	$payment_page_url = get_permalink( $payment_page_url );
 
-	endwhile;
 	$output = [];
 
 	foreach ( $get_packages->posts as $package ) {
-		array_push( $output, array('payment_url' => esc_url( $payment_url, null, 'display' ), 'ID' => $package->ID, 'post_name' => $package->post_name ) );
+		array_push( $output, array( 'package' => array('payment_url' => $payment_page_url, 'ID' => $package->ID, 'post_name' => $package->post_name ) ) );
 	}
 
 	$json_obj = json_encode( $output );
