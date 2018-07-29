@@ -82,44 +82,10 @@ if (isset($plan_id) && !empty($plan_id)) {
                     <div class="wcmp-regi-12">
                         <label><input type="radio" name="wvm_payment_method" class="wvm_payment_method" value="paypal" checked="" /> Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</label>
                     </div>
-                    <div class="wcmp-regi-12">
-                        <label><input type="radio" name="wvm_payment_method" class="wvm_payment_method" value="card" /> Pay via card.</label>
-                    </div>
                     <?php do_action('wcmp_after_vendor_membership_payment_methods'); ?>
                     <div class="clearboth"></div>
                 </div>
 
-                <div class="wcmp_regi_form_box wvm-card-details">
-                    <h3 class="reg_header2">Card Details</h3>
-                    <div class="wcmp-regi-12">
-                        <!--<label>Card holder name</label>-->
-                        <input name="c_holder"  type="text" class="checkout-input checkout-name" id="cc-card-holder" title="<?php echo __('Card Holder Name', 'wcmp-vendor_membership'); ?>" placeholder="<?php echo __('Card Holder Name', 'wcmp-vendor_membership'); ?>">
-                    </div>
-                    <div class="wcmp-regi-12">
-                        <!--<label>Card number</label>-->
-                        <input name="c_number" id="wcmp_cat_card_number" type="text" class="checkout-input checkout-card cc-number" placeholder="<?php echo __('4635 8000 0097 1893', 'wcmp-vendor_membership'); ?>">	
-                    </div>
-                    <div class="wcmp-regi-12">
-                        <!--<label>Card type</label>-->
-                        <select name="c_type" id="wcmp_cat_card_type"  class="checkout-input checkout-exp" placeholder="<?php echo __('Card Type', 'wcmp-vendor_membership'); ?>" >
-                            <option value=""><?php echo __('Select Your Card Type', 'wcmp-vendor_membership'); ?></option>
-                            <option value="Visa"><?php echo __('Visa', 'wcmp-vendor_membership'); ?></option>
-                            <option value="MasterCard"><?php echo __('MasterCard', 'wcmp-vendor_membership'); ?></option>
-                            <option value="Discover"><?php echo __('Discover', 'wcmp-vendor_membership'); ?></option>
-                            <option value="Amex"><?php echo __('Amex', 'wcmp-vendor_membership'); ?></option>
-                            <option value="JCB"><?php echo __('JCB', 'wcmp-vendor_membership'); ?></option>
-                        </select>
-                    </div>
-                    <div class="wcmp-regi-12">
-                        <!--<label>Exp month and date in (MM/YY) format</label>-->
-                        <input name="c_month_year" id="wcmp_cat_exp_month_year" type="text" class="checkout-input checkout-exp cc-exp " placeholder="<?php echo __('MM/YY', 'wcmp-vendor_membership'); ?>">
-                    </div>
-                    <div class="wcmp-regi-12">
-                        <!--<label>CVV</label>-->
-                        <input name="c_cvv" id="wcmp_cat_card_cvc" type="text" class="checkout-input checkout-cvc cc-cvc" placeholder="<?php echo __('CVV', 'wcmp-vendor_membership'); ?>">
-                    </div>
-                    <div class="clearboth"></div>
-                </div>
             <?php endif; ?>
             <div class="clearboth"></div>
             <p class="woocomerce-FormRow form-row">

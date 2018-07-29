@@ -62,7 +62,7 @@ function vendor_package_select() {
 			$btn_text = __( 'Sorry you are logged in as admin please try with another account or logoff', 'blackowned' );
 		}
 
-		array_push( $output, array('payment_url' => $payment_page_url, 'ID' => $package->ID, 'package' => $package->post_name, 'btn_text' => $btn_text ) );
+		array_push( $output, array('payment_url' => $payment_page_url, 'ID' => $package->ID, 'package' => $package->post_name, 'btn_text' => $btn_text, 'no_btn' => $user_is_admin ) );
 
 	endforeach;
 

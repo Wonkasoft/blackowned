@@ -41,30 +41,46 @@
 
   	function package_toggle( switch_btn ) {
 		var package_modules = document.querySelectorAll( '.membership-package-modules' );
+		var form_el, sub_btn, hidden, new_p, new_text;
 		setTimeout( function() { 
 			if ( switch_btn.checked === false ) {
 				package_modules.forEach( function ( item, index ) {
 					package_name = item.querySelector( 'h2' ).innerText.toLowerCase();
+					form_el = item.querySelector( 'form' );
+					hidden = form_el.querySelector( 'input[name=vendor_plan_id]' );
+					sub_btn = form_el.querySelector( 'input[type=submit]' );
 					package_name_send = package_name + '-year';
+					item.querySelector( '.pricing-window' ).classList.add( 'yearly-pricing' );
 					response_obj.forEach( function( obj ) {
 						if ( obj.package === package_name_send ) {
-							item.querySelector( '.pricing-window' ).classList.add( 'yearly-pricing' );
-							item.querySelector( 'form' ).setAttribute( 'action', obj.payment_url );
-							item.querySelector( 'input[name=vendor_plan_id]' ).setAttribute( 'value', obj.ID );
+							form_el.setAttribute( 'action', obj.payment_url );
+							hidden.setAttribute( 'value', obj.ID );
 						}
 					});
 				});
 			} else if ( switch_btn.checked ) {
 				package_modules.forEach( function ( item, index ) {
 					package_name = item.querySelector( 'h2' ).innerText.toLowerCase();
+					form_el = item.querySelector( 'form' );
+					hidden = form_el.querySelector( 'input[name=vendor_plan_id]' );
+					sub_btn = form_el.querySelector( 'input[type=submit]' );
 					package_name_send = package_name;
 					if ( item.querySelector( '.yearly-pricing' ) ) {
 						item.querySelector( '.pricing-window' ).classList.remove( 'yearly-pricing' );
 					}
 					response_obj.forEach( function( obj ) {
 						if ( obj.package === package_name_send ) {
-							item.querySelector( 'form' ).setAttribute( 'action', obj.payment_url );
-							item.querySelector( 'input[name=vendor_plan_id]' ).setAttribute( 'value', obj.ID );
+							form_el.setAttribute( 'action', obj.payment_url );
+							hidden.setAttribute( 'value', obj.ID );
+							if ( obj.no_btn && sub_btn ) {
+								form_el.removeChild( sub_btn );
+								new_p = document.createElement( 'p' );
+								new_text = document.createTextNode( obj.btn_text );
+								new_p.appendChild( new_text );
+								form_el.appendChild( new_p );
+							} else if ( sub_btn ) {
+								sub_btn.setAttribute( 'value', obj.btn_text );
+							}
 						}
 					});
 				});
