@@ -186,7 +186,22 @@ p.stars {
 /**
  * Forms
  */
-.woocommerce-form-login, .woocommerce-form-register {
+.woocommerce-form-register {
+	@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
+	width: 500px;
+	margin: 15px auto;
+	padding: 20px 24px;
+	justify-content: center;
+	border-radius: 10px;
+
+	p:nth-child(5) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+.woocommerce-form-login {
 	@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
 	width: 500px;
 	margin: 15px auto;
