@@ -186,7 +186,7 @@ p.stars {
 /**
  * Forms
  */
-.woocommerce-form-login {
+.woocommerce-form-login, .woocommerce-form-register {
 	@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
 	width: 500px;
 	margin: 15px auto;
