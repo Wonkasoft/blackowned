@@ -21,20 +21,19 @@
 
   	if ( document.querySelector( '.page-id-30' ) ) {
   		var sell_page = document.querySelector( '.page-id-30' );
-  		var response_obj, data, json_data, package_name, package_name_send, do_ajax = new XMLHttpRequest( arguments );
+  		var response_obj, data, json_data, package_name, package_name_send, do_ajax = new XMLHttpRequest();
+  		data = "action=packages_get&security=" + BO_AJAX.security;
+		do_ajax.open( "POST", BO_AJAX.ajaxurl + '?' + data, true);
+		do_ajax.onreadystatechange = function() {
+			if ( this.readyState == 4 && this.status == 200 ) {
+				json_data = JSON.parse(this.responseText);
+				response_obj = json_data.data;
+			}
+		};
+		do_ajax.send();
   		sell_page.onload = function() {
   			var toggler = document.querySelector( '.toggle-group' );
 	  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
-	  		data = "action=packages_get&security=" + BO_AJAX.security;
-			do_ajax.open( "POST", BO_AJAX.ajaxurl + '?' + data, true);
-			do_ajax.onreadystatechange = function() {
-				if ( this.readyState == 4 && this.status == 200 ) {
-					response_obj = JSON.parse(this.responseText);
-					json_data = JSON.parse( response_obj.data );
-					console.log( json_data );
-				}
-			};
-			do_ajax.send();
 	  		package_toggle( switch_btn );
 	  		toggler.addEventListener( 'click', function() { package_toggle( switch_btn ); });
   		};
@@ -42,22 +41,35 @@
 
   	function package_toggle( switch_btn ) {
 		var package_modules = document.querySelectorAll( '.membership-package-modules' );
-		package_modules.forEach( function ( item, index ) {
-			package_name = item.querySelector( 'h2' ).innerText.toLowerCase();
-			setTimeout( function() { 
-				
-				if ( switch_btn.checked === false ) {
-					item.querySelector( '.pricing-window' ).classList.add( 'yearly-pricing' );
+		setTimeout( function() { 
+			if ( switch_btn.checked === false ) {
+				package_modules.forEach( function ( item, index ) {
+					package_name = item.querySelector( 'h2' ).innerText.toLowerCase();
 					package_name_send = package_name + '-year';
-				} else if ( switch_btn.checked ) {
+					response_obj.forEach( function( obj ) {
+						if ( obj.package === package_name_send ) {
+							item.querySelector( '.pricing-window' ).classList.add( 'yearly-pricing' );
+							item.querySelector( 'form' ).setAttribute( 'action', obj.payment_url );
+							item.querySelector( 'input[name=vendor_plan_id]' ).setAttribute( 'value', obj.ID );
+						}
+					});
+				});
+			} else if ( switch_btn.checked ) {
+				package_modules.forEach( function ( item, index ) {
+					package_name = item.querySelector( 'h2' ).innerText.toLowerCase();
+					package_name_send = package_name;
 					if ( item.querySelector( '.yearly-pricing' ) ) {
 						item.querySelector( '.pricing-window' ).classList.remove( 'yearly-pricing' );
-						package_name_send = package_name;
 					}
-				}
-
-			}, 125);
-		});
+					response_obj.forEach( function( obj ) {
+						if ( obj.package === package_name_send ) {
+							item.querySelector( 'form' ).setAttribute( 'action', obj.payment_url );
+							item.querySelector( 'input[name=vendor_plan_id]' ).setAttribute( 'value', obj.ID );
+						}
+					});
+				});
+			}
+		}, 125);
   	}
 
 	function wonka_slider_setup( current_slider ) {
