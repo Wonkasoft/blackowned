@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="row" id="customer_login">
 
-	<div class="col-6">
+	<div class="col col-md-6">
 
 <?php endif; ?>
 
@@ -69,7 +69,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	</div>
 
-	<div class="col-6">
+	<div class="col col-md-6">
 
 		<h2><?php esc_html_e( 'Register', 'woocommerce' ); ?></h2>
 

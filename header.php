@@ -85,17 +85,21 @@
 						?>
 						</a>
 						<span class="separator"> </span>
-						<?php
-							if ( is_user_logged_in() ) :
-								?>
-								<a id="login-btn" href="<?php echo wp_logout_url( get_permalink( wc_get_page_id( 'myaccount' ) ) ); ?>"><i class="fa fa-user"></i> Logout</a>
+							<a id="login-btn" href="<?php echo get_permalink( get_page_by_path( 'my-account' ) ); ?>">
+								<i class="fa fa-user"></i>
 								<?php
-							else :
-								?>
-								<a id="login-btn" href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>"><i class="fa fa-user"></i> Login</a>
-								<?php
-							endif;
-							?>
+									if ( is_user_logged_in() ) :
+										?>
+										 Account
+										<?php
+									else :
+										?>
+										
+										 Login
+										<?php
+									endif;
+									?>
+							</a>
 					</div> <!-- /cart-icon -->
 
 				</div><!-- .row -->

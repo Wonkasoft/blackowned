@@ -189,33 +189,61 @@ p.stars {
 .woocommerce-form-register {
 	@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
 	width: 500px;
+	max-width: 100%;
 	margin: 15px auto;
 	padding: 20px 24px;
 	justify-content: center;
 	border-radius: 10px;
 
-	p:nth-child(5) {
-		display: flex;
-		align-items: center;
-		justify-content: center;
+	p {
+		display: block;
+
+		&:nth-child(5) {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		label {
+			display: block;
+			text-align: left;
+		}
+
+		input[type=text], input[type=password], input[type=email] {
+			width: 100%;
+		}
 	}
 }
 
 .woocommerce-form-login {
 	@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), o moz webkit );
 	width: 500px;
+	max-width: 100%;
 	margin: 15px auto;
 	padding: 20px 24px;
 	justify-content: center;
 	border-radius: 10px;
 
-	p:nth-child(3) {
-		display: flex;
-		align-items: center;
-		justify-content: center;
+	p {
+		display: block;
+
+		&:nth-child(3) {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			label {
+				margin-left: 15px;
+			}
+		}
 
 		label {
-			margin-left: 15px;
+			display: block;
+			text-align: left;
+		}
+
+		input[type=text], input[type=password], input[type=email] {
+			width: 100%;
 		}
 	}
 
@@ -335,19 +363,61 @@ p.no-comments {
 		ul {
 			list-style: none;
 			li {
+				position: relative;
+				display: flex;
+				align-items: center;
 				text-align: left;
+				margin-right: 15px;
+			    padding: 8px;
+			    background: linear-gradient(-213deg, #561222 0, #561200 100%);
+			    @include prefix( box-shadow, 0 1px 6px 0 rgba( 0, 0, 0, .3 ), o moz webkit );
+			    @include prefix( text-shadow, 1px 1px 2px rgba( 0, 0, 0, .9 ) );
 
 				&:not( :first-child ) {
 					margin-top: 8px;
 				}
 
 				a {
-					color: #222222;
+					color: #ffffff;
 
 					&:hover {
 						color: $color__link-hover;
 						text-decoration: none;
 					}
+				}
+
+				&:after {
+					position: absolute;
+					width: 40px;
+					text-align: center;
+					right: 15px;
+					color: #ffffff;
+					font: normal normal normal 20px/1 FontAwesome;
+					@include prefix( text-shadow, 1px 1px 2px rgba( 0, 0, 0, .9 ) );
+				}
+
+				&.woocommerce-MyAccount-navigation-link--dashboard:after {
+					content: "\f0e4";
+				}
+
+				&.woocommerce-MyAccount-navigation-link--orders:after {
+					content: "\f291";
+				}
+
+				&.woocommerce-MyAccount-navigation-link--downloads:after {
+					content: "\f0ed";
+				}
+
+				&.woocommerce-MyAccount-navigation-link--edit-address:after {
+					content: "\f2bb";
+				}
+
+				&.woocommerce-MyAccount-navigation-link--edit-account:after {
+					content: "\f007";
+				}
+
+				&.woocommerce-MyAccount-navigation-link--customer-logout:after {
+					content: "\f08b";
 				}
 			}
 		}
