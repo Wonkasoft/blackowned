@@ -272,7 +272,8 @@ if ( ! function_exists( 'blackowned_woocommerce_header_cart' ) ) {
 	}
 }
 
-if ( current_user_can( 'dc_vendor' ) ) :
+$user = wp_get_current_user(); 
+if ( in_array( 'dc_vendor', (array) $user->roles ) ) :
 
 	/**
 	 * My Account menu items
