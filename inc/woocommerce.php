@@ -306,7 +306,7 @@ add_action( 'init', 'blackowned_add_my_account_endpoint' );
  */
 function blackowned_vendor_store_endpoint_content() {
 
-	echo '<div class="vendor-link-wrap"><a class="vendor-link" href="' . get_site_url() . '/dashboard">Click here to enter your store.</a></div>';
+	echo '<div class="vendor-link-wrap"><a class="vendor-link" href="' . get_site_url() . '/dashboard">Manage your store.</a></div>';
 }
  
 add_action( 'woocommerce_account_vendor-store_endpoint', 'blackowned_vendor_store_endpoint_content' );
