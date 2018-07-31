@@ -21,41 +21,26 @@
 
   	if ( document.querySelector( '.page-id-30' ) ) {
   		var sell_page = document.querySelector( '.page-id-30' );
-  		var package_modules = document.querySelectorAll( '.membership-package-modules' );
   		var response_obj, data, json_data, package_name, package_name_send, do_ajax = new XMLHttpRequest();
-  		data = "action=packages_get&security=" + BO_AJAX.security;
-		do_ajax.open( "POST", BO_AJAX.ajaxurl + '?' + data, true);
-		do_ajax.onreadystatechange = function() {
-			if ( this.readyState == 4 && this.status == 200 ) {
-				json_data = JSON.parse(this.responseText);
-				response_obj = json_data.data;
-				package_modules.forEach( function ( item, index ) {
-					response_obj.forEach( function( obj ) {
-						if ( obj.package === package_name_send ) {
-							if ( obj.no_btn && sub_btn ) {
-								form_el.removeChild( sub_btn );
-								new_p = document.createElement( 'p' );
-								new_text = document.createTextNode( obj.btn_text );
-								new_p.appendChild( new_text );
-								form_el.appendChild( new_p );
-							} else if ( sub_btn ) {
-								sub_btn.setAttribute( 'value', obj.btn_text );
-							}
-						}
-					});
-				});
-			}
-		};
-		do_ajax.send();
   		sell_page.onload = function() {
   			var toggler = document.querySelector( '.toggle-group' );
 	  		var switch_btn = document.querySelector( '.toggle input[type=checkbox]' );
-	  		package_toggle( switch_btn );
+	  		data = "action=packages_get&security=" + BO_AJAX.security;
+			do_ajax.open( "POST", BO_AJAX.ajaxurl + '?' + data, true);
+			do_ajax.onreadystatechange = function() {
+				if ( this.status == 200 ) {
+					json_data = JSON.parse(this.responseText);
+					response_obj = json_data.data;
+	  				package_toggle( switch_btn );
+				}
+			};
+			do_ajax.send();
 	  		toggler.addEventListener( 'click', function() { package_toggle( switch_btn ); });
   		};
   	}
 
   	function package_toggle( switch_btn ) {
+		var package_modules = document.querySelectorAll( '.membership-package-modules' );
 		var form_el, sub_btn, hidden, new_p, new_text;
 		setTimeout( function() { 
 			if ( switch_btn.checked === false ) {
