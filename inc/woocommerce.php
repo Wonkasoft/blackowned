@@ -280,7 +280,7 @@ if ( ! function_exists( 'blackowned_woocommerce_header_cart' ) ) {
  */
 function blackowned_account_menu_items( $items ) {
  	
-    $items['storefront'] = __( 'My Store', 'blackowned' );
+    $items['vendor-store'] = __( 'My Store', 'blackowned' );
 
     $items = array_slice($items, 6) + array_slice($items, 0, 6);
  
@@ -305,11 +305,8 @@ add_action( 'init', 'blackowned_add_my_account_endpoint' );
  * Information content
  */
 function blackowned_vendor_store_endpoint_content() {
-	global $WCMP_Vendor_Membership, $WCMp;
-	$global_settings = $WCMP_Vendor_Membership->get_global_settings();
 
-	var_dump($WCMp);
-    // window.location = ;
+	echo '<div class="vendor-link-wrap"><a class="vendor-link" href="' . get_site_url() . '/dashboard">Click here to enter your store.</a></div>';
 }
  
 add_action( 'woocommerce_account_vendor-store_endpoint', 'blackowned_vendor_store_endpoint_content' );
