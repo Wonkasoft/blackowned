@@ -272,7 +272,7 @@ if ( ! function_exists( 'blackowned_woocommerce_header_cart' ) ) {
 	}
 }
 
-// if ( current_user_can( 'vendor' ) ) :
+if ( current_user_can( 'vendor' ) ) :
 
 	/**
 	 * My Account menu items
@@ -331,4 +331,4 @@ if ( ! function_exists( 'blackowned_woocommerce_header_cart' ) ) {
 	}
 	 
 	add_action( 'woocommerce_account_vendor-store_endpoint', 'blackowned_vendor_store_endpoint_content' );
-// endif;
+endif;
