@@ -368,7 +368,6 @@ p.no-comments {
 				align-items: center;
 				text-align: left;
 				margin-right: 15px;
-			    padding: 8px;
 			    background: linear-gradient(-213deg, #561222 0, #561200 100%);
 			    @include prefix( box-shadow, 0 1px 6px 0 rgba( 0, 0, 0, .3 ), o moz webkit );
 			    @include prefix( text-shadow, 1px 1px 2px rgba( 0, 0, 0, .9 ) );
@@ -379,44 +378,53 @@ p.no-comments {
 
 				a {
 					color: #ffffff;
+			    	width: 100%;
+			    	height: 100%;
+			    	padding: 8px;
+
+					&:after {
+						position: absolute;
+						width: 40px;
+						text-align: center;
+						right: 15px;
+						color: #ffffff;
+						font: normal normal normal 20px/1 FontAwesome;
+						@include prefix( text-shadow, 1px 1px 2px rgba( 0, 0, 0, .9 ) );
+						@include prefix( transition, all .2s ease-in-out, o moz webkit );
+					}
 
 					&:hover {
 						color: $color__link-hover;
 						text-decoration: none;
+
+						&:after {
+							color: $color__link-hover;
+						}
 					}
 				}
 
-				&:after {
-					position: absolute;
-					width: 40px;
-					text-align: center;
-					right: 15px;
-					color: #ffffff;
-					font: normal normal normal 20px/1 FontAwesome;
-					@include prefix( text-shadow, 1px 1px 2px rgba( 0, 0, 0, .9 ) );
-				}
 
-				&.woocommerce-MyAccount-navigation-link--dashboard:after {
+				&.woocommerce-MyAccount-navigation-link--dashboard a:after {
 					content: "\f0e4";
 				}
 
-				&.woocommerce-MyAccount-navigation-link--orders:after {
+				&.woocommerce-MyAccount-navigation-link--orders a:after {
 					content: "\f291";
 				}
 
-				&.woocommerce-MyAccount-navigation-link--downloads:after {
+				&.woocommerce-MyAccount-navigation-link--downloads a:after {
 					content: "\f0ed";
 				}
 
-				&.woocommerce-MyAccount-navigation-link--edit-address:after {
+				&.woocommerce-MyAccount-navigation-link--edit-address a:after {
 					content: "\f2bb";
 				}
 
-				&.woocommerce-MyAccount-navigation-link--edit-account:after {
+				&.woocommerce-MyAccount-navigation-link--edit-account a:after {
 					content: "\f007";
 				}
 
-				&.woocommerce-MyAccount-navigation-link--customer-logout:after {
+				&.woocommerce-MyAccount-navigation-link--customer-logout a:after {
 					content: "\f08b";
 				}
 			}
