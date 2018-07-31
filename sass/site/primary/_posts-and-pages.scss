@@ -756,6 +756,60 @@ span.example-url {
 	}
 }
 
+.vendor-content-wrap {
+
+	.title-row {
+
+		h3 {
+			margin-top: 0;
+			text-transform: uppercase;
+		}
+	}
+
+	.vendor-module {
+		width: calc( 93% / 2 );
+		max-width: 175px;
+		display: inline-block;
+		margin: 8px;
+		@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), webkit moz o );
+
+		.image-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 125px;
+			background: linear-gradient(-213deg, #561222 0, #561200 100%);
+			@include prefix( box-shadow, 0 1px 6px 0 rgba( #000, .4 ), webkit moz o );
+
+			i {
+				color: #ffffff;
+				font-size: 4.5rem;
+
+				&:before {
+					@include prefix( text-shadow, 1px 1px 2px rgba( #000, .9 ), o moz webkit );
+				}
+			}
+		}
+
+		.module-description {
+
+			h3 {
+				margin-top: 15px;
+			}
+		}
+	}
+
+	a.btn {
+		margin-top: 15px;
+		font-size: 1.2rem;
+		text-transform: uppercase;
+		border-radius: 0;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
 #colophon {
 	background: #000000;
 	color: #fff;

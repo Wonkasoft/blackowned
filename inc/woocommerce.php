@@ -272,41 +272,63 @@ if ( ! function_exists( 'blackowned_woocommerce_header_cart' ) ) {
 	}
 }
 
-/**
- * My Account menu items
- *
- * @param arr $items
- * @return arr
- */
-function blackowned_account_menu_items( $items ) {
- 	
-    $items['vendor-store'] = __( 'My Store', 'blackowned' );
+// if ( current_user_can( 'vendor' ) ) :
 
-    $items = array_slice($items, 6) + array_slice($items, 0, 6);
- 
-    return $items;
- 
-}
- 
-add_filter( 'woocommerce_account_menu_items', 'blackowned_account_menu_items', 10, 1 );
+	/**
+	 * My Account menu items
+	 *
+	 * @param arr $items
+	 * @return arr
+	 */
+	function blackowned_account_menu_items( $items ) {
+	 	
+	    $items['vendor-store'] = __( 'My Store', 'blackowned' );
 
-/**
- * Add endpoint
- */
-function blackowned_add_my_account_endpoint() {
- 
-    add_rewrite_endpoint( 'vendor-store', EP_PAGES );
- 
-}
- 
-add_action( 'init', 'blackowned_add_my_account_endpoint' );
+	    $items = array_slice($items, 6) + array_slice($items, 0, 6);
+	 
+	    return $items;
+	 
+	}
+	 
+	add_filter( 'woocommerce_account_menu_items', 'blackowned_account_menu_items', 10, 1 );
 
-/**
- * Information content
- */
-function blackowned_vendor_store_endpoint_content() {
+	/**
+	 * Add endpoint
+	 */
+	function blackowned_add_my_account_endpoint() {
+	 
+	    add_rewrite_endpoint( 'vendor-store', EP_ROOT | EP_PAGES );
+	 
+	}
+	 
+	add_action( 'init', 'blackowned_add_my_account_endpoint' );
 
-	echo '<div class="vendor-link-wrap"><a class="vendor-link" href="' . get_site_url() . '/dashboard">Manage your store.</a></div>';
-}
- 
-add_action( 'woocommerce_account_vendor-store_endpoint', 'blackowned_vendor_store_endpoint_content' );
+	/**
+	 * Information content
+	 */
+	function blackowned_vendor_store_endpoint_content() {
+
+		$output = '';
+		$output .= 	'<div class="vendor-content-wrap"><div class="row title-row"><div class="col">';
+		$output .=	'<h3><a class="vendor-link" href="' . get_site_url() . '/dashboard">Manage your store</a></h3></div></div>';
+		$output .=	'<div class="row content-row"><div class="col">';
+		$output .=	'<div class="vendor-module products-module"><div class="col image-container"><i class="fa fa-gift"></i></div>';
+		$output .=	'<div class="col module-description products-description"><h3>Products</h3></div></div>';
+		$output .=	'<div class="vendor-module orders-module"><div class="col image-container"><i class="fa fa-shopping-cart"></i></div>';
+		$output .=	'<div class="col module-description orders-description"><h3>Orders</h3></div></div>';
+		$output .=	'</div></div>';
+		$output .=	'<div class="row content-row"><div class="col">';
+		$output .=	'<div class="vendor-module analytics-module"><div class="col image-container"><i class="fa fa-line-chart"></i></div>';
+		$output .=	'<div class="col module-description analytics-description"><h3>Analytics</h3></div></div>';
+		$output .=	'<div class="vendor-module settings-module"><div class="col image-container"><i class="fa fa-cogs"></i></div>';
+		$output .=	'<div class="col module-description settings-description"><h3>Settings</h3></div></div>';
+		$output .=	'</div></div>';
+		$output .=	'<a href="' . get_site_url() . '/dashboard" class="btn btn-lg">Edit Store Settings</a>';
+		$output .=	'</div>';
+
+		echo $output;
+
+	}
+	 
+	add_action( 'woocommerce_account_vendor-store_endpoint', 'blackowned_vendor_store_endpoint_content' );
+// endif;
