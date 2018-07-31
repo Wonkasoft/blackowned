@@ -28,7 +28,7 @@
 	  		data = "action=packages_get&security=" + BO_AJAX.security;
 			do_ajax.open( "POST", BO_AJAX.ajaxurl + '?' + data, true);
 			do_ajax.onreadystatechange = function() {
-				if ( this.status == 200 ) {
+				if ( this.readyState == 4 && this.status == 200 ) {
 					json_data = JSON.parse(this.responseText);
 					response_obj = json_data.data;
 	  				package_toggle( switch_btn );
