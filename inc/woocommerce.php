@@ -271,3 +271,45 @@ if ( ! function_exists( 'blackowned_woocommerce_header_cart' ) ) {
 		<?php
 	}
 }
+
+/**
+ * My Account menu items
+ *
+ * @param arr $items
+ * @return arr
+ */
+function blackowned_account_menu_items( $items ) {
+ 	
+    $items['storefront'] = __( 'My Store', 'blackowned' );
+
+    $items = array_slice($items, 6) + array_slice($items, 0, 6);
+ 
+    return $items;
+ 
+}
+ 
+add_filter( 'woocommerce_account_menu_items', 'blackowned_account_menu_items', 10, 1 );
+
+/**
+ * Add endpoint
+ */
+function blackowned_add_my_account_endpoint() {
+ 
+    add_rewrite_endpoint( 'vendor-store', EP_PAGES );
+ 
+}
+ 
+add_action( 'init', 'blackowned_add_my_account_endpoint' );
+
+/**
+ * Information content
+ */
+function blackowned_vendor_store_endpoint_content() {
+	global $WCMP_Vendor_Membership, $WCMp;
+	$global_settings = $WCMP_Vendor_Membership->get_global_settings();
+
+	var_dump($WCMp);
+    // window.location = ;
+}
+ 
+add_action( 'woocommerce_account_vendor-store_endpoint', 'blackowned_vendor_store_endpoint_content' );
