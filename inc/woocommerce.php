@@ -309,7 +309,6 @@ if ( in_array( 'dc_vendor', (array) $user->roles ) ) :
 	 */
 	function blackowned_vendor_store_endpoint_content() {
 
-		var_dump(get_editable_roles());
 		$output = '';
 		$output .= 	'<div class="vendor-content-wrap"><div class="row title-row"><div class="col">';
 		$output .=	'<h3><a class="vendor-link" href="' . get_site_url() . '/dashboard">Manage your store</a></h3></div></div>';
