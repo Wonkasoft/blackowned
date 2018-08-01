@@ -2,7 +2,7 @@
 /**
  * Template Name: sell-with-blackowned
  *
- * This is the template that displays why-sell-with-us template.
+ * This is the template that displays sell-with-blackowned template.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

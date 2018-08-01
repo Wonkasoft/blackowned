@@ -730,7 +730,9 @@ span.example-url {
 			@include prefix( transition, all .2s ease-in-out, o moz webkit );
 
 			.pricing {
-				width: 110px;
+				width: 117px;
+				display: inline-block;
+				white-space: nowrap;
 				padding-left: 5px;
 				padding-right: 5px;
 				@include prefix( transition, all .2s ease-in-out, o moz webkit );
