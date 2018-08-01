@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: why-sell-with-us
+ * Template Name: sell-with-blackowned
  *
  * This is the template that displays why-sell-with-us template.
  *
@@ -10,6 +10,7 @@
  */
 
 get_header();
+var_dump(get_the_ID());
 ?>
 
 	<div id="primary" class="content-area">
