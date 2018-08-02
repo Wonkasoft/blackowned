@@ -64,7 +64,7 @@
   				package_switch.style.top = "25px";
   				package_switch.style.right = "3%";
   				package_switch.style.zIndex = "15";
-  			} else {
+  			} else if ( switch_offset > scroll_offset ) {
   				if ( package_switch.style ) {
   					package_switch.setAttribute( 'style', attribute_set );
   				}
