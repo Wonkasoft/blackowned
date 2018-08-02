@@ -58,17 +58,18 @@
   		switch_offset = switch_offset + offset_adjust;
   		var scroll_offset = window.pageYOffset;
   		var window_width = window.innerWidth;
-  		if ( window_width < 992 ) {
+  		if ( window_width <= 991 ) {
   			if ( switch_offset <= scroll_offset ) {
   				package_switch.style.position = 'fixed';
   				package_switch.style.top = "25px";
   				package_switch.style.right = "3%";
+  				package_switch.style.zIndex = "15";
   			} else {
   				if ( package_switch.style ) {
   					package_switch.setAttribute( 'style', attribute_set );
   				}
   			}
-  		} else if ( window_width > 992 ) {
+  		} else if ( window_width >= 992 ) {
 			if ( package_switch.style ) {
 				package_switch.setAttribute( 'style', attribute_set );
 			}

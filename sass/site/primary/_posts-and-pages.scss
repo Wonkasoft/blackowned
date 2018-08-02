@@ -639,6 +639,7 @@ span.example-url {
 
 	.toggle {
 		border-radius: 20px;
+		@include prefix( transition, all .2s ease-in-out, o moz webkit );
 	}
 
 	.toggle.ios .toggle-handle {
