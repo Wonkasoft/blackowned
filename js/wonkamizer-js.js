@@ -36,7 +36,43 @@
 			};
 			do_ajax.send();
 	  		toggler.addEventListener( 'click', function() { package_toggle( switch_btn ); });
+			var style_save = true;
+			var attribute_set, switch_offset;	
+	  		window.onscroll = function() {
+	  			if ( document.querySelector( '.toggle' ) ) {
+			  		var package_switch = document.querySelector( '.toggle' );
+	  				if ( style_save ) {
+	  					attribute_set = 'width: 99px; height: 38px;';
+	  					style_save = false;
+			  			switch_offset = package_switch.offsetTop;
+	  				}
+	  				sticky_switch( switch_offset, package_switch, attribute_set );
+	  			}
+	  		};
+
   		};
+  	}
+
+  	function sticky_switch( switch_offset, package_switch, attribute_set ) {
+  		var offset_adjust = 227;
+  		switch_offset = switch_offset + offset_adjust;
+  		var scroll_offset = window.pageYOffset;
+  		var window_width = window.innerWidth;
+  		if ( window_width < 992 ) {
+  			if ( switch_offset <= scroll_offset ) {
+  				package_switch.style.position = 'fixed';
+  				package_switch.style.top = "25px";
+  				package_switch.style.right = "3%";
+  			} else {
+  				if ( package_switch.style ) {
+  					package_switch.setAttribute( 'style', attribute_set );
+  				}
+  			}
+  		} else if ( window_width > 992 ) {
+			if ( package_switch.style ) {
+				package_switch.setAttribute( 'style', attribute_set );
+			}
+		}
   	}
 
   	function package_toggle( switch_btn ) {
