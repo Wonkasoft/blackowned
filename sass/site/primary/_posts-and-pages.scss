@@ -716,7 +716,7 @@ span.example-url {
 	}
 
 	.pricing-window {
-		width: 120px;
+		width: 122px;
 		height: 30px;
 		overflow: hidden;
 		margin: auto;
@@ -730,11 +730,9 @@ span.example-url {
 			@include prefix( transition, all .2s ease-in-out, o moz webkit );
 
 			.pricing {
-				width: 117px;
+				width: 122px;
 				display: inline-block;
 				white-space: nowrap;
-				padding-left: 5px;
-				padding-right: 5px;
 				@include prefix( transition, all .2s ease-in-out, o moz webkit );
 			}
 		}
